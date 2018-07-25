@@ -2,12 +2,13 @@ package com.wilshion.oa.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 
 import com.wilshion.common.base.BaseUIActivity;
 import com.wilshion.common.network.ZHHttpCallBack;
 import com.wilshion.common.utils.StringUtils;
 import com.wilshion.common.widgets.UIEditText;
+import com.wilshion.oa.BuildConfig;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.bean.LoginRespBean;
 import com.wilshion.oa.ui.bean.ResponseBean;
@@ -25,7 +26,7 @@ import java.util.Map;
 public class LoginActivity extends BaseUIActivity implements View.OnClickListener {
     private UIEditText et_name;
     private UIEditText et_pwd;
-    private Button btn_login;
+    private TextView btn_login;
 
     @Override
     protected int getLayoutId() {
@@ -41,9 +42,10 @@ public class LoginActivity extends BaseUIActivity implements View.OnClickListene
         btn_login = findViewById(R.id.btn_login);
 
         btn_login.setOnClickListener(this);
-
-        et_name.setText("admin");
-
+        if (BuildConfig.DEBUG) {
+            et_name.setText("admin");
+            et_pwd.setText("");
+        }
     }
 
     @Override
@@ -77,6 +79,7 @@ public class LoginActivity extends BaseUIActivity implements View.OnClickListene
                     LoginRespBean loginRespBean = response.getDetail();
                     if (null != loginRespBean) {
                         UserInfoUtil.saveLoginResult(response.getDetail());
+                        goToActivity(MainActivity.class);
                     } else {
                         showError(response.getResultNote());
                     }

@@ -1,6 +1,8 @@
 package com.wilshion.common.base;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,6 +26,11 @@ public class BaseActivity extends AppCompatActivity implements BaseUIDao {
             }
         }
         return mBaseUIDao;
+    }
+    
+    protected void goToActivity(Class<? extends Activity> clazz){
+        Intent intent = new Intent(this,clazz);
+        startActivity(intent);
     }
 
     @Override

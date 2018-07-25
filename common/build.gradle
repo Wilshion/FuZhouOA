@@ -36,4 +36,7 @@ dependencies {
     compile 'com.loopj.android:android-async-http:1.4.9'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.kaopiz:kprogresshud:1.1.0'
+
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
 }
