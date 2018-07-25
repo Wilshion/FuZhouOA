@@ -75,6 +75,7 @@ public class BaseUIDaoImpl implements BaseUIDao {
 
     @Override
     public void showInfo(String info, long delayTime) {
+        closeDialog();
         ImageView imageView = new ImageView(mContext);
         imageView.setBackgroundResource(R.drawable.ic_dialog_warn);
         final KProgressHUD hud1 = KProgressHUD.create(mContext).setCustomView(imageView).setLabel(info);
@@ -95,6 +96,7 @@ public class BaseUIDaoImpl implements BaseUIDao {
 
     @Override
     public void showSucceed(String info, long delayTime) {
+        closeDialog();
         ImageView imageView = new ImageView(mContext);
         imageView.setBackgroundResource(R.drawable.ic_dialog_success);
         final KProgressHUD hud1 = KProgressHUD.create(mContext).setCustomView(imageView).setLabel(info);
@@ -110,6 +112,7 @@ public class BaseUIDaoImpl implements BaseUIDao {
 
     @Override
     public void showError(String info) {
+        closeDialog();
         ImageView imageView = new ImageView(mContext);
         imageView.setBackgroundResource(R.drawable.ic_dialog_error);
         final KProgressHUD hud1 = KProgressHUD.create(mContext).setCustomView(imageView).setLabel(info);

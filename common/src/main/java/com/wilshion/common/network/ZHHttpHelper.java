@@ -1,5 +1,7 @@
 package com.wilshion.common.network;
 
+import android.content.Context;
+
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
@@ -9,8 +11,13 @@ import com.loopj.android.http.SyncHttpClient;
 import com.wilshion.common.utils.LogUtils;
 import com.wilshion.common.utils.NetworkUtils;
 
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
 import java.text.MessageFormat;
 import java.util.Map;
+
+import cz.msebera.android.httpclient.entity.StringEntity;
 
 /**
  * Created by Wilshion on 16/8/22.
@@ -138,10 +145,16 @@ public class ZHHttpHelper {
     /**
      * post请求，带参数
      */
-    public RequestHandle post(String url, RequestParams params,
+    public RequestHandle post(Context context,String url, JSONObject params,
                               ZHHttpCallBack httpCallBack) {
-        LogUtils.e(TAG, getAsyncHttpClient().getUrlWithQueryString(true, url, params));
-        RequestHandle requestHandle = client.post(url, params, httpCallBack);
+//        LogUtils.e(TAG, getAsyncHttpClient().getUrlWithQueryString(true, url, params));
+        StringEntity se = null;
+        try {
+            se = new StringEntity(params.toString());
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        RequestHandle requestHandle = client.post(context,url,se,RequestParams.APPLICATION_JSON,  httpCallBack);
         return requestHandle;
     }
 

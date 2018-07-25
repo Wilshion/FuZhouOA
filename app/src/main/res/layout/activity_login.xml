@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="64dp"
@@ -26,44 +27,66 @@
             android:src="@mipmap/ic_launcher"/>
 
         <LinearLayout
+            android:padding="2dp"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_marginTop="20dp"
+            android:background="@color/white"
             android:orientation="horizontal">
 
             <TextView
-                android:textSize="16sp"
+                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="账号"/>
+                android:text="账号"
+                android:textSize="16sp"/>
 
             <com.wilshion.common.widgets.UIEditText
-                android:textSize="16sp"
+                android:id="@+id/et_name"
+                android:layout_gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:hint="请输入账号"
-                android:paddingLeft="5dp"/>
+                android:paddingLeft="5dp"
+                android:textSize="16sp"/>
         </LinearLayout>
 
         <LinearLayout
+            android:padding="2dp"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
+            android:background="@color/white"
             android:orientation="horizontal">
 
             <TextView
-                android:textSize="16sp"
+                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="密码"/>
+                android:text="密码"
+                android:textSize="16sp"/>
 
             <com.wilshion.common.widgets.UIEditText
-                android:textSize="16sp"
+                android:id="@+id/et_pwd"
+                android:layout_gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:hint="请输入密码"
-                android:paddingLeft="5dp"/>
+                android:paddingLeft="5dp"
+                android:textSize="16sp"/>
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_login_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="登陆"/>
     </LinearLayout>
 </LinearLayout>
