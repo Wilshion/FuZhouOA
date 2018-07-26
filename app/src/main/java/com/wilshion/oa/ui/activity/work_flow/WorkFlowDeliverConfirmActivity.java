@@ -1,18 +1,17 @@
-package com.wilshion.oa.ui.activity.work_log;
+package com.wilshion.oa.ui.activity.work_flow;
 
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
 
 /**
- * Created by Wilshion on 2018/7/26 09:52.
- * [description : 工作日志列表]
+ * Created by Wilshion on 2018/7/26 21:22.
+ * [description : 转交提交页面]
  * [version : 1.0]
  */
-public class WorkLogListActivity extends BaseTitleBarActivity {
+public class WorkFlowDeliverConfirmActivity extends BaseTitleBarActivity{
     @Override
     protected void setTitleBar() {
-        setTitle("工作日志");
-        setRightText("写日志");
+        setTitle("工作转交");
     }
 
     @Override

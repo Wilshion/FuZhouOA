@@ -16,6 +16,6 @@ public class MyFileActivity extends BaseTitleBarActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_my_file_list;
+        return R.layout.activity_work_flow_deliver;
     }
 }

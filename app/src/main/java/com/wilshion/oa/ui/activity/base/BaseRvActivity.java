@@ -26,10 +26,11 @@ public abstract class BaseRvActivity<T, A extends BaseQuickAdapter<T, BaseViewHo
     private SmartRefreshLayout refresh_layout;
     private RecyclerView rv_content;
     private StateView mStateView;
-    
+
     private A mAdapter;
 
     private int mCurrentPage = 1;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_rv;
@@ -38,7 +39,7 @@ public abstract class BaseRvActivity<T, A extends BaseQuickAdapter<T, BaseViewHo
     @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
-       
+
         initRefreshLayout();
         initRecyclerView();
         initStateView();
@@ -79,9 +80,10 @@ public abstract class BaseRvActivity<T, A extends BaseQuickAdapter<T, BaseViewHo
     }
 
     protected void initRecyclerView() {
-        rv_content =  findViewById(R.id.rv_content);
+        rv_content = findViewById(R.id.rv_content);
         rv_content.setLayoutManager(getRecyclerViewLayoutManager());
-        rv_content.addItemDecoration(getRecyclerViewItemDecoration());
+        if (showItemDecoration())
+            rv_content.addItemDecoration(getRecyclerViewItemDecoration());
         rv_content.setAdapter(getAdapter());
     }
 
@@ -103,6 +105,10 @@ public abstract class BaseRvActivity<T, A extends BaseQuickAdapter<T, BaseViewHo
 
     public boolean enableLoadMore() {
         return false;
+    }
+
+    public boolean showItemDecoration() {
+        return true;
     }
 
     public RecyclerView.LayoutManager getRecyclerViewLayoutManager() {
@@ -135,6 +141,7 @@ public abstract class BaseRvActivity<T, A extends BaseQuickAdapter<T, BaseViewHo
 
     /**
      * 展示数据，供子类调用
+     *
      * @param dataList
      */
     protected void showData(List<T> dataList) {
