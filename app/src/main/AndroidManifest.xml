@@ -17,7 +17,23 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.MainActivity"/>
+        <activity android:name=".ui.activity.main.MainActivity"/>
+        <activity android:name=".ui.activity.msg.MsgListActivity"/>
+        <activity android:name=".ui.activity.msg.MsgDetailActivity"/>
+        <activity android:name=".ui.activity.email.EmailListActivity"/>
+        <activity android:name=".ui.activity.email.EmailDetailActivity"/>
+        <activity android:name=".ui.activity.notification.NotificationListActivity"/>
+        <activity android:name=".ui.activity.news.NewsListActivity"/>
+        <activity android:name=".ui.activity.schedule.ScheduleListActivity"/>
+        <activity android:name=".ui.activity.work_log.WorkLogListActivity"/>
+        <activity android:name=".ui.activity.work_log.WorkLogDetailActivity"/>
+        <activity android:name=".ui.activity.my_file.MyFileActivity"/>
+        <activity android:name=".ui.activity.work_flow.WorkFlowListActivity"/>
+        <activity android:name=".ui.activity.work_flow.WorkFlowDetailActivity"/>
+        <activity android:name=".ui.activity.staff_search.StaffSearchActivity"/>
+        <activity android:name=".ui.activity.address_list.AddressListActivity"/>
+        <activity android:name=".ui.activity.zip_code.ZipCodeActivity"/>
+        <activity android:name=".ui.activity.weather.WeatherActivity"/>
     </application>
 
 </manifest>

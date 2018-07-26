@@ -41,19 +41,6 @@ public class HttpUtil {
             e.printStackTrace();
         }
 
-//        RequestParams params = new RequestParams();
-//        params.setUseJsonStreamer(true);
-//        try {
-//            Iterator keys = jsonParams.keys();
-//            while (keys.hasNext()) {
-//                String key = (String) keys.next();
-//                LogUtils.d("  " + key + ": " + jsonParams.get(key));
-//                params.put(key, jsonParams.get(key).toString());
-//            }
-//        } catch (JSONException e) {
-//            LogUtils.d( "Unable to retrieve a JSON value", e);
-//        }
-
         return jsonParams;
     }
 

@@ -44,7 +44,6 @@ public abstract class BaseTitleBarActivity extends BaseUIActivity  {
     }
 
     protected void setTitle(String title){
-       
         if (null == tv_title){
             throw new NullPointerException("调用此方法请确保布局中有tv_title");
         }

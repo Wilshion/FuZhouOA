@@ -5,17 +5,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     android:orientation="vertical"
-    tools:context=".ui.activity.MainActivity">
-    
+    tools:context=".ui.activity.main.MainActivity">
+
     <include layout="@layout/part_title_bar"/>
 
     <ImageView
-        android:background="@color/blue_normal"
         android:layout_width="match_parent"
-        android:layout_height="150dp"/>
+        android:layout_height="150dp"
+        android:background="@color/blue_normal"/>
+
     <android.support.v7.widget.RecyclerView
+        android:background="@color/white"
         android:id="@+id/rv_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"/>
 </LinearLayout>
