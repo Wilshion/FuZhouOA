@@ -2,8 +2,8 @@ package com.wilshion.oa.ui.utils;
 
 import android.content.Context;
 
-import com.wilshion.common.network.ZHHttpCallBack;
-import com.wilshion.common.network.ZHHttpHelper;
+import com.wilshion.common.network.HttpCallBack;
+import com.wilshion.common.network.HttpHelper;
 import com.wilshion.oa.ui.constant.ConstantUrl;
 
 import org.json.JSONException;
@@ -17,9 +17,9 @@ import java.util.Map;
  * [version : 1.0]
  */
 public class HttpUtil {
-    public static void requestPost(Context context,String cmd, Map paramsDetail, ZHHttpCallBack callBack) {
+    public static void requestPost(Context context,String cmd, Map paramsDetail, HttpCallBack callBack) {
         JSONObject params = prepareRequestParams(cmd, paramsDetail);
-        ZHHttpHelper.getInstance().post(context,ConstantUrl.URL, params,callBack);
+        HttpHelper.getInstance().post(context,ConstantUrl.URL, params,callBack);
     }
 
     private static JSONObject prepareRequestParams(String cmd, Map<String, Object> paramsDetail) {

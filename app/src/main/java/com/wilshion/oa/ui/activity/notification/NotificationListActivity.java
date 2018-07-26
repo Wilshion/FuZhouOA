@@ -5,7 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.luck.picture.lib.decoration.RecycleViewDivider;
-import com.wilshion.common.network.ZHHttpCallBack;
+import com.wilshion.common.network.HttpCallBack;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.base.BaseRvActivity;
 import com.wilshion.oa.ui.adapter.ScheduleListAdapter;
@@ -49,7 +49,7 @@ public class NotificationListActivity extends BaseRvActivity<ScheduleBean, Sched
         super.requestData();
         showWating("正在加载中");
         HashMap<String, Integer> params = new HashMap<>();
-        HttpUtil.requestPost(this, "calendarList",params, new ZHHttpCallBack<ResponseBean<ScheduleListRespBean>>() {
+        HttpUtil.requestPost(this, "calendarList",params, new HttpCallBack<ResponseBean<ScheduleListRespBean>>() {
             @Override
             public void onSuccess(int statusCode, String rawJsonResponse, ResponseBean<ScheduleListRespBean> response) {
                 closeDialog();

@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.luck.picture.lib.decoration.RecycleViewDivider;
-import com.wilshion.common.network.ZHHttpCallBack;
+import com.wilshion.common.network.HttpCallBack;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.base.BaseRvActivity;
 import com.wilshion.oa.ui.adapter.MsgListAdapter;
@@ -55,7 +55,7 @@ public class MsgListActivity extends BaseRvActivity<MsgBean, MsgListAdapter> imp
         showWating("正在加载中");
         HashMap<String, Integer> params = new HashMap<>();
         params.put("pageNo", getCurrentPage());
-        HttpUtil.requestPost(this, "smsesList",params, new ZHHttpCallBack<ResponseBean<MsgListRespBean>>() {
+        HttpUtil.requestPost(this, "smsesList",params, new HttpCallBack<ResponseBean<MsgListRespBean>>() {
             @Override
             public void onSuccess(int statusCode, String rawJsonResponse, ResponseBean<MsgListRespBean> response) {
                 closeDialog();

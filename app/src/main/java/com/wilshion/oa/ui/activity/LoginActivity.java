@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.wilshion.common.base.BaseUIActivity;
-import com.wilshion.common.network.ZHHttpCallBack;
+import com.wilshion.common.network.HttpCallBack;
 import com.wilshion.common.utils.StringUtils;
 import com.wilshion.common.widgets.UIEditText;
 import com.wilshion.oa.BuildConfig;
@@ -71,7 +71,7 @@ public class LoginActivity extends BaseUIActivity implements View.OnClickListene
         paramsDetail.put("userName", name);
         paramsDetail.put("password", pwd);
 
-        HttpUtil.requestPost(this, "signin", paramsDetail, new ZHHttpCallBack<ResponseBean<LoginRespBean>>() {
+        HttpUtil.requestPost(this, "signin", paramsDetail, new HttpCallBack<ResponseBean<LoginRespBean>>() {
 
             @Override
             public void onSuccess(int statusCode, String rawJsonResponse, ResponseBean<LoginRespBean> response) {

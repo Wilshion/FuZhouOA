@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
-import com.wilshion.common.network.ZHHttpCallBack;
+import com.wilshion.common.network.HttpCallBack;
 import com.wilshion.common.utils.StringUtils;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
@@ -151,7 +151,7 @@ public class NewScheduleActivity extends BaseTitleBarActivity implements View.On
         params.put("endTime", endTime);
         params.put("content", content);
 
-        HttpUtil.requestPost(this, "calendarNew", params, new ZHHttpCallBack<ResponseBean>() {
+        HttpUtil.requestPost(this, "calendarNew", params, new HttpCallBack<ResponseBean>() {
             @Override
             public void onSuccess(int statusCode, String rawJsonResponse, ResponseBean response) {
                 if (response.isSuccess()) {

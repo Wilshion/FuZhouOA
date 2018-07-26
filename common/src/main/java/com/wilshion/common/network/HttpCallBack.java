@@ -14,7 +14,7 @@ import cz.msebera.android.httpclient.Header;
  * [description : 网络请求回调类]
  * [version : 1.0]
  */
-public abstract  class ZHHttpCallBack<T> extends BaseJsonHttpResponseHandler<T> {
+public abstract  class HttpCallBack<T> extends BaseJsonHttpResponseHandler<T> {
 
 
     @Override

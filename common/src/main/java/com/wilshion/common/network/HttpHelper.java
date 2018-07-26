@@ -24,15 +24,15 @@ import cz.msebera.android.httpclient.entity.StringEntity;
  * [description :网络请求帮助类]
  * [version : 1.0]
  */
-public class ZHHttpHelper {
-    public static final String TAG = ZHHttpHelper.class.getSimpleName();
+public class HttpHelper {
+    public static final String TAG = HttpHelper.class.getSimpleName();
     /**
      * 默认超时时间
      */
     public static final int SOCKET_TIMEOUT = 15 * 1000;
     public static final int NO_NETWORK_STATUS_CODE = -1000000;
 
-    private static ZHHttpHelper instance;
+    private static HttpHelper instance;
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 
@@ -59,9 +59,9 @@ public class ZHHttpHelper {
 
     private PersistentCookieStore cookieStore;
 
-    public static ZHHttpHelper getInstance() {
+    public static HttpHelper getInstance() {
         if (instance == null)
-            instance = new ZHHttpHelper();
+            instance = new HttpHelper();
         return instance;
     }
 
@@ -74,12 +74,12 @@ public class ZHHttpHelper {
      * get方法带参数
      */
     public RequestHandle get(String url, Map<String, Object> params,
-                             ZHHttpCallBack httpCallBack) {
+                             HttpCallBack httpCallBack) {
         return get(url, params, true, httpCallBack);
     }
 
     public RequestHandle get(String url, Map<String, Object> params, boolean async,
-                             ZHHttpCallBack httpCallBack) {
+                             HttpCallBack httpCallBack) {
         if (!NetworkUtils.isConnected()) {
             if (httpCallBack != null) httpCallBack.onFailure(NO_NETWORK_STATUS_CODE, "没有网络", null);
             return null;
@@ -118,7 +118,7 @@ public class ZHHttpHelper {
      * @return
      */
     public RequestHandle syncGet(String url, Map<String, Object> params,
-                                 ZHHttpCallBack httpCallBack) {
+                                 HttpCallBack httpCallBack) {
         if (!NetworkUtils.isConnected()) {
             if (httpCallBack != null) httpCallBack.onFailure(NO_NETWORK_STATUS_CODE, "没有网络", null);
             return null;
@@ -146,7 +146,7 @@ public class ZHHttpHelper {
      * post请求，带参数
      */
     public RequestHandle post(Context context,String url, JSONObject params,
-                              ZHHttpCallBack httpCallBack) {
+                              HttpCallBack httpCallBack) {
 //        LogUtils.e(TAG, getAsyncHttpClient().getUrlWithQueryString(true, url, params));
         StringEntity se = null;
         try {
