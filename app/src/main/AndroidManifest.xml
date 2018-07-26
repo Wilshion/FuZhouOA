@@ -31,6 +31,7 @@
         <activity android:name=".ui.activity.notification.NotificationListActivity"/>
         <activity android:name=".ui.activity.news.NewsListActivity"/>
         <activity android:name=".ui.activity.schedule.ScheduleListActivity"/>
+        <activity android:name=".ui.activity.schedule.NewScheduleActivity"/>
         <activity android:name=".ui.activity.work_log.WorkLogListActivity"/>
         <activity android:name=".ui.activity.work_log.WorkLogDetailActivity"/>
         <activity android:name=".ui.activity.my_file.MyFileActivity"/>

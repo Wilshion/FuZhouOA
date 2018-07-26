@@ -16,6 +16,6 @@ public class NewsListActivity extends BaseTitleBarActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_news_list;
+        return R.layout.activity_new_schedule;
     }
 }

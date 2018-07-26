@@ -19,7 +19,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-   
 }
 
 dependencies {
@@ -34,4 +33,5 @@ dependencies {
     implementation project(':common')
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
     compile 'com.flyco.roundview:FlycoRoundView_Lib:1.1.4@aar'
+    compile 'com.contrarywind:Android-PickerView:4.1.6'
 }

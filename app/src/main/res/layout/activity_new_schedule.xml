@@ -1,65 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
     <include layout="@layout/part_title_bar"/>
+
     <com.flyco.roundview.RoundLinearLayout
-        app:rv_cornerRadius="5dp"
-        android:layout_margin="10dp"
-        app:rv_backgroundColor="@color/gray_dark"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        app:rv_backgroundColor="@color/gray_dark"
+        app:rv_cornerRadius="5dp">
+
         <com.flyco.roundview.RoundLinearLayout
-            app:rv_backgroundColor="@color/white"
-            app:rv_cornerRadius="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            app:rv_backgroundColor="@color/white"
+            app:rv_cornerRadius="5dp">
+
             <LinearLayout
-                android:padding="5dp"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
                 <TextView
-                    android:text="内部收件人"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <EditText
-                    android:hint="输入收件人"
+                    android:layout_height="wrap_content"
+                    android:text="日程类型"/>
+
+                <TextView
+                    android:id="@+id/tv_select_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="工作事务"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="日程等级"/>
+
+                <TextView
+                    android:text="未指定"
+                    android:id="@+id/tv_select_level"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
+
             <LinearLayout
-                android:padding="5dp"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
                 <TextView
-                    android:text="外部收件人"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:text="起始时间"/>
+
                 <EditText
-                    android:hint="输入外部收件人地址"
+                    android:id="@+id/et_start_time"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:hint="样式如 09:35"/>
             </LinearLayout>
+
             <LinearLayout
-                android:padding="5dp"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
                 <TextView
-                    android:text="邮件主题"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:text="结束时间"/>
+
                 <EditText
-                    android:hint="编辑主题"
+                    android:id="@+id/et_end_time"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:hint="样式如 09:35"/>
             </LinearLayout>
         </com.flyco.roundview.RoundLinearLayout>
 
@@ -75,7 +107,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="编辑内容"
+                android:text="日程内容"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
 
@@ -85,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="top"
-                android:hint="点击编辑邮件内容"
+                android:hint="编辑内容"
                 android:minHeight="150dp"/>
         </com.flyco.roundview.RoundLinearLayout>
 
