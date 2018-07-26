@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.wilshion.oa">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    
     <application
         android:name=".OAApplication"
         android:allowBackup="true"
@@ -20,8 +24,10 @@
         <activity android:name=".ui.activity.main.MainActivity"/>
         <activity android:name=".ui.activity.msg.MsgListActivity"/>
         <activity android:name=".ui.activity.msg.MsgDetailActivity"/>
+        <activity android:name=".ui.activity.msg.MsgSendActivity"/>
         <activity android:name=".ui.activity.email.EmailListActivity"/>
         <activity android:name=".ui.activity.email.EmailDetailActivity"/>
+        <activity android:name=".ui.activity.email.EmailSendActivity"/>
         <activity android:name=".ui.activity.notification.NotificationListActivity"/>
         <activity android:name=".ui.activity.news.NewsListActivity"/>
         <activity android:name=".ui.activity.schedule.ScheduleListActivity"/>

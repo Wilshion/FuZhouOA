@@ -1,6 +1,6 @@
 package com.wilshion.oa.ui.activity.email;
 
-import com.wilshion.oa.ui.activity.BaseTitleBarActivity;
+import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
 
 /**
  * Created by Wilshion on 2018/7/26 09:45.

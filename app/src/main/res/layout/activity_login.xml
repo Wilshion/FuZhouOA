@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
 
     <TextView
-        android:paddingTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:background="@color/blue_normal"
         android:gravity="center"
+        android:paddingTop="20dp"
         android:text="@string/app_title"
         android:textColor="@color/white"
         android:textSize="18sp"/>
@@ -28,25 +29,25 @@
             android:src="@mipmap/ic_launcher"/>
 
         <LinearLayout
-            android:padding="2dp"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginTop="20dp"
             android:background="@color/white"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="2dp">
 
             <TextView
-                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="账号"
                 android:textSize="16sp"/>
 
             <com.wilshion.common.widgets.UIEditText
                 android:id="@+id/et_name"
-                android:layout_gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:background="@null"
                 android:hint="请输入账号"
                 android:paddingLeft="5dp"
@@ -54,41 +55,46 @@
         </LinearLayout>
 
         <LinearLayout
-            android:padding="2dp"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="30dp"
+            android:layout_marginTop="20dp"
             android:background="@color/white"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="2dp">
 
             <TextView
-                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="密码"
                 android:textSize="16sp"/>
 
             <com.wilshion.common.widgets.UIEditText
                 android:id="@+id/et_pwd"
-                android:layout_gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:background="@null"
                 android:hint="请输入密码"
                 android:paddingLeft="5dp"
                 android:textSize="16sp"/>
         </LinearLayout>
 
-        <TextView
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+        <com.flyco.roundview.RoundTextView
             android:id="@+id/btn_login"
-            android:textColor="@color/white"
-            android:background="@drawable/bg_login_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="登陆"/>
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="发送"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:rv_backgroundColor="@color/blue_normal"
+            app:rv_backgroundPressColor="@color/blue_press"
+            app:rv_cornerRadius="5dp"/>
+
+
     </LinearLayout>
 </LinearLayout>

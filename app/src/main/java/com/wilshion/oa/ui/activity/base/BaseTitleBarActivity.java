@@ -1,8 +1,9 @@
-package com.wilshion.oa.ui.activity;
+package com.wilshion.oa.ui.activity.base;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wilshion.common.base.BaseUIActivity;
@@ -16,12 +17,17 @@ import com.wilshion.oa.R;
 public abstract class BaseTitleBarActivity extends BaseUIActivity  {
     private TextView tv_title;
     private TextView tv_right;
+    private RelativeLayout rl_right;
     private ImageView iv_right;
     private ImageView iv_left;
+    
+    
+    
     @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
         tv_title = findViewById(R.id.tv_title);
+        rl_right = findViewById(R.id.rl_right);
         tv_right = findViewById(R.id.tv_right);
         iv_right = findViewById(R.id.iv_right);
         iv_left =  findViewById(R.id.iv_left);
@@ -34,13 +40,23 @@ public abstract class BaseTitleBarActivity extends BaseUIActivity  {
                 onLeftClick();
             }
         });
+        rl_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onRightClick();
+            }
+        });
         setTitleBar();
     }
     
     protected abstract void setTitleBar();
 
-    private void onLeftClick() {
+    protected void onLeftClick() {
         onBackPressed();
+    }
+    
+    protected void onRightClick(){
+        
     }
 
     protected void setTitle(String title){

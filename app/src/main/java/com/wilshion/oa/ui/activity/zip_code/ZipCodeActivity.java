@@ -1,7 +1,7 @@
 package com.wilshion.oa.ui.activity.zip_code;
 
 import com.wilshion.oa.R;
-import com.wilshion.oa.ui.activity.BaseTitleBarActivity;
+import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
 
 /**
  * Created by Wilshion on 2018/7/26 09:56.

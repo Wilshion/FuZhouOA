@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.wilshion.oa.R;
-import com.wilshion.oa.ui.activity.BaseTitleBarActivity;
+import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
 import com.wilshion.oa.ui.activity.main.HomeDataSource.HomeItemBean;
 import com.wilshion.oa.ui.adapter.MainAdapter;
 

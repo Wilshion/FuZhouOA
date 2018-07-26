@@ -1,7 +1,7 @@
 package com.wilshion.oa.ui.activity.work_log;
 
 import com.wilshion.oa.R;
-import com.wilshion.oa.ui.activity.BaseTitleBarActivity;
+import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
 
 /**
  * Created by Wilshion on 2018/7/26 09:52.
