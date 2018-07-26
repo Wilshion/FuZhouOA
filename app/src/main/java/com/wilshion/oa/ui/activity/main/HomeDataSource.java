@@ -6,7 +6,6 @@ import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.address_list.AddressListActivity;
 import com.wilshion.oa.ui.activity.email.EmailListActivity;
 import com.wilshion.oa.ui.activity.msg.MsgListActivity;
-import com.wilshion.oa.ui.activity.my_file.MyFileActivity;
 import com.wilshion.oa.ui.activity.news.NewsListActivity;
 import com.wilshion.oa.ui.activity.notification.NotificationListActivity;
 import com.wilshion.oa.ui.activity.schedule.ScheduleListActivity;
@@ -49,7 +48,7 @@ public class HomeDataSource {
         HomeItemBean newsItem = new HomeItemBean(R.mipmap.ic_launcher, "新闻资讯", NewsListActivity.class);
         HomeItemBean scheduleItem = new HomeItemBean(R.mipmap.ic_launcher, "今日日程", ScheduleListActivity.class);
         HomeItemBean logItem = new HomeItemBean(R.mipmap.ic_launcher, "工作日志", WorkLogListActivity.class);
-        HomeItemBean fileItem = new HomeItemBean(R.mipmap.ic_launcher, "我的文件", MyFileActivity.class);
+//        HomeItemBean fileItem = new HomeItemBean(R.mipmap.ic_launcher, "我的文件", MyFileActivity.class);
         HomeItemBean flowItem = new HomeItemBean(R.mipmap.ic_launcher, "工作流", WorkFlowListActivity.class);
         HomeItemBean staffItem = new HomeItemBean(R.mipmap.ic_launcher, "人员查询", StaffSearchActivity.class);
         HomeItemBean addrItem = new HomeItemBean(R.mipmap.ic_launcher, "通讯簿", AddressListActivity.class);
@@ -63,7 +62,7 @@ public class HomeDataSource {
         result.add(newsItem);
         result.add(scheduleItem);
         result.add(logItem);
-        result.add(fileItem);
+//        result.add(fileItem);
         result.add(flowItem);
         result.add(staffItem);
         result.add(addrItem);

@@ -47,16 +47,22 @@ public class HomeItemLine extends RecyclerView.ItemDecoration {
             float endY = y + height - 20;
 
             //根据这些点画条目的四周的线
-            if (i > 3) {
-                // 上面的横线,从第二排开始画
-//                    c.drawLine(x, y, x + width, y, mPaint);
-                c.drawLine(startX, y, endX, y, mPaint);
-            }
+//            if (i > 3) {
+//                // 上面的横线,从第二排开始画
+////                    c.drawLine(x, y, x + width, y, mPaint);
+//                c.drawLine(startX, y, endX, y, mPaint);
+//            }
 
             if (i % 4 != 3) {
                 //标识前三列，则绘制右边的竖线
 //                    c.drawLine(x + width, y, x + width, y + height, mPaint);
                 c.drawLine(x + width, startY, x + width, endY, mPaint);
+            }
+
+            if (i <8) {
+                // 上面的横线,从第二排开始画
+//                    c.drawLine(x, y, x + width, y, mPaint);
+                c.drawLine(startX, endY, endX, endY, mPaint);
             }
         }
     }
