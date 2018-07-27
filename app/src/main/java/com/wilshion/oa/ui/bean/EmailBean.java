@@ -1,11 +1,14 @@
 package com.wilshion.oa.ui.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Wilshion on 2018/7/26 14:35.
  * [description : ]
  * [version : 1.0]
  */
-public class EmailBean {
+public class EmailBean implements Parcelable {
 
     /**
      * SEQ_ID : 66
@@ -120,4 +123,53 @@ public class EmailBean {
     public void setCONTENT(String CONTENT) {
         this.CONTENT = CONTENT;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.SEQ_ID);
+        dest.writeInt(this.FROM_ID);
+        dest.writeString(this.SUBJECT);
+        dest.writeString(this.SEND_TIME);
+        dest.writeString(this.IMPORTANT);
+        dest.writeString(this.ATTACHMENT_ID);
+        dest.writeString(this.ATTACHMENT_NAME);
+        dest.writeString(this.USER_NAME);
+        dest.writeString(this.COPY_TO_ID);
+        dest.writeString(this.COPY_PERSION_NAME);
+        dest.writeString(this.CONTENT);
+    }
+
+    public EmailBean() {
+    }
+
+    protected EmailBean(Parcel in) {
+        this.SEQ_ID = in.readInt();
+        this.FROM_ID = in.readInt();
+        this.SUBJECT = in.readString();
+        this.SEND_TIME = in.readString();
+        this.IMPORTANT = in.readString();
+        this.ATTACHMENT_ID = in.readString();
+        this.ATTACHMENT_NAME = in.readString();
+        this.USER_NAME = in.readString();
+        this.COPY_TO_ID = in.readString();
+        this.COPY_PERSION_NAME = in.readString();
+        this.CONTENT = in.readString();
+    }
+
+    public static final Parcelable.Creator<EmailBean> CREATOR = new Parcelable.Creator<EmailBean>() {
+        @Override
+        public EmailBean createFromParcel(Parcel source) {
+            return new EmailBean(source);
+        }
+
+        @Override
+        public EmailBean[] newArray(int size) {
+            return new EmailBean[size];
+        }
+    };
 }

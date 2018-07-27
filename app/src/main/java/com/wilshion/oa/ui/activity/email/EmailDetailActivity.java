@@ -1,5 +1,6 @@
 package com.wilshion.oa.ui.activity.email;
 
+import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
 
 /**
@@ -16,6 +17,6 @@ public class EmailDetailActivity extends BaseTitleBarActivity {
 
     @Override
     protected int getLayoutId() {
-        return 0;
+        return R.layout.activity_email_detail;
     }
 }

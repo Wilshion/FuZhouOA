@@ -1,9 +1,12 @@
 package com.wilshion.oa.ui.activity.email;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.luck.picture.lib.decoration.RecycleViewDivider;
 import com.wilshion.common.network.HttpCallBack;
 import com.wilshion.oa.R;
@@ -12,6 +15,7 @@ import com.wilshion.oa.ui.adapter.EmailListAdapter;
 import com.wilshion.oa.ui.bean.EmailBean;
 import com.wilshion.oa.ui.bean.EmailListRespBean;
 import com.wilshion.oa.ui.bean.ResponseBean;
+import com.wilshion.oa.ui.constant.Constant;
 import com.wilshion.oa.ui.utils.HttpUtil;
 
 import java.util.HashMap;
@@ -22,7 +26,7 @@ import java.util.List;
  * [description : 邮件列表]
  * [version : 1.0]
  */
-public class EmailListActivity extends BaseRvActivity<EmailBean, EmailListAdapter> {
+public class EmailListActivity extends BaseRvActivity<EmailBean, EmailListAdapter> implements BaseQuickAdapter.OnItemClickListener {
     @Override
     protected void setTitleBar() {
         setTitle("邮件");
@@ -42,13 +46,22 @@ public class EmailListActivity extends BaseRvActivity<EmailBean, EmailListAdapte
     @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
-
+getAdapter().setOnItemClickListener(this);
         requestData();
     }
 
     @Override
     protected void onRightClick() {
-        goToActivity(EmailSendActivity.class);
+        Intent intent = new Intent(this, EmailSendActivity.class);
+        startActivityForResult(intent, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            onRefresh(getRefreshLayout());
+        }
     }
 
     @Override
@@ -76,5 +89,13 @@ public class EmailListActivity extends BaseRvActivity<EmailBean, EmailListAdapte
                 showError(rawJsonResponse);
             }
         });
+    }
+
+    @Override
+    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        EmailBean emailBean = getAdapter().getItem(position);
+        Intent intent = new Intent(this,EmailDetailActivity.class);
+        intent.putExtra(Constant.INTENT_PARAM_DATA,emailBean);
+        startActivityForResult(intent,1);
     }
 }

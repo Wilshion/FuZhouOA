@@ -39,7 +39,7 @@ public abstract class BaseRvActivity<T, A extends BaseQuickAdapter<T, BaseViewHo
     @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
-
+        
         initRefreshLayout();
         initRecyclerView();
         initStateView();

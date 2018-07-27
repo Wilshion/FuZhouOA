@@ -11,6 +11,7 @@ import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
 import com.wilshion.oa.ui.activity.main.HomeDataSource.HomeItemBean;
 import com.wilshion.oa.ui.adapter.MainAdapter;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends BaseTitleBarActivity implements BaseQuickAdapter.OnItemClickListener {
@@ -34,6 +35,14 @@ public class MainActivity extends BaseTitleBarActivity implements BaseQuickAdapt
         mAdapter = new MainAdapter(R.layout.item_main_ac, mData);
         rv_content.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(this);
+        
+        requestAllContacts();
+    }
+
+    private void requestAllContacts() {
+        HashMap<String ,String > params = new HashMap<>();
+//        params.put("pageNo",)
+//        HttpUtil.requestPost(this,"personList",);
     }
 
     @Override

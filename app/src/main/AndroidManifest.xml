@@ -43,6 +43,7 @@
         <activity android:name=".ui.activity.weather.WeatherActivity"/>
         <activity android:name=".ui.activity.work_flow.WorkFlowFormActivity"/>
         <activity android:name=".ui.activity.work_flow.WorkFlowDeliverActivity"/>
+        <activity android:name=".ui.activity.common.PersonListActivity"/>
     </application>
 
 </manifest>

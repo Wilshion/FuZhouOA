@@ -7,6 +7,8 @@ import android.widget.TextView;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
 import com.wilshion.oa.ui.bean.MsgBean;
+import com.wilshion.oa.ui.bean.PersonListRespBean;
+import com.wilshion.oa.ui.constant.Constant;
 
 /**
  * Created by Wilshion on 2018/7/26 09:44.
@@ -47,8 +49,21 @@ public class MsgDetailActivity extends BaseTitleBarActivity {
 
     @Override
     protected void onRightClick() {
+        PersonListRespBean.PersonBean personBean = new PersonListRespBean.PersonBean();
+        personBean.setSEQ_ID(mMsgBean.getFROM_ID());
+        personBean.setUSER_NAME(mMsgBean.getUSER_NAME());
+        
         Intent intent = new Intent(this, MsgSendActivity.class);
-        intent.putExtra("data", mMsgBean);
+        intent.putExtra(Constant.INTENT_PARAM_DATA, personBean);
         startActivityForResult(intent,1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK){
+            setResult(RESULT_OK);
+            finish();
+        }
     }
 }

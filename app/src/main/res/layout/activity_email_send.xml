@@ -1,65 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
     <include layout="@layout/part_title_bar"/>
+
     <com.flyco.roundview.RoundLinearLayout
-        app:rv_cornerRadius="5dp"
-        android:layout_margin="10dp"
-        app:rv_backgroundColor="@color/gray_dark"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        app:rv_backgroundColor="@color/gray_dark"
+        app:rv_cornerRadius="5dp">
+
         <com.flyco.roundview.RoundLinearLayout
-            app:rv_backgroundColor="@color/white"
-            app:rv_cornerRadius="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            app:rv_backgroundColor="@color/white"
+            app:rv_cornerRadius="5dp">
+
             <LinearLayout
-                android:padding="5dp"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
                 <TextView
-                    android:text="内部收件人"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <EditText
-                    android:hint="输入收件人"
+                    android:layout_height="wrap_content"
+                    android:text="内部收件人："/>
+
+                <TextView
+                    android:layout_marginLeft="3dp"
+                    android:id="@+id/tv_inner_receiver"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:hint="输入收件人"/>
             </LinearLayout>
+
             <LinearLayout
-                android:padding="5dp"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
                 <TextView
-                    android:text="外部收件人"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <EditText
-                    android:hint="输入外部收件人地址"
+                    android:layout_height="wrap_content"
+                    android:text="外部收件人："/>
+
+                <TextView
+                    android:layout_marginLeft="3dp"
+                    android:id="@+id/tv_out_receiver"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:hint="输入外部收件人地址"/>
             </LinearLayout>
+
             <LinearLayout
-                android:padding="5dp"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
                 <TextView
-                    android:text="邮件主题"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:text="邮件主题"/>
+
                 <EditText
-                    android:hint="编辑主题"
+                    android:id="@+id/et_subject"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:hint="编辑主题"/>
             </LinearLayout>
         </com.flyco.roundview.RoundLinearLayout>
 

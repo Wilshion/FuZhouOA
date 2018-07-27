@@ -10,4 +10,7 @@ public class Constant {
      * 分页请求默认
      */
     public static final int DEFAULT_PAGE_SIZE = 10;
+    
+    public static final String INTENT_RESULT = "result";
+    public static final String INTENT_PARAM_DATA = "data";
 }

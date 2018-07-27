@@ -38,6 +38,7 @@
                 android:textSize="14sp"/>
 
             <LinearLayout
+                android:layout_marginBottom="10dp"
                 android:layout_gravity="right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -76,6 +77,7 @@
                     app:rv_backgroundColor="@color/blue_normal"
                     app:rv_cornerRadius="3dp"/>
                 <com.flyco.roundview.RoundTextView
+                    android:layout_marginRight="10dp"
                     android:padding="3dp"
                     android:layout_marginLeft="10dp"
                     android:id="@+id/tv_huiqian"

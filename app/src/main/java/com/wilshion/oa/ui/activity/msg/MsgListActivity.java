@@ -46,24 +46,23 @@ public class MsgListActivity extends BaseRvActivity<MsgBean, MsgListAdapter> imp
 
     @Override
     public RecyclerView.ItemDecoration getRecyclerViewItemDecoration() {
-        return new RecycleViewDivider(this, LinearLayoutManager.HORIZONTAL,10,R.color.gray_dark);
+        return new RecycleViewDivider(this, LinearLayoutManager.HORIZONTAL, 10, R.color.gray_dark);
     }
 
     @Override
     protected void requestData() {
-        super.requestData();
         showWating("正在加载中");
         HashMap<String, Integer> params = new HashMap<>();
         params.put("pageNo", getCurrentPage());
-        HttpUtil.requestPost(this, "smsesList",params, new HttpCallBack<ResponseBean<MsgListRespBean>>() {
+        HttpUtil.requestPost(this, "smsesList", params, new HttpCallBack<ResponseBean<MsgListRespBean>>() {
             @Override
             public void onSuccess(int statusCode, String rawJsonResponse, ResponseBean<MsgListRespBean> response) {
                 closeDialog();
                 showLogD(response);
-                if (response.isSuccess()){
+                if (response.isSuccess()) {
                     List<MsgBean> msgBeans = response.getDetail().getSmsesList();
                     showData(msgBeans);
-                }else {
+                } else {
                     showError(response.getResultNote());
                 }
             }
@@ -78,7 +77,16 @@ public class MsgListActivity extends BaseRvActivity<MsgBean, MsgListAdapter> imp
 
     @Override
     protected void onRightClick() {
-        goToActivity(MsgSendActivity.class);
+        Intent intent = new Intent(this, MsgSendActivity.class);
+        startActivityForResult(intent, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            onRefresh(getRefreshLayout());
+        }
     }
 
     @Override
