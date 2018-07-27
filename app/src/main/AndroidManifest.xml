@@ -46,6 +46,7 @@
         <activity android:name=".ui.activity.common.PersonListActivity"/>
         <activity android:name=".ui.activity.work_flow.WorkFlowSignActivity"/>
         <activity android:name=".ui.activity.notification.NotificationDetailActivity"/>
+        <activity android:name=".ui.activity.news.NewsDetailActivity"/>
     </application>
 
 </manifest>

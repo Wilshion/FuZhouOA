@@ -4,21 +4,21 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.wilshion.common.utils.EmptyUtils;
 import com.wilshion.oa.R;
-import com.wilshion.oa.ui.bean.NotificationBean;
+import com.wilshion.oa.ui.bean.NewsBean;
 
 /**
- * Created by Wilshion on 2018/7/27 21:24.
+ * Created by Wilshion on 2018/7/27 22:21.
  * [description : ]
  * [version : 1.0]
  */
-public class NotificationListAdapter extends BaseQuickAdapter<NotificationBean, BaseViewHolder> {
-    public NotificationListAdapter(int layoutResId) {
+public class NewsListAdapter extends BaseQuickAdapter<NewsBean,BaseViewHolder> {
+    public NewsListAdapter(int layoutResId) {
         super(layoutResId);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, NotificationBean item) {
-        String beginTime = item.getBEGIN_DATE();
+    protected void convert(BaseViewHolder helper, NewsBean item) {
+        String beginTime = item.getNEWS_TIME();
         String time = "";
         if (!EmptyUtils.isEmpty(beginTime)) {
             time = beginTime.substring(0, 10);
