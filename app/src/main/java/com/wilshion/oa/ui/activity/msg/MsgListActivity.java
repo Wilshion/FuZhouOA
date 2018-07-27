@@ -46,6 +46,11 @@ public class MsgListActivity extends BaseRvActivity<MsgBean, MsgListAdapter> imp
     }
 
     @Override
+    public boolean enableLoadMore() {
+        return false;
+    }
+
+    @Override
     public RecyclerView.ItemDecoration getRecyclerViewItemDecoration() {
         return new RecycleViewDivider(this, LinearLayoutManager.HORIZONTAL, 10, R.color.system_view_gray);
     }

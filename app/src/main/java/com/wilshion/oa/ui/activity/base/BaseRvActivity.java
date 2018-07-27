@@ -31,6 +31,8 @@ public abstract class BaseRvActivity<T, A extends BaseQuickAdapter<T, BaseViewHo
 
     private int mCurrentPage = 1;
 
+    private int mTotalPage;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_rv;
@@ -39,7 +41,7 @@ public abstract class BaseRvActivity<T, A extends BaseQuickAdapter<T, BaseViewHo
     @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
-        
+
         initRefreshLayout();
         initRecyclerView();
         initStateView();
@@ -104,7 +106,7 @@ public abstract class BaseRvActivity<T, A extends BaseQuickAdapter<T, BaseViewHo
     }
 
     public boolean enableLoadMore() {
-        return false;
+        return true;
     }
 
     public boolean showItemDecoration() {
@@ -138,6 +140,25 @@ public abstract class BaseRvActivity<T, A extends BaseQuickAdapter<T, BaseViewHo
     public int getCurrentPage() {
         return mCurrentPage;
     }
+
+//    protected void showData(int totalPage, List<T> dataList) {
+//        boolean isRefresh = getCurrentPage() == 1;
+//        if (isRefresh) {
+//            /** 当前状态是下拉刷新 */
+//            getRefreshLayout().finishRefresh();
+//        } else {
+//            /** 当前状态是上啦加载更多 */
+//            getRefreshLayout().finishLoadmore();
+//        }
+//        
+//        mTotalPage = totalPage;
+//        if (getCurrentPage() < mTotalPage) {
+//            getRefreshLayout().setEnableLoadmore(true);
+//        } else {
+//            getRefreshLayout().setLoadmoreFinished(true);
+//        }
+//        
+//    }
 
     /**
      * 展示数据，供子类调用
