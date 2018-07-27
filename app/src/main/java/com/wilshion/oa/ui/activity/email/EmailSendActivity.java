@@ -11,6 +11,7 @@ import com.wilshion.common.utils.EmptyUtils;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
 import com.wilshion.oa.ui.activity.common.PersonListActivity;
+import com.wilshion.oa.ui.bean.EmailBean;
 import com.wilshion.oa.ui.bean.PersonListRespBean;
 import com.wilshion.oa.ui.bean.ResponseBean;
 import com.wilshion.oa.ui.constant.Constant;
@@ -33,6 +34,10 @@ public class EmailSendActivity extends BaseTitleBarActivity implements View.OnCl
      * 当前选择 收信人模式 1-内部 2-外部
      */
     private int mCurSelectMode;
+    /**
+     * 回复邮件，此值不为null 的时候代表是回复邮件
+     */
+    private EmailBean mToReplyEmail;
 
     private List<PersonListRespBean.PersonBean> mInPersonList;
     private List<PersonListRespBean.PersonBean> mOutPersonList;
@@ -51,6 +56,7 @@ public class EmailSendActivity extends BaseTitleBarActivity implements View.OnCl
     @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
+        mToReplyEmail = getIntent().getParcelableExtra(Constant.INTENT_PARAM_DATA);
 
         tv_inner_receiver = findViewById(R.id.tv_inner_receiver);
         tv_out_receiver = findViewById(R.id.tv_out_receiver);
@@ -60,6 +66,10 @@ public class EmailSendActivity extends BaseTitleBarActivity implements View.OnCl
         tv_inner_receiver.setOnClickListener(this);
         tv_out_receiver.setOnClickListener(this);
         findViewById(R.id.tv_send).setOnClickListener(this);
+
+        if (mToReplyEmail != null) {
+            et_subject.setText(mToReplyEmail.getSUBJECT());
+        }
     }
 
 
@@ -110,9 +120,9 @@ public class EmailSendActivity extends BaseTitleBarActivity implements View.OnCl
                 PersonListActivity.showPersonList(this, false);
                 break;
             case R.id.tv_send:
-                if (checkParams()){
+                if (checkParams()) {
                     requestSend();
-                } 
+                }
                 break;
         }
     }
@@ -124,10 +134,10 @@ public class EmailSendActivity extends BaseTitleBarActivity implements View.OnCl
         showWating("正在发送中...");
         String subject = et_subject.getText().toString();
         String content = et_content.getText().toString();
-        String inPersonNames = getSelectedPersonsParams(1,mInPersonList);
-        String inPersonIds = getSelectedPersonsParams(2,mInPersonList);
-        String outPersonNames = getSelectedPersonsParams(1,mOutPersonList);
-        String outPersonIds = getSelectedPersonsParams(2,mOutPersonList);
+        String inPersonNames = getSelectedPersonsParams(1, mInPersonList);
+        String inPersonIds = getSelectedPersonsParams(2, mInPersonList);
+        String outPersonNames = getSelectedPersonsParams(1, mOutPersonList);
+        String outPersonIds = getSelectedPersonsParams(2, mOutPersonList);
         HashMap<String, String> params = new HashMap<>();
         params.put("toName1", inPersonNames);
         params.put("toId1", inPersonIds);
@@ -159,24 +169,25 @@ public class EmailSendActivity extends BaseTitleBarActivity implements View.OnCl
 
     /**
      * 检查参数
-     * @return  true 可以发送 false 缺少参数
+     *
+     * @return true 可以发送 false 缺少参数
      */
     private boolean checkParams() {
-        if (EmptyUtils.isEmpty(mInPersonList)){
+        if (EmptyUtils.isEmpty(mInPersonList)) {
             showToast("请选择内部收件人");
             return false;
         }
-        if (EmptyUtils.isEmpty(mOutPersonList)){
+        if (EmptyUtils.isEmpty(mOutPersonList)) {
             showToast("请选择外部收件人");
             return false;
         }
         String subject = et_subject.getText().toString();
-        if (EmptyUtils.isEmpty(subject)){
+        if (EmptyUtils.isEmpty(subject)) {
             showToast("请填写主题");
             return false;
         }
         String content = et_content.getText().toString();
-        if (EmptyUtils.isEmpty(content)){
+        if (EmptyUtils.isEmpty(content)) {
             showToast("请填写内容");
             return false;
         }

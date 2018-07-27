@@ -9,4 +9,10 @@
     <color name="gray_dark">#DCDCDC</color>
     <color name="blue_normal">#46AEF7</color>
     <color name="blue_press">#2F88D2</color>
+
+    <color name="system_view_gray">#f1f2f6</color>
+    <color name="system_line">#d7d9e3</color>
+
+    <color name="system_text_black">#2c2c2c</color>
+    <color name="system_text_gray">#898989</color>
 </resources>

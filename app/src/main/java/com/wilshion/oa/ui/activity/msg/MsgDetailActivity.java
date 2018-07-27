@@ -33,9 +33,10 @@ public class MsgDetailActivity extends BaseTitleBarActivity {
     @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
-        mMsgBean = getIntent().getParcelableExtra("data");
+        mMsgBean = getIntent().getParcelableExtra(Constant.INTENT_PARAM_DATA);
         if (null == mMsgBean){
             showToast("传值出错");
+            finish();
             return;
         }
         tv_author_time = findViewById(R.id.tv_author_time);

@@ -40,13 +40,13 @@ public class EmailListActivity extends BaseRvActivity<EmailBean, EmailListAdapte
 
     @Override
     public RecyclerView.ItemDecoration getRecyclerViewItemDecoration() {
-        return new RecycleViewDivider(this, LinearLayoutManager.HORIZONTAL, 10, R.color.gray_dark);
+        return new RecycleViewDivider(this, LinearLayoutManager.HORIZONTAL, 10, R.color.system_view_gray);
     }
 
     @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
-getAdapter().setOnItemClickListener(this);
+        getAdapter().setOnItemClickListener(this);
         requestData();
     }
 
@@ -94,8 +94,8 @@ getAdapter().setOnItemClickListener(this);
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         EmailBean emailBean = getAdapter().getItem(position);
-        Intent intent = new Intent(this,EmailDetailActivity.class);
-        intent.putExtra(Constant.INTENT_PARAM_DATA,emailBean);
-        startActivityForResult(intent,1);
+        Intent intent = new Intent(this, EmailDetailActivity.class);
+        intent.putExtra(Constant.INTENT_PARAM_DATA, emailBean);
+        startActivityForResult(intent, 1);
     }
 }

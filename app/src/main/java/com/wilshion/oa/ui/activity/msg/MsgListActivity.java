@@ -15,6 +15,7 @@ import com.wilshion.oa.ui.adapter.MsgListAdapter;
 import com.wilshion.oa.ui.bean.MsgBean;
 import com.wilshion.oa.ui.bean.MsgListRespBean;
 import com.wilshion.oa.ui.bean.ResponseBean;
+import com.wilshion.oa.ui.constant.Constant;
 import com.wilshion.oa.ui.utils.HttpUtil;
 
 import java.util.HashMap;
@@ -46,7 +47,7 @@ public class MsgListActivity extends BaseRvActivity<MsgBean, MsgListAdapter> imp
 
     @Override
     public RecyclerView.ItemDecoration getRecyclerViewItemDecoration() {
-        return new RecycleViewDivider(this, LinearLayoutManager.HORIZONTAL, 10, R.color.gray_dark);
+        return new RecycleViewDivider(this, LinearLayoutManager.HORIZONTAL, 10, R.color.system_view_gray);
     }
 
     @Override
@@ -93,7 +94,7 @@ public class MsgListActivity extends BaseRvActivity<MsgBean, MsgListAdapter> imp
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         MsgBean itemBean = (MsgBean) adapter.getData().get(position);
         Intent intent = new Intent(this, MsgDetailActivity.class);
-        intent.putExtra("data", itemBean);
+        intent.putExtra(Constant.INTENT_PARAM_DATA, itemBean);
         startActivityForResult(intent, 1);
     }
 }

@@ -25,57 +25,66 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:padding="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="内部收件人："/>
+                    android:text="内部收件人："
+                    android:textColor="@color/system_text_black"/>
 
                 <TextView
-                    android:layout_marginLeft="3dp"
                     android:id="@+id/tv_inner_receiver"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
                     android:hint="输入收件人"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:padding="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="外部收件人："/>
+                    android:text="外部收件人："
+                    android:textColor="@color/system_text_black"/>
 
                 <TextView
-                    android:layout_marginLeft="3dp"
                     android:id="@+id/tv_out_receiver"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
                     android:hint="输入外部收件人地址"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:orientation="horizontal"
-                android:padding="5dp">
+                android:gravity="center_vertical">
 
                 <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="邮件主题"/>
+                    android:text="邮件主题"
+                    android:textColor="@color/system_text_black"/>
 
                 <EditText
+                    android:textSize="14sp"
+                    android:layout_marginLeft="5dp"
                     android:id="@+id/et_subject"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:hint="编辑主题"/>
             </LinearLayout>
         </com.flyco.roundview.RoundLinearLayout>
@@ -93,6 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="编辑内容"
+                android:textColor="@color/system_text_black"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
 
