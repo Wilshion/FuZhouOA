@@ -21,6 +21,6 @@ public class MsgListAdapter extends BaseQuickAdapter<MsgBean, BaseViewHolder> {
         String time = item.getSEND_TIME();
         int position = helper.getAdapterPosition() + 1;
         helper.setText(R.id.tv_title, position + "." + item.getCONTENT());
-        helper.setText(R.id.tv_author_time, author + "  " + time);
+        helper.setText(R.id.tv_sub_title, author + "  " + time);
     }
 }

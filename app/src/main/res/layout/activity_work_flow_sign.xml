@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical">
+
+    <include layout="@layout/part_title_bar"/>
+
+    <TextView
+        android:layout_margin="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/ic_launcher"
+        android:text="会签意见"
+        android:textColor="@color/system_text_black"/>
+
+    <EditText
+        android:background="@drawable/shape_input"
+        android:hint="请输入会签意见"
+        android:gravity="top"
+        android:padding="5dp"
+        android:layout_margin="15dp"
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"/>
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/tv_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:text="保存"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:rv_backgroundColor="@color/blue_normal"
+        app:rv_backgroundPressColor="@color/blue_press"
+        app:rv_cornerRadius="5dp"/>
+</LinearLayout>

@@ -56,7 +56,7 @@ public class EmailDetailActivity extends BaseUIActivity implements View.OnClickL
             finish();
             return;
         }
-        tv_author_time = findViewById(R.id.tv_author_time);
+        tv_author_time = findViewById(R.id.tv_sub_title);
         tv_content = findViewById(R.id.tv_content);
 
         String author = mEmailBean.getUSER_NAME();

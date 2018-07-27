@@ -44,6 +44,8 @@
         <activity android:name=".ui.activity.work_flow.WorkFlowFormActivity"/>
         <activity android:name=".ui.activity.work_flow.WorkFlowDeliverActivity"/>
         <activity android:name=".ui.activity.common.PersonListActivity"/>
+        <activity android:name=".ui.activity.work_flow.WorkFlowSignActivity"/>
+        <activity android:name=".ui.activity.notification.NotificationDetailActivity"/>
     </application>
 
 </manifest>

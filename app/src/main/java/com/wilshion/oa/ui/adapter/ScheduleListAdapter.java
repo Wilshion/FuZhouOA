@@ -24,6 +24,6 @@ public class ScheduleListAdapter extends BaseQuickAdapter<ScheduleBean, BaseView
         String content = item.getCONTENT();
 
         helper.setText(R.id.tv_title, startTime + "-" + endTime + " " + content);
-        helper.getView(R.id.tv_author_time).setVisibility(View.GONE);
+        helper.getView(R.id.tv_sub_title).setVisibility(View.GONE);
     }
 }

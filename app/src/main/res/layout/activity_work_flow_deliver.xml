@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-           />
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -49,29 +49,74 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-          />
+            />
     </LinearLayout>
 
 
     <TextView
-        android:background="@color/white"
-        android:padding="15dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:padding="15dp"
         android:text="选择下一步骤"
         android:textSize="16sp"
         android:textStyle="bold"/>
 
     <TextView
+        android:id="@+id/tv_step"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
         android:background="@color/white"
         android:padding="15dp"
         android:text="年段长审阅"
-        android:id="@+id/tv_step"
-        android:layout_width="wrap_content"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:padding="15dp"
+        android:text="请选择办理人员:"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
-        android:textSize="16sp"/>
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="主办人"
+            android:textColor="@color/system_text_black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点击选择主办人"
+            android:textColor="@color/system_text_black"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="经办人"
+            android:textColor="@color/system_text_black"/>
+    </LinearLayout>
 
     <com.flyco.roundview.RoundTextView
         android:id="@+id/btn_next"
@@ -83,7 +128,7 @@
         android:gravity="center"
         android:paddingBottom="5dp"
         android:paddingTop="5dp"
-        android:text="继续"
+        android:text="提交"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:rv_backgroundColor="@color/blue_normal"
