@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.wilshion.common.utils.EmptyUtils;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.bean.ScheduleBean;
 
@@ -23,6 +24,13 @@ public class ScheduleListAdapter extends BaseQuickAdapter<ScheduleBean, BaseView
         String endTime = item.getEND_TIME();
         String content = item.getCONTENT();
 
+        if (!EmptyUtils.isEmpty(startTime) && startTime.length() > 20){
+            startTime = startTime.substring(10,16);
+        }
+        if (!EmptyUtils.isEmpty(endTime) && endTime.length() > 20){
+            endTime = endTime.substring(10,16);
+        }
+        
         helper.setText(R.id.tv_title, startTime + "-" + endTime + " " + content);
         helper.getView(R.id.tv_sub_title).setVisibility(View.GONE);
     }

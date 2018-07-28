@@ -8,11 +8,13 @@
     <TextView
         android:textStyle="bold"
         android:textSize="16sp"
+        android:textColor="@color/system_text_black"
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <TextView
+        android:textColor="@color/system_text_gray"
         android:textSize="14sp"
         android:id="@+id/tv_sub_title"
         android:layout_width="wrap_content"

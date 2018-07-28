@@ -10,6 +10,7 @@ import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
 import com.wilshion.oa.ui.bean.ResponseBean;
 import com.wilshion.oa.ui.bean.WorkFlowBean;
+import com.wilshion.oa.ui.constant.Constant;
 import com.wilshion.oa.ui.utils.HttpUtil;
 
 import java.util.HashMap;
@@ -36,6 +37,12 @@ public class WorkFlowSignActivity extends BaseTitleBarActivity implements View.O
     @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
+        mWorkFlowBean = getIntent().getParcelableExtra(Constant.INTENT_PARAM_DATA);
+        if (mWorkFlowBean == null){
+            showToast("数据获取失败");
+            finish();
+            return;
+        }
         et_content = findViewById(R.id.et_content);
         findViewById(R.id.tv_submit).setOnClickListener(this);
     }
@@ -56,6 +63,7 @@ public class WorkFlowSignActivity extends BaseTitleBarActivity implements View.O
     }
 
     private void requestSend() {
+        showWating("正在操作中...");
         String content = et_content.getText().toString();
         HashMap<String, String> params = new HashMap<>();
         params.put("flowId", mWorkFlowBean.getFLOW_ID() + "");

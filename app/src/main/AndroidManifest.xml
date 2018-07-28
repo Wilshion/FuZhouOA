@@ -32,8 +32,8 @@
         <activity android:name=".ui.activity.news.NewsListActivity"/>
         <activity android:name=".ui.activity.schedule.ScheduleListActivity"/>
         <activity android:name=".ui.activity.schedule.NewScheduleActivity"/>
-        <activity android:name=".ui.activity.work_log.WorkLogListActivity"/>
-        <activity android:name=".ui.activity.work_log.WorkLogDetailActivity"/>
+        <activity android:name=".ui.activity.work_log.WorkDiaryListActivity"/>
+        <activity android:name=".ui.activity.work_log.WorkDiaryDetailActivity"/>
         <activity android:name=".ui.activity.my_file.MyFileActivity"/>
         <activity android:name=".ui.activity.work_flow.WorkFlowListActivity"/>
         <activity android:name=".ui.activity.work_flow.WorkFlowDetailActivity"/>
@@ -47,6 +47,7 @@
         <activity android:name=".ui.activity.work_flow.WorkFlowSignActivity"/>
         <activity android:name=".ui.activity.notification.NotificationDetailActivity"/>
         <activity android:name=".ui.activity.news.NewsDetailActivity"/>
+        <activity android:name=".ui.activity.work_log.WorkDiaryEditActivity"/>
     </application>
 
 </manifest>

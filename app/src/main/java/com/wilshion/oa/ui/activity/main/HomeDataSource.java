@@ -12,7 +12,7 @@ import com.wilshion.oa.ui.activity.schedule.ScheduleListActivity;
 import com.wilshion.oa.ui.activity.staff_search.StaffSearchActivity;
 import com.wilshion.oa.ui.activity.weather.WeatherActivity;
 import com.wilshion.oa.ui.activity.work_flow.WorkFlowListActivity;
-import com.wilshion.oa.ui.activity.work_log.WorkLogListActivity;
+import com.wilshion.oa.ui.activity.work_log.WorkDiaryListActivity;
 import com.wilshion.oa.ui.activity.zip_code.ZipCodeActivity;
 
 import java.util.ArrayList;
@@ -47,7 +47,7 @@ public class HomeDataSource {
         HomeItemBean notiItem = new HomeItemBean(R.mipmap.ic_launcher, "公告通知", NotificationListActivity.class);
         HomeItemBean newsItem = new HomeItemBean(R.mipmap.ic_launcher, "新闻资讯", NewsListActivity.class);
         HomeItemBean scheduleItem = new HomeItemBean(R.mipmap.ic_launcher, "今日日程", ScheduleListActivity.class);
-        HomeItemBean logItem = new HomeItemBean(R.mipmap.ic_launcher, "工作日志", WorkLogListActivity.class);
+        HomeItemBean logItem = new HomeItemBean(R.mipmap.ic_launcher, "工作日志", WorkDiaryListActivity.class);
 //        HomeItemBean fileItem = new HomeItemBean(R.mipmap.ic_launcher, "我的文件", MyFileActivity.class);
         HomeItemBean flowItem = new HomeItemBean(R.mipmap.ic_launcher, "工作流", WorkFlowListActivity.class);
         HomeItemBean staffItem = new HomeItemBean(R.mipmap.ic_launcher, "人员查询", StaffSearchActivity.class);

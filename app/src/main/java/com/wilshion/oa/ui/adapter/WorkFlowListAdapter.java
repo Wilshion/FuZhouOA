@@ -24,7 +24,7 @@ public class WorkFlowListAdapter extends BaseQuickAdapter<WorkFlowBean, BaseView
                 .addOnClickListener(R.id.tv_form)
                 .addOnClickListener(R.id.tv_zhuban)
                 .addOnClickListener(R.id.tv_deliver)
-                .addOnClickListener(R.id.tv_huiqian);
+                .addOnClickListener(R.id.tv_sign);
 
     }
 }
