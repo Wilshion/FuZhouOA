@@ -44,6 +44,7 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
         findViewById(R.id.tv_search).setOnClickListener(this);
 
         refresh_layout = findViewById(R.id.adress_refresh_layout);
+        refresh_layout.setPrimaryColors(0xff444444, 0xffffffff);
 
         mRcView = findViewById(R.id.adress_rc_list_view);
         //创建LinearLayoutManager 对象
