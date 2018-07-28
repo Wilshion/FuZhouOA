@@ -12,6 +12,7 @@ import com.wilshion.oa.ui.adapter.WorkFlowListAdapter;
 import com.wilshion.oa.ui.bean.ResponseBean;
 import com.wilshion.oa.ui.bean.WorkFlowBean;
 import com.wilshion.oa.ui.bean.WorkFlowListRespBean;
+import com.wilshion.oa.ui.constant.Constant;
 import com.wilshion.oa.ui.utils.HttpUtil;
 
 import java.util.HashMap;
@@ -86,7 +87,7 @@ public class WorkFlowListActivity extends BaseRvActivity<WorkFlowBean, WorkFlowL
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
         WorkFlowBean workFlowBean = getAdapter().getItem(position);
         Intent intent = new Intent();
-        intent.putExtra("data", workFlowBean);
+        intent.putExtra(Constant.INTENT_PARAM_DATA, workFlowBean);
         int id = view.getId();
         switch (id) {
             case R.id.tv_form:
@@ -98,8 +99,8 @@ public class WorkFlowListActivity extends BaseRvActivity<WorkFlowBean, WorkFlowL
             case R.id.tv_deliver:
                 intent.setClass(this, WorkFlowDeliverActivity.class);
                 break;
-            case R.id.tv_huiqian:
-                intent.setClass(this, WorkFlowFormActivity.class);
+            case R.id.tv_sign:
+                intent.setClass(this, WorkFlowSignActivity.class);
                 break;
             default:
                 return;
