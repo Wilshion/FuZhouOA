@@ -7,7 +7,7 @@ import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
  * [description : 工作日程详情]
  * [version : 1.0]
  */
-public class WorkLogDetailActivity extends BaseTitleBarActivity {
+public class WorkDiaryDetailActivity extends BaseTitleBarActivity {
     @Override
     protected void setTitleBar() {
         
