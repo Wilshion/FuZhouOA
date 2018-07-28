@@ -6,12 +6,9 @@
     android:layout_height="match_parent">
     <include layout="@layout/part_title_bar"/>
 
-
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
         <LinearLayout
             android:id="@+id/id_search_linear_layout"
@@ -84,7 +81,6 @@
                 app:rv_cornerRadius="5dp"/>
         </LinearLayout>
 
-
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:visibility="gone"
             android:id="@+id/adress_refresh_layout"
@@ -97,7 +93,6 @@
                 android:layout_height="match_parent"
                 android:background="@color/gray_dark"/>
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-
 
     </FrameLayout>
 </LinearLayout>
