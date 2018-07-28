@@ -2,6 +2,7 @@ package com.wilshion.oa.ui.adapter;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.wilshion.common.utils.EmptyUtils;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.bean.DiaryBean;
 
@@ -18,6 +19,10 @@ public class DiaryListAdapter extends BaseQuickAdapter<DiaryBean,BaseViewHolder>
     @Override
     protected void convert(BaseViewHolder helper, DiaryBean item) {
         String time = item.getDIA_DATE();
+        if (!EmptyUtils.isEmpty(time)) {
+            time = time.substring(0, 10);
+        }
+        
         int position = helper.getAdapterPosition() + 1;
         helper.setText(R.id.tv_title, position + "." + item.getSUBJECT() + "  " + item.getCONTENT());
         helper.setText(R.id.tv_sub_title,  time);

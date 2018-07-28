@@ -1,7 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
     <include layout="@layout/part_title_bar"/>
+    <com.flyco.roundview.RoundLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="vertical"
+        android:paddingBottom="30dp"
+        app:rv_backgroundColor="@color/gray"
+        app:rv_cornerRadius="5dp">
+
+        <com.flyco.roundview.RoundLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            app:rv_backgroundColor="@color/white"
+            app:rv_cornerRadius="5dp">
+
+            <TextView
+                android:textColor="@color/system_text_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="日程类型："
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:text="点击选择类型"
+                android:id="@+id/tv_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+        </com.flyco.roundview.RoundLinearLayout>
+
+        <com.flyco.roundview.RoundLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            app:rv_backgroundColor="@color/white"
+            app:rv_cornerRadius="5dp">
+
+            <TextView
+                android:textColor="@color/system_text_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="日程主题："
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:hint="请输入日志主题"
+                android:id="@+id/et_subject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+        </com.flyco.roundview.RoundLinearLayout>
+        <com.flyco.roundview.RoundLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            android:padding="10dp"
+            app:rv_backgroundColor="@color/white"
+            app:rv_cornerRadius="5dp">
+
+            <TextView
+                android:textColor="@color/system_text_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="日志内容"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:background="@null"
+                android:id="@+id/et_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="top"
+                android:hint="点击输入日程内容"
+                android:minHeight="150dp"/>
+        </com.flyco.roundview.RoundLinearLayout>
+
+        <com.flyco.roundview.RoundTextView
+            android:id="@+id/tv_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="保存"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:rv_backgroundColor="@color/blue_normal"
+            app:rv_backgroundPressColor="@color/blue_press"
+            app:rv_cornerRadius="5dp"/>
+    </com.flyco.roundview.RoundLinearLayout>
 </LinearLayout>

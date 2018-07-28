@@ -85,7 +85,7 @@ public class ScheduleListActivity extends BaseRvActivity<ScheduleBean, ScheduleL
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK){
-            requestData();
+            onRefresh(getRefreshLayout());
         }
     }
 

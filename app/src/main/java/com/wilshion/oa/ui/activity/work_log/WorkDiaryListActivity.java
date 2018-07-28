@@ -52,6 +52,14 @@ public class WorkDiaryListActivity extends BaseRvActivity<DiaryBean,DiaryListAda
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK){
+            onRefresh(getRefreshLayout());
+        }
+    }
+
+    @Override
     protected void requestData() {
         super.requestData();
 
