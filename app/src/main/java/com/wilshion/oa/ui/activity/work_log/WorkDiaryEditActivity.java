@@ -59,7 +59,7 @@ public class WorkDiaryEditActivity extends BaseTitleBarActivity implements View.
         if (mDiaryBean != null) {
             mDiaryType = mDiaryBean.getDIA_TYPE();
             tv_type.setText(getTypeArr().get(mDiaryType - 1));
-
+            et_subject.setText(mDiaryBean.getSUBJECT());
             et_content.setText(mDiaryBean.getCONTENT());
         }
 
