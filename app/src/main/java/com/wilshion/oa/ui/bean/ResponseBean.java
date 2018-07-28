@@ -2,7 +2,7 @@ package com.wilshion.oa.ui.bean;
 
 /**
  * Created by Wilshion on 2018/7/25 16:54.
- * [description : ]
+ * [description : 接口返回的公共部分]
  * [version : 1.0]
  */
 public class ResponseBean<T> {
