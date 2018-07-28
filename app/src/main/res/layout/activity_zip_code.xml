@@ -6,9 +6,6 @@
     android:layout_height="match_parent">
     <include layout="@layout/part_title_bar"/>
 
-
-
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -96,7 +93,7 @@
 
 
             <com.flyco.roundview.RoundTextView
-                android:id="@+id/tv_search"
+                android:id="@+id/tv_search_quhao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -115,12 +112,12 @@
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:visibility="gone"
-            android:id="@+id/adress_refresh_layout"
+            android:id="@+id/zip_refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/adress_rc_list_view"
+                android:id="@+id/zip_rc_list_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/gray_dark"/>

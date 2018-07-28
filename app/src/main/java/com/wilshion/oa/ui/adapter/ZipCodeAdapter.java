@@ -12,24 +12,23 @@ import java.util.List;
  * Created by lyy on 18/7/28.
  */
 
-public class AddressListAdapter extends RecyclerView.Adapter {
+public class ZipCodeAdapter extends RecyclerView.Adapter {
 
     private Context mContext;
     private List<String> mList;
     private int mLayoutId;
 
-    public AddressListAdapter (Context context,List<String> list,int layoutId){
+    public ZipCodeAdapter(Context context,List<String> list,int layoutId){
         mContext = context;
         mList = list;
         mLayoutId = layoutId;
     }
 
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(mLayoutId,parent,false);
-        AddressHolder addressHolder = new AddressHolder(view);
-        return addressHolder;
+        ZipCodeHolder zipCodeHolder = new ZipCodeHolder(view);
+        return zipCodeHolder;
     }
 
     @Override
@@ -42,9 +41,8 @@ public class AddressListAdapter extends RecyclerView.Adapter {
         return mList.size();
     }
 
-    class AddressHolder extends RecyclerView.ViewHolder{
-
-        public AddressHolder(View itemView) {
+    class ZipCodeHolder extends RecyclerView.ViewHolder{
+        public ZipCodeHolder(View itemView) {
             super(itemView);
         }
     }
