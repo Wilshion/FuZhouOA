@@ -1,5 +1,8 @@
 package com.wilshion.oa.ui.activity.weather;
 
+import android.os.Bundle;
+import android.view.View;
+
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
 
@@ -8,7 +11,7 @@ import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
  * [description : 天气]
  * [version : 1.0]
  */
-public class WeatherActivity extends BaseTitleBarActivity {
+public class WeatherActivity extends BaseTitleBarActivity implements View.OnClickListener {
     @Override
     protected void setTitleBar() {
         setTitle("天气预报");
@@ -17,5 +20,29 @@ public class WeatherActivity extends BaseTitleBarActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_weather;
+    }
+
+    @Override
+    protected void initView(Bundle savedInstanceState) {
+        super.initView(savedInstanceState);
+
+        findViewById(R.id.tv_search_weather).setOnClickListener(this);
+
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        int viewId = view.getId();
+        switch (viewId){
+            case R.id.tv_search_weather:
+            {
+
+            }
+                break;
+            default:
+
+                break;
+        }
     }
 }
