@@ -49,6 +49,10 @@ public class MainActivity extends BaseTitleBarActivity implements BaseQuickAdapt
     protected void setTitleBar() {
         setTitle(getString(R.string.app_title));
         setRightImageRes(R.drawable.ic_back);
+
+        setTitle(getString(R.string.app_title));
+        setTitle("测试提交代码");
+        setTitle(getString(R.string.app_title));
     }
 
 
