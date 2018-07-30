@@ -47,6 +47,7 @@ public class MainActivity extends BaseTitleBarActivity implements BaseQuickAdapt
 
     @Override
     protected void setTitleBar() {
+        getLeft().setVisibility(View.GONE);
         setTitle(getString(R.string.app_title));
         setRightImageRes(R.drawable.ic_back);
 

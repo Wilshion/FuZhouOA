@@ -35,16 +35,20 @@ public class HomeItemLine extends RecyclerView.ItemDecoration {
             //获得子View，也就是一个条目的View，准备给他画上边框
             View childView = parent.getChildAt(i);
 
+
             //先获得子View的长宽，以及在屏幕上的位置，方便我们得到边框的具体坐标
             float x = childView.getX();
             float y = childView.getY();
             int width = childView.getWidth();
             int height = childView.getHeight();
 
-            float startX = x + 20;
-            float endX = x + width - 20;
-            float startY = y + 20;
-            float endY = y + height - 20;
+            float wSpace = width * 0.1f;
+            float hSpace = height * 0.1f;
+
+            float startX = x + wSpace;
+            float endX = x + width - wSpace;
+            float startY = y + hSpace;
+            float endY = y + height - hSpace;
 
             //根据这些点画条目的四周的线
 //            if (i > 3) {
@@ -59,10 +63,10 @@ public class HomeItemLine extends RecyclerView.ItemDecoration {
                 c.drawLine(x + width, startY, x + width, endY, mPaint);
             }
 
-            if (i <8) {
+            if (i < 8) {
                 // 上面的横线,从第二排开始画
 //                    c.drawLine(x, y, x + width, y, mPaint);
-                c.drawLine(startX, endY, endX, endY, mPaint);
+                c.drawLine(startX, y , endX, y, mPaint);
             }
         }
     }

@@ -14,14 +14,32 @@ import java.util.List;
  * [description : ]
  * [version : 1.0]
  */
-public class MainAdapter  extends BaseQuickAdapter<HomeDataSource.HomeItemBean,BaseViewHolder>{
+public class MainAdapter extends BaseQuickAdapter<HomeDataSource.HomeItemBean, BaseViewHolder> {
     public MainAdapter(int layoutResId, @Nullable List<HomeDataSource.HomeItemBean> data) {
         super(layoutResId, data);
     }
 
     @Override
     protected void convert(BaseViewHolder helper, HomeDataSource.HomeItemBean item) {
-        helper.setImageResource(R.id.iv_icon,item.resId);
-        helper.setText(R.id.tv_desc,item.title);
+        helper.setImageResource(R.id.iv_icon, item.resId);
+        helper.setText(R.id.tv_desc, item.title);
+
+        int position = helper.getAdapterPosition();
+
+//        int color;
+//        switch (position) {
+//            case 0:
+//            case 2:
+//            case 5:
+//            case 7:
+//            case 8:
+//            case 10:
+//                color = R.color.system_view_gray;
+//                break;
+//            default:
+//                color = R.color.blue;
+//                break;
+//        }
+//        helper.getView(R.id.ll_item).setBackgroundColor(color);
     }
 }

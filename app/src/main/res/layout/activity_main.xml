@@ -12,14 +12,15 @@
     <include layout="@layout/part_title_bar"/>
 
     <ImageView
+        android:scaleType="centerCrop"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="@color/blue_normal"/>
+        android:layout_height="130dp"
+        android:src="@drawable/ic_home_top_bg"/>
 
     <android.support.v7.widget.RecyclerView
-        android:background="@color/white"
         android:id="@+id/rv_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"/>
+        android:layout_margin="15dp"
+        android:background="@color/white"/>
 </LinearLayout>

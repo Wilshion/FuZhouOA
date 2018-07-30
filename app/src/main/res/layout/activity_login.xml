@@ -17,16 +17,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="@color/gray"
         android:orientation="vertical"
         android:padding="20dp">
 
         <ImageView
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_login_logo"/>
+
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/blue_normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:src="@mipmap/ic_launcher"/>
+            android:text="OA办公系统"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -94,7 +102,13 @@
             app:rv_backgroundColor="@color/blue_normal"
             app:rv_backgroundPressColor="@color/blue_press"
             app:rv_cornerRadius="5dp"/>
-
-
     </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="bottom"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_login_bg"/>
 </LinearLayout>

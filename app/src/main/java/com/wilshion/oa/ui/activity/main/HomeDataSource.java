@@ -42,18 +42,18 @@ public class HomeDataSource {
     public static final List<HomeItemBean> getHomeData() {
         List<HomeItemBean> result = new ArrayList<>();
 
-        HomeItemBean msgItem = new HomeItemBean(R.mipmap.ic_launcher, "短信", MsgListActivity.class);
-        HomeItemBean emailItem = new HomeItemBean(R.mipmap.ic_launcher, "邮件", EmailListActivity.class);
-        HomeItemBean notiItem = new HomeItemBean(R.mipmap.ic_launcher, "公告通知", NotificationListActivity.class);
-        HomeItemBean newsItem = new HomeItemBean(R.mipmap.ic_launcher, "新闻资讯", NewsListActivity.class);
-        HomeItemBean scheduleItem = new HomeItemBean(R.mipmap.ic_launcher, "今日日程", ScheduleListActivity.class);
-        HomeItemBean logItem = new HomeItemBean(R.mipmap.ic_launcher, "工作日志", WorkDiaryListActivity.class);
-//        HomeItemBean fileItem = new HomeItemBean(R.mipmap.ic_launcher, "我的文件", MyFileActivity.class);
-        HomeItemBean flowItem = new HomeItemBean(R.mipmap.ic_launcher, "工作流", WorkFlowListActivity.class);
-        HomeItemBean staffItem = new HomeItemBean(R.mipmap.ic_launcher, "人员查询", StaffSearchActivity.class);
-        HomeItemBean addrItem = new HomeItemBean(R.mipmap.ic_launcher, "通讯簿", AddressListActivity.class);
-        HomeItemBean codeItem = new HomeItemBean(R.mipmap.ic_launcher, "区号邮编", ZipCodeActivity.class);
-        HomeItemBean weatherItem = new HomeItemBean(R.mipmap.ic_launcher, "天气预报", WeatherActivity.class);
+        HomeItemBean msgItem = new HomeItemBean(R.drawable.ic_home_sms, "短信", MsgListActivity.class);
+        HomeItemBean emailItem = new HomeItemBean(R.drawable.ic_home_email, "邮件", EmailListActivity.class);
+        HomeItemBean notiItem = new HomeItemBean(R.drawable.ic_home_notify, "公告通知", NotificationListActivity.class);
+        HomeItemBean newsItem = new HomeItemBean(R.drawable.ic_home_news, "新闻资讯", NewsListActivity.class);
+        HomeItemBean scheduleItem = new HomeItemBean(R.drawable.ic_home_calendar, "今日日程", ScheduleListActivity.class);
+        HomeItemBean logItem = new HomeItemBean(R.drawable.ic_home_sms, "工作日志", WorkDiaryListActivity.class);
+//        HomeItemBean fileItem = new HomeItemBean(R.drawable.ic_home_sms, "我的文件", MyFileActivity.class);
+        HomeItemBean flowItem = new HomeItemBean(R.drawable.ic_home_workflow, "工作流", WorkFlowListActivity.class);
+        HomeItemBean staffItem = new HomeItemBean(R.drawable.ic_home_query, "人员查询", StaffSearchActivity.class);
+        HomeItemBean addrItem = new HomeItemBean(R.drawable.ic_home_address, "通讯簿", AddressListActivity.class);
+        HomeItemBean codeItem = new HomeItemBean(R.drawable.ic_home_zipcode, "区号邮编", ZipCodeActivity.class);
+        HomeItemBean weatherItem = new HomeItemBean(R.drawable.ic_home_weather, "天气预报", WeatherActivity.class);
 
 
         result.add(msgItem);
