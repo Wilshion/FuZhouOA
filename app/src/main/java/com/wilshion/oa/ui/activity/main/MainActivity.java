@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.wilshion.oa.R;
+import com.wilshion.oa.ui.activity.LoginActivity;
 import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
 import com.wilshion.oa.ui.activity.main.HomeDataSource.HomeItemBean;
 import com.wilshion.oa.ui.adapter.MainAdapter;
@@ -49,13 +50,19 @@ public class MainActivity extends BaseTitleBarActivity implements BaseQuickAdapt
     protected void setTitleBar() {
         getLeft().setVisibility(View.GONE);
         setTitle(getString(R.string.app_title));
-        setRightImageRes(R.drawable.ic_back);
+        setRightImageRes(R.drawable.ic_logout);
 
         setTitle(getString(R.string.app_title));
         setTitle("测试提交代码");
         setTitle(getString(R.string.app_title));
     }
 
+    @Override
+    protected void onRightClick() {
+        super.onRightClick();
+        goToActivity(LoginActivity.class);
+        finish();
+    }
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {

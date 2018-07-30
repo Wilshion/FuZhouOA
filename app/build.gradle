@@ -19,6 +19,43 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    signingConfigs {
+        debug {
+            storeFile file("keyStore")
+            storePassword "123456"
+            keyAlias "123456"
+            keyPassword "123456"
+        }
+        release {
+            storeFile file("keyStore")
+            storePassword "123456"
+            keyAlias "123456"
+            keyPassword "123456"
+            v2SigningEnabled false
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+//        local {
+//            matchingFallbacks = ['debug']
+//        }
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
 dependencies {
@@ -34,4 +71,5 @@ dependencies {
     compile 'com.contrarywind:Android-PickerView:4.1.6'
     implementation 'com.android.support:cardview-v7:27.0.2'
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
+    implementation files('libs/ksoap2-android-assembly-3.5.0-jar-with-dependencies.jar')
 }
