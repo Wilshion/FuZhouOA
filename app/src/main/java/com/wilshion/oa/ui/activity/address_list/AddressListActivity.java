@@ -4,15 +4,24 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.wilshion.common.network.HttpCallBack;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
+import com.wilshion.oa.ui.activity.main.MainActivity;
 import com.wilshion.oa.ui.adapter.AddressListAdapter;
+import com.wilshion.oa.ui.bean.LoginRespBean;
+import com.wilshion.oa.ui.bean.ResponseBean;
+import com.wilshion.oa.ui.data.UserInfoUtil;
+import com.wilshion.oa.ui.utils.HttpUtil;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Wilshion on 2018/7/26 09:56.
@@ -25,6 +34,8 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
     private RecyclerView mRcView;
     private LinearLayout mLinearLayout;
     private List<String> mList = new ArrayList<>();
+    private EditText mNameEt;
+    private EditText mDanWeiEt;
 
     private AddressListAdapter mAdapter;
 
@@ -58,7 +69,49 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
         mList.add("222222");
         mList.add("333333");
         mList.add("444444");
+
+        mNameEt = findViewById(R.id.tx_et_name);
+        mDanWeiEt = findViewById(R.id.et_danwei);
+
+
     }
+
+
+    private void researchData(){
+
+        showWating("正在查询中");
+
+        String psnName = mNameEt.getText().toString();
+        String deptName = mDanWeiEt.getText().toString();
+        String groupName = "";
+
+        Map paramsDetail = new HashMap();
+        paramsDetail.put("psnName", psnName);
+        paramsDetail.put("deptName", deptName);
+        paramsDetail.put("groupName",groupName);
+        paramsDetail.put("pageNo","1");
+
+
+        HttpUtil.requestPost(this, "contactList", paramsDetail, new HttpCallBack() {
+            @Override
+            public void onSuccess(int statusCode, String rawJsonResponse, Object response) {
+                closeDialog();
+                mLinearLayout.setVisibility(View.GONE);
+                refresh_layout.setVisibility(View.VISIBLE);
+                if (mAdapter == null){
+                    mAdapter = new AddressListAdapter(this,mList,R.layout.cell_address_list);
+                    mRcView.setAdapter(mAdapter);
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, String rawJsonResponse, Object response) {
+                showError(rawJsonResponse);
+            }
+        });
+
+    }
+
 
     @Override
     public void onClick(View view) {
@@ -66,12 +119,7 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
         switch (viewId){
             case R.id.tv_search:
             {
-                mLinearLayout.setVisibility(View.GONE);
-                refresh_layout.setVisibility(View.VISIBLE);
-                if (mAdapter == null){
-                    mAdapter = new AddressListAdapter(this,mList,R.layout.cell_address_list);
-                    mRcView.setAdapter(mAdapter);
-                }
+                researchData();
             }
                 break;
             default:

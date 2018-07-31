@@ -34,7 +34,7 @@
                 <EditText
                     android:textSize="14sp"
                     android:layout_marginLeft="10dp"
-                    android:id="@+id/et_name"
+                    android:id="@+id/tx_et_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
@@ -58,7 +58,7 @@
                 <EditText
                     android:textSize="14sp"
                     android:layout_marginLeft="10dp"
-                    android:id="@+id/et_danwe"
+                    android:id="@+id/et_danwei"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>
