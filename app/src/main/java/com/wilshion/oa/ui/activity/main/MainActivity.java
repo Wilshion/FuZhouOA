@@ -32,18 +32,11 @@ public class MainActivity extends BaseTitleBarActivity implements BaseQuickAdapt
         rv_content = findViewById(R.id.rv_content);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 4);
         rv_content.setLayoutManager(gridLayoutManager);
-        rv_content.addItemDecoration(new HomeItemLine());
+//        rv_content.addItemDecoration(new HomeItemLine());
         mAdapter = new MainAdapter(R.layout.item_main_ac, mData);
         rv_content.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(this);
         
-        requestAllContacts();
-    }
-
-    private void requestAllContacts() {
-        HashMap<String ,String > params = new HashMap<>();
-//        params.put("pageNo",)
-//        HttpUtil.requestPost(this,"personList",);
     }
 
     @Override
@@ -51,10 +44,6 @@ public class MainActivity extends BaseTitleBarActivity implements BaseQuickAdapt
         getLeft().setVisibility(View.GONE);
         setTitle(getString(R.string.app_title));
         setRightImageRes(R.drawable.ic_logout);
-
-        setTitle(getString(R.string.app_title));
-        setTitle("测试提交代码");
-        setTitle(getString(R.string.app_title));
     }
 
     @Override

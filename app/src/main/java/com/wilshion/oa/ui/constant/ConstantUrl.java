@@ -6,6 +6,6 @@ package com.wilshion.oa.ui.constant;
  * [version : 1.0]
  */
 public class ConstantUrl {
-    public static final String URL = "http://mzoa.fujiants.com/yh/api";
+    public static final String URL = "http://mwoa.fujiants.com/yh/api";
     
 }

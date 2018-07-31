@@ -7,7 +7,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="@dimen/dimen_title_bar"
         android:background="@color/blue_normal"
         android:gravity="center"
         android:paddingTop="20dp"
