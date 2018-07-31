@@ -10,11 +10,8 @@ import com.wilshion.oa.ui.activity.my_file.MyFileActivity;
 import com.wilshion.oa.ui.activity.news.NewsListActivity;
 import com.wilshion.oa.ui.activity.notification.NotificationListActivity;
 import com.wilshion.oa.ui.activity.schedule.ScheduleListActivity;
-import com.wilshion.oa.ui.activity.staff_search.StaffSearchActivity;
-import com.wilshion.oa.ui.activity.weather.WeatherActivity;
 import com.wilshion.oa.ui.activity.work_flow.WorkFlowListActivity;
 import com.wilshion.oa.ui.activity.work_log.WorkDiaryListActivity;
-import com.wilshion.oa.ui.activity.zip_code.ZipCodeActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +40,7 @@ public class HomeDataSource {
     public static final List<HomeItemBean> getHomeData() {
         List<HomeItemBean> result = new ArrayList<>();
 
-        HomeItemBean msgItem = new HomeItemBean(R.drawable.ic_home_sms, "短信", MsgListActivity.class);
+        HomeItemBean msgItem = new HomeItemBean(R.drawable.ic_home_sms, "微讯", MsgListActivity.class);
         HomeItemBean emailItem = new HomeItemBean(R.drawable.ic_home_email, "邮件", EmailListActivity.class);
         HomeItemBean notiItem = new HomeItemBean(R.drawable.ic_home_notify, "公告通知", NotificationListActivity.class);
         HomeItemBean newsItem = new HomeItemBean(R.drawable.ic_home_news, "新闻资讯", NewsListActivity.class);
@@ -51,10 +48,10 @@ public class HomeDataSource {
         HomeItemBean logItem = new HomeItemBean(R.drawable.ic_home_diary, "工作日志", WorkDiaryListActivity.class);
         HomeItemBean fileItem = new HomeItemBean(R.drawable.ic_home_folder, "我的公文", MyFileActivity.class);
         HomeItemBean flowItem = new HomeItemBean(R.drawable.ic_home_workflow, "工作流", WorkFlowListActivity.class);
-        HomeItemBean staffItem = new HomeItemBean(R.drawable.ic_home_query, "人员查询", StaffSearchActivity.class);
+//        HomeItemBean staffItem = new HomeItemBean(R.drawable.ic_home_query, "人员查询", StaffSearchActivity.class);
         HomeItemBean addrItem = new HomeItemBean(R.drawable.ic_home_address, "通讯簿", AddressListActivity.class);
-        HomeItemBean codeItem = new HomeItemBean(R.drawable.ic_home_zipcode, "区号邮编", ZipCodeActivity.class);
-        HomeItemBean weatherItem = new HomeItemBean(R.drawable.ic_home_weather, "天气预报", WeatherActivity.class);
+//        HomeItemBean codeItem = new HomeItemBean(R.drawable.ic_home_zipcode, "区号邮编", ZipCodeActivity.class);
+//        HomeItemBean weatherItem = new HomeItemBean(R.drawable.ic_home_weather, "天气预报", WeatherActivity.class);
 
 
         result.add(msgItem);
@@ -65,10 +62,10 @@ public class HomeDataSource {
         result.add(logItem);
         result.add(fileItem);
         result.add(flowItem);
-        result.add(staffItem);
+//        result.add(staffItem);
         result.add(addrItem);
-        result.add(codeItem);
-        result.add(weatherItem);
+//        result.add(codeItem);
+//        result.add(weatherItem);
         return result;
     }
 }
