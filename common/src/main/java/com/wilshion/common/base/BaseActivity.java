@@ -15,6 +15,7 @@ import android.widget.EditText;
  * [version : 1.0]
  */
 public class BaseActivity extends AppCompatActivity implements BaseUIDao {
+    protected String TAG = getClass().getSimpleName();
     private BaseUIDaoImpl mBaseUIDao;
 
     public BaseUIDaoImpl getBaseUIDao() {

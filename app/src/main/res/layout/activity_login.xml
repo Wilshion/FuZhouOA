@@ -3,112 +3,88 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_title_bar"
-        android:background="@color/blue_normal"
-        android:gravity="center"
-        android:paddingTop="20dp"
-        android:text="@string/app_title"
-        android:textColor="@color/white"
-        android:textSize="18sp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/gray"
-        android:orientation="vertical"
-        android:padding="20dp">
-
-        <ImageView
-            android:layout_width="280dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_login_logo"/>
-
-        <TextView
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/blue_normal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="OA办公系统"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="20dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:padding="2dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="账号"
-                android:textSize="16sp"/>
-
-            <com.wilshion.common.widgets.UIEditText
-                android:id="@+id/et_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:background="@null"
-                android:hint="请输入账号"
-                android:paddingLeft="5dp"
-                android:textSize="16sp"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="20dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:padding="2dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="密码"
-                android:textSize="16sp"/>
-
-            <com.wilshion.common.widgets.UIEditText
-                android:id="@+id/et_pwd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:background="@null"
-                android:hint="请输入密码"
-                android:paddingLeft="5dp"
-                android:textSize="16sp"/>
-        </LinearLayout>
-
-        <com.flyco.roundview.RoundTextView
-            android:id="@+id/btn_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:text="登陆"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            app:rv_backgroundColor="@color/blue_normal"
-            app:rv_backgroundPressColor="@color/blue_press"
-            app:rv_cornerRadius="5dp"/>
-    </LinearLayout>
-
+              android:background="@drawable/ic_login_bg"
+              android:orientation="vertical"
+              android:padding="30dp">
 
     <ImageView
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/ic_login_text"/>
+
+
+    <com.flyco.roundview.RoundFrameLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_gravity="bottom"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_login_bg"/>
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="2dp"
+        app:rv_backgroundColor="@color/white"
+        app:rv_cornerRadius="5dp">
+
+
+        <com.wilshion.common.widgets.UIEditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:drawableLeft="@drawable/ic_login_user"
+            android:drawablePadding="5dp"
+            android:hint="请输入账号"
+            android:paddingLeft="5dp"
+            android:textSize="16sp"/>
+    </com.flyco.roundview.RoundFrameLayout>
+
+    <com.flyco.roundview.RoundFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="2dp"
+        app:rv_backgroundColor="@color/white"
+        app:rv_cornerRadius="5dp">
+
+
+        <com.wilshion.common.widgets.UIEditText
+            android:id="@+id/et_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:drawableLeft="@drawable/ic_login_pwd"
+            android:drawablePadding="5dp"
+            android:hint="请输入密码"
+            android:paddingLeft="5dp"
+            android:textSize="16sp"/>
+    </com.flyco.roundview.RoundFrameLayout>
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:text="登陆"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:rv_backgroundColor="@color/blue_normal"
+        app:rv_backgroundPressColor="@color/blue_press"
+        app:rv_cornerRadius="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="20dp"
+        android:text="设置OA地址"
+        android:textColor="@color/white"/>
+
+
 </LinearLayout>
