@@ -12,6 +12,8 @@ import com.wilshion.common.network.HttpCallBack;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
 import com.wilshion.oa.ui.adapter.AddressListAdapter;
+import com.wilshion.oa.ui.bean.AddressListRespBean;
+import com.wilshion.oa.ui.bean.ResponseBean;
 import com.wilshion.oa.ui.utils.HttpUtil;
 
 import java.util.ArrayList;
@@ -68,8 +70,6 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
 
         mNameEt = findViewById(R.id.tx_et_name);
         mDanWeiEt = findViewById(R.id.et_danwei);
-
-
     }
 
 
@@ -81,16 +81,16 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
         String deptName = mDanWeiEt.getText().toString();
         String groupName = "";
 
-        Map paramsDetail = new HashMap();
+        HashMap<String, String> paramsDetail = new HashMap<>();
         paramsDetail.put("psnName", psnName);
         paramsDetail.put("deptName", deptName);
         paramsDetail.put("groupName",groupName);
         paramsDetail.put("pageNo","1");
 
 
-        HttpUtil.requestPost(this, "contactList", paramsDetail, new HttpCallBack() {
+        HttpUtil.requestPost(this, "contactList", paramsDetail, new HttpCallBack<ResponseBean<AddressListRespBean>>() {
             @Override
-            public void onSuccess(int statusCode, String rawJsonResponse, Object response) {
+            public void onSuccess(int statusCode, String rawJsonResponse, ResponseBean<AddressListRespBean> response) {
                 closeDialog();
                 mLinearLayout.setVisibility(View.GONE);
                 refresh_layout.setVisibility(View.VISIBLE);
@@ -99,9 +99,8 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
                     mRcView.setAdapter(mAdapter);
                 }
             }
-
             @Override
-            public void onFailure(int statusCode, String rawJsonResponse, Object response) {
+            public void onFailure(int statusCode, String rawJsonResponse, ResponseBean<AddressListRespBean> response) {
                 showError(rawJsonResponse);
             }
         });
