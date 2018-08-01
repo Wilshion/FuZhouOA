@@ -101,6 +101,14 @@ public abstract class BaseRvActivity<T, A extends BaseQuickAdapter<T, BaseViewHo
         return Constant.DEFAULT_PAGE_SIZE;
     }
 
+    protected SmartRefreshLayout getRefreshLayout() {
+        return refresh_layout;
+    }
+
+    public int getCurrentPage() {
+        return mCurrentPage;
+    }
+
     public boolean enableRefresh() {
         return true;
     }
@@ -120,6 +128,8 @@ public abstract class BaseRvActivity<T, A extends BaseQuickAdapter<T, BaseViewHo
     public RecyclerView.ItemDecoration getRecyclerViewItemDecoration() {
         return new RecycleViewDivider(this, LinearLayoutManager.HORIZONTAL);
     }
+    
+    
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
@@ -133,41 +143,22 @@ public abstract class BaseRvActivity<T, A extends BaseQuickAdapter<T, BaseViewHo
         requestData();
     }
 
-    protected SmartRefreshLayout getRefreshLayout() {
-        return refresh_layout;
-    }
 
-    public int getCurrentPage() {
-        return mCurrentPage;
+    @Override
+    public void showError(String info) {
+        super.showError(info);
+       finishRefreshLayoutRefresh();
     }
-
-//    protected void showData(int totalPage, List<T> dataList) {
-//        boolean isRefresh = getCurrentPage() == 1;
-//        if (isRefresh) {
-//            /** 当前状态是下拉刷新 */
-//            getRefreshLayout().finishRefresh();
-//        } else {
-//            /** 当前状态是上啦加载更多 */
-//            getRefreshLayout().finishLoadmore();
-//        }
-//        
-//        mTotalPage = totalPage;
-//        if (getCurrentPage() < mTotalPage) {
-//            getRefreshLayout().setEnableLoadmore(true);
-//        } else {
-//            getRefreshLayout().setLoadmoreFinished(true);
-//        }
-//        
-//    }
+    
+    protected void showError(){
+        
+    }
 
     /**
-     * 展示数据，供子类调用
-     *
-     * @param dataList
+     * 关闭 刷新控件
      */
-    protected void showData(List<T> dataList) {
+    protected void finishRefreshLayoutRefresh(){
         boolean isRefresh = getCurrentPage() == 1;
-
         if (isRefresh) {
             /** 当前状态是下拉刷新 */
             getRefreshLayout().finishRefresh();
@@ -175,7 +166,17 @@ public abstract class BaseRvActivity<T, A extends BaseQuickAdapter<T, BaseViewHo
             /** 当前状态是上啦加载更多 */
             getRefreshLayout().finishLoadmore();
         }
+    }
 
+    /**
+     * 展示数据，供子类调用
+     *
+     * @param dataList
+     */
+    protected void showData(List<T> dataList) {
+        finishRefreshLayoutRefresh();
+
+        boolean isRefresh = getCurrentPage() == 1;
         //1、控制内容的状态
         if (dataList == null | dataList.size() == 0) {
             /**当前无数据*/

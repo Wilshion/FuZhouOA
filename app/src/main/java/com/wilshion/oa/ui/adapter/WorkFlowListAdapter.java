@@ -17,9 +17,11 @@ public class WorkFlowListAdapter extends BaseQuickAdapter<WorkFlowBean, BaseView
 
     @Override
     protected void convert(BaseViewHolder helper, WorkFlowBean item) {
-        String title = String.format("[%s]-%s-%s", item.getRUN_ID(), item.getFLOW_NAME(), item.getRUN_NAME());
+        int position = helper.getAdapterPosition() + 1;
+        String title = String.format("[%s] - %s - %s", item.getRUN_ID(), item.getFLOW_NAME(), item.getRUN_NAME());
         String subTitle = String.format("第%d步：%s", item.getFLOW_PRCS(), item.getPRCS_NAME());
-        helper.setText(R.id.tv_title, title)
+        helper.setText(R.id.tv_num, position + "")
+                .setText(R.id.tv_title, title)
                 .setText(R.id.tv_sub_title, subTitle)
                 .addOnClickListener(R.id.tv_form)
                 .addOnClickListener(R.id.tv_zhuban)

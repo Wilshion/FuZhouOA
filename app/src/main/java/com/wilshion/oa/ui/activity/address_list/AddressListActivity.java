@@ -11,11 +11,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.wilshion.common.network.HttpCallBack;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
-import com.wilshion.oa.ui.activity.main.MainActivity;
 import com.wilshion.oa.ui.adapter.AddressListAdapter;
-import com.wilshion.oa.ui.bean.LoginRespBean;
-import com.wilshion.oa.ui.bean.ResponseBean;
-import com.wilshion.oa.ui.data.UserInfoUtil;
 import com.wilshion.oa.ui.utils.HttpUtil;
 
 import java.util.ArrayList;

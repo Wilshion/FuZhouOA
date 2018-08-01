@@ -13,13 +13,14 @@ import com.wilshion.common.utils.StatusBarUtil;
  * [version : 1.0]
  */
 public abstract class BaseUIActivity extends BaseActivity {
-   private View mContentView;
+    private View mContentView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         StatusBarUtil.immersive(this);
-        
+
         setContentView(getLayoutId());
         initView(savedInstanceState);
     }
@@ -38,8 +39,12 @@ public abstract class BaseUIActivity extends BaseActivity {
     protected void initView(Bundle savedInstanceState) {
 
     }
-    
-    protected void requestData(){
+
+    protected void requestData() {
+
+    }
+
+    protected void showError(Throwable throwable) {
         
     }
 }
