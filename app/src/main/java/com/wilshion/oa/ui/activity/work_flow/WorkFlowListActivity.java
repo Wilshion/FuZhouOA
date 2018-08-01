@@ -94,7 +94,7 @@ public class WorkFlowListActivity extends BaseRvActivity<WorkFlowBean, WorkFlowL
                 intent.setClass(this, WorkFlowFormActivity.class);
                 break;
             case R.id.tv_zhuban:
-                intent.setClass(this, WorkFlowFormActivity.class);
+                intent.setClass(this, WorkFlowHandleActivity.class);
                 break;
             case R.id.tv_deliver:
                 intent.setClass(this, WorkFlowDeliverActivity.class);

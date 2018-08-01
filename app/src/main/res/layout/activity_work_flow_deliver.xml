@@ -12,7 +12,11 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:orientation="horizontal"
-        android:padding="15dp">
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+       >
 
         <TextView
             android:layout_width="wrap_content"
@@ -34,7 +38,10 @@
         android:layout_marginTop="1dp"
         android:background="@color/white"
         android:orientation="horizontal"
-        android:padding="15dp">
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -57,7 +64,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:background="@color/white"
-        android:padding="15dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:text="选择下一步骤"
         android:textSize="16sp"
         android:textStyle="bold"/>
@@ -68,7 +78,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:background="@color/white"
-        android:padding="15dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:text="年段长审阅"
         android:textSize="16sp"/>
 
@@ -77,28 +90,35 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="@color/white"
-        android:padding="15dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:text="请选择办理人员:"
         android:textSize="16sp"
         android:textStyle="bold"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:orientation="horizontal"
-        android:padding="15dp">
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="主办人"
+            android:text="主办人："
             android:textColor="@color/system_text_black"/>
 
         <TextView
+            android:id="@+id/tv_select_main_handler"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="点击选择主办人"
             android:textColor="@color/system_text_black"/>
     </LinearLayout>
@@ -108,13 +128,21 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:orientation="horizontal"
-        android:padding="15dp">
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="经办人"
             android:textColor="@color/system_text_black"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <com.flyco.roundview.RoundTextView

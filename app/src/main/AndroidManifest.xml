@@ -50,6 +50,7 @@
         <activity android:name=".ui.activity.notification.NotificationDetailActivity"/>
         <activity android:name=".ui.activity.news.NewsDetailActivity"/>
         <activity android:name=".ui.activity.work_log.WorkDiaryEditActivity"/>
+        <activity android:name=".ui.activity.work_flow.WorkFlowHandleActivity"/>
     </application>
 
 </manifest>
