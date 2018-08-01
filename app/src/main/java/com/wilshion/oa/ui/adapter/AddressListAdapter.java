@@ -20,7 +20,8 @@ public class AddressListAdapter extends RecyclerView.Adapter {
     private List<String> mList;
     private int mLayoutId;
 
-    public AddressListAdapter (HttpCallBack context, List<String> list, int layoutId){
+    public AddressListAdapter (Context context, List<String> list, int layoutId){
+
         mContext = context;
         mList = list;
         mLayoutId = layoutId;

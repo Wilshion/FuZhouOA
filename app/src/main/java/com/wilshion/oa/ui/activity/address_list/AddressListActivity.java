@@ -99,7 +99,7 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
                 mLinearLayout.setVisibility(View.GONE);
                 refresh_layout.setVisibility(View.VISIBLE);
                 if (mAdapter == null){
-                    mAdapter = new AddressListAdapter(this,mList,R.layout.cell_address_list);
+                    mAdapter = new AddressListAdapter(AddressListActivity.this,mList,R.layout.cell_address_list);
                     mRcView.setAdapter(mAdapter);
                 }
             }
