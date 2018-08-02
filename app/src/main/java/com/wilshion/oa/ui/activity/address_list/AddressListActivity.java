@@ -103,7 +103,9 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
                 refresh_layout.setVisibility(View.VISIBLE);
 
                 if (mPageNo == 1){
-                    mList = mList = response.getDetail().getContactList();
+
+                    mList = response.getDetail().getContactList();
+
                 }else {
                     mList.addAll(mList);
                 }
