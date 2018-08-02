@@ -33,6 +33,15 @@ public class BaseActivity extends AppCompatActivity implements BaseUIDao {
         Intent intent = new Intent(this,clazz);
         startActivity(intent);
     }
+    
+    protected void finishWithDelay(long delayed){
+        new android.os.Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                finish();
+            }
+        },delayed);
+    }
 
     @Override
     public Context getContext() {

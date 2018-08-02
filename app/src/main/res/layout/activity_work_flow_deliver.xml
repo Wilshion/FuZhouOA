@@ -114,12 +114,18 @@
             android:text="主办人："
             android:textColor="@color/system_text_black"/>
 
-        <TextView
+        <com.flyco.roundview.RoundTextView
+          app:rv_cornerRadius="5dp"
+            android:paddingLeft="5dp"
+            app:rv_strokeColor="@color/system_view_gray"
+            app:rv_strokeWidth="1dp"
             android:id="@+id/tv_select_main_handler"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="点击选择主办人"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/ic_arrow_down"
             android:textColor="@color/system_text_black"/>
     </LinearLayout>
 
@@ -146,7 +152,7 @@
     </LinearLayout>
 
     <com.flyco.roundview.RoundTextView
-        android:id="@+id/btn_next"
+        android:id="@+id/tv_send"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"

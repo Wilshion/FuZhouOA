@@ -46,7 +46,7 @@ public class WorkFlowDeliverActivity extends BaseTitleBarActivity implements Vie
     private WorkFlowDeliverHandlerAdapter mAdapter;
     private OptionsPickerView<WorkFlowDeliverBean.FlowProcessesBean.AssitHandlerBean> mSelector;
     /**
-     * 可供选择的经办人
+     * 可供选择的经办人（接口下发的）
      */
     private List<WorkFlowDeliverBean.FlowProcessesBean.AssitHandlerBean> mAssitHandlerBeanList;
 
@@ -54,10 +54,7 @@ public class WorkFlowDeliverActivity extends BaseTitleBarActivity implements Vie
      * 已选择的主办人
      */
     private WorkFlowDeliverBean.FlowProcessesBean.AssitHandlerBean mSelectedMainHandler;
-    /**
-     * 已选择经办人
-     */
-    private List<WorkFlowDeliverBean.FlowProcessesBean.AssitHandlerBean> mSelectedAssitHandlerBeanList;
+
     private WorkFlowDeliverBean mWorkFlowDeliverBean;
 
     @Override
@@ -83,7 +80,7 @@ public class WorkFlowDeliverActivity extends BaseTitleBarActivity implements Vie
         mWorkFlowBean = getIntent().getParcelableExtra("data");
         if (mWorkFlowBean == null) {
             showToast("数据获取失败");
-            finish();
+            finishWithDelay(500);
             return;
         }
 
@@ -95,13 +92,13 @@ public class WorkFlowDeliverActivity extends BaseTitleBarActivity implements Vie
         rv_content.setLayoutManager(new GridLayoutManager(this, 4));
 
         tv_select_main_handler.setOnClickListener(this);
+        findViewById(R.id.tv_send).setOnClickListener(this);
         requestData();
     }
 
     @Override
     protected void requestData() {
         super.requestData();
-        showWating("正在加载中...");
         showWating("正在加载中...");
         HashMap params = new HashMap();
         params.put("flowId", mWorkFlowBean.getFLOW_ID());
@@ -127,9 +124,15 @@ public class WorkFlowDeliverActivity extends BaseTitleBarActivity implements Vie
         });
     }
 
+    /**
+     * 展示 请求回来的数据
+     *
+     * @param detail
+     */
     private void showData(WorkFlowDeliverBean detail) {
         if (detail == null) {
             showToast("暂无数据");
+            finishWithDelay(500);
             return;
         }
         mWorkFlowDeliverBean = detail;
@@ -186,12 +189,65 @@ public class WorkFlowDeliverActivity extends BaseTitleBarActivity implements Vie
         getSelector().show(tv_select_main_handler);
     }
 
+    private void requestSave() {
+        showWating("正在提交中...");
+        List<WorkFlowDeliverBean.FlowProcessesBean> flowProcessesBeans = mWorkFlowDeliverBean.getFlowProcesses();
+        WorkFlowDeliverBean.FlowProcessesBean flowProcessesBean = flowProcessesBeans.get(0);
+        String prcsIdNext = flowProcessesBean.getPRCS_ID();
+        String prcsOpUser_prcsIdNext = mAdapter.getSelectedUserIds();
+        HashMap params = new HashMap();
+        params.put("flowId", mWorkFlowBean.getFLOW_ID());
+        params.put("runId", mWorkFlowBean.getRUN_ID());
+        params.put("prcsId", mWorkFlowBean.getPRCS_ID());
+        params.put("flowPrcs", mWorkFlowBean.getFLOW_PRCS());
+        params.put("prcsIdNext", prcsIdNext);
+        //经办人id，中间用","隔开
+        params.put("prcsOpUser_" + prcsIdNext, prcsOpUser_prcsIdNext);
+        //主办人
+        params.put("prcsUser_" + prcsIdNext, mSelectedMainHandler.getSeqId());
+
+        HttpUtil.requestPost(this, "put", params, new HttpCallBack<ResponseBean>() {
+            @Override
+            public void onSuccess(int statusCode, String rawJsonResponse, ResponseBean response) {
+                if (response.isSuccess()) {
+                    showSucceed(response.getResultNote());
+                    finishWithDelay(2000);
+                } else {
+                    showError(response.getResultNote());
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, String rawJsonResponse, ResponseBean response) {
+                showError(rawJsonResponse);
+            }
+        });
+    }
+
+    private boolean checkParams() {
+        String selectedAssitIds = mAdapter.getSelectedUserIds();
+        if (EmptyUtils.isEmpty(selectedAssitIds)) {
+            showToast("请选择经办人");
+            return false;
+        }
+        if (mSelectedMainHandler == null) {
+            showToast("请选择主办人");
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public void onClick(View view) {
         int id = view.getId();
         switch (id) {
             case R.id.tv_select_main_handler:
                 showSelectView();
+                break;
+            case R.id.tv_send:
+                if (checkParams()) {
+                    requestSave();
+                }
                 break;
         }
     }

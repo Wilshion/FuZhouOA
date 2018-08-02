@@ -6,6 +6,7 @@ import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.wilshion.common.utils.LogUtils;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.bean.WorkFlowDeliverBean;
 
@@ -20,7 +21,7 @@ import java.util.List;
 public class WorkFlowDeliverHandlerAdapter extends
         BaseQuickAdapter<WorkFlowDeliverBean.FlowProcessesBean.AssitHandlerBean, BaseViewHolder> {
     private List<Boolean> mSelectedList = new ArrayList<>();
-    
+
     public WorkFlowDeliverHandlerAdapter(int layoutResId) {
         super(layoutResId);
     }
@@ -39,28 +40,42 @@ public class WorkFlowDeliverHandlerAdapter extends
 
     @Override
     protected void convert(final BaseViewHolder helper, WorkFlowDeliverBean.FlowProcessesBean.AssitHandlerBean item) {
-        helper.setText(R.id.tv_name,item.getUserName());
+        helper.setText(R.id.tv_name, item.getUserName());
         final int position = helper.getAdapterPosition();
         helper.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               ImageView imageView = helper.getView(R.id.iv_select_flag);
-               boolean isSelected = !mSelectedList.get(position);
-               if (isSelected){
-                   imageView.setImageResource(R.mipmap.ic_launcher);
-               }else {
-                   imageView.setImageResource(R.drawable.ic_work_flow_num);
-               }
-               mSelectedList.set(position,isSelected);
+                ImageView imageView = helper.getView(R.id.iv_select_flag);
+                boolean isSelected = !mSelectedList.get(position);
+                if (isSelected) {
+                    imageView.setImageResource(R.drawable.ic_select);
+                } else {
+                    imageView.setImageResource(R.drawable.ic_unselect);
+                }
+                mSelectedList.set(position, isSelected);
             }
         });
     }
-    
-    public List<WorkFlowDeliverBean.FlowProcessesBean.AssitHandlerBean> getSelectedData(){
+
+    public String getSelectedUserIds() {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < mSelectedList.size(); i++) {
+            boolean selected = mSelectedList.get(i);
+            if (selected) {
+                WorkFlowDeliverBean.FlowProcessesBean.AssitHandlerBean assitHandlerBean = getItem(i);
+                LogUtils.d(assitHandlerBean.getUserName());
+                result.append(assitHandlerBean.getSeqId()).append(",");
+            }
+        }
+        result.delete(result.length() - 1, result.length());
+        return result.toString();
+    }
+
+    public List<WorkFlowDeliverBean.FlowProcessesBean.AssitHandlerBean> getSelectedData() {
         List<WorkFlowDeliverBean.FlowProcessesBean.AssitHandlerBean> result = new ArrayList<>();
         for (int i = 0; i < mSelectedList.size(); i++) {
             boolean selected = mSelectedList.get(i);
-            if (selected){
+            if (selected) {
                 result.add(getData().get(i));
             }
         }
