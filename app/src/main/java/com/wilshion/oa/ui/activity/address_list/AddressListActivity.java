@@ -101,11 +101,11 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
                 closeDialog();
                 mLinearLayout.setVisibility(View.GONE);
                 refresh_layout.setVisibility(View.VISIBLE);
+                refresh_layout.finishRefresh();
+                refresh_layout.finishLoadmore();
 
                 if (mPageNo == 1){
-
                     mList = response.getDetail().getContactList();
-
                 }else {
                     mList.addAll(mList);
                 }
@@ -119,6 +119,8 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
             }
             @Override
             public void onFailure(int statusCode, String rawJsonResponse, ResponseBean<AddressListRespBean> response) {
+                refresh_layout.finishRefresh();
+                refresh_layout.finishLoadmore();
                 showError(rawJsonResponse);
             }
         });
