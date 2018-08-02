@@ -30,15 +30,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/id_work_name"
                 android:text="默认李炎炎："
                 android:textColor="@color/system_text_black"/>
 
-            <TextView
-                android:id="@+id/tv_inner_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:hint="输入收件人"/>
+            <!--<TextView-->
+                <!--android:id="@+id/tv_inner_name"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="3dp"-->
+                <!--android:hint="输入收件人"/>-->
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,11 +58,11 @@
                 android:textColor="@color/system_text_black"/>
 
             <TextView
-                android:id="@+id/tv_inner_danwei"
+                android:id="@+id/id_work_danwei"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:hint="输入收件人"/>
+                android:hint=""/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -80,11 +81,11 @@
                 android:textColor="@color/system_text_black"/>
 
             <TextView
-                android:id="@+id/tv_inner_work"
+                android:id="@+id/id_work_zhiwu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:hint="输入收件人"/>
+                android:hint=""/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -103,11 +104,11 @@
                 android:textColor="@color/system_text_black"/>
 
             <TextView
-                android:id="@+id/tv_inner_birth"
+                android:id="@+id/id_work_birth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:hint="输入收件人"/>
+                android:hint=""/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -126,11 +127,11 @@
                 android:textColor="@color/system_text_black"/>
 
             <TextView
-                android:id="@+id/tv_inner_phone"
+                android:id="@+id/id_work_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:hint="18205197820"/>
+                android:hint=""/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -149,11 +150,11 @@
                 android:textColor="@color/system_text_black"/>
 
             <TextView
-                android:id="@+id/tv_inner_family_phone"
+                android:id="@+id/id_work_family_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:hint="4976093"/>
+                android:hint=""/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -172,11 +173,11 @@
                 android:textColor="@color/system_text_black"/>
 
             <TextView
-                android:id="@+id/tv_inner_moblie_phone"
+                android:id="@+id/id_work_moblie_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:hint="4976093"/>
+                android:hint=""/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -195,11 +196,11 @@
                 android:textColor="@color/system_text_black"/>
 
             <TextView
-                android:id="@+id/tv_inner_email"
+                android:id="@+id/id_work_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:hint="1143386318@qq.com"/>
+                android:hint=""/>
         </LinearLayout>
 
     </com.flyco.roundview.RoundLinearLayout>

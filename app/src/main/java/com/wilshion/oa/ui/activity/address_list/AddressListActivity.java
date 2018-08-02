@@ -12,6 +12,7 @@ import com.wilshion.common.network.HttpCallBack;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
 import com.wilshion.oa.ui.adapter.AddressListAdapter;
+import com.wilshion.oa.ui.bean.AddressBean;
 import com.wilshion.oa.ui.bean.AddressListRespBean;
 import com.wilshion.oa.ui.bean.ResponseBean;
 import com.wilshion.oa.ui.utils.HttpUtil;
@@ -31,7 +32,7 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
     private SmartRefreshLayout refresh_layout;
     private RecyclerView mRcView;
     private LinearLayout mLinearLayout;
-    private List<String> mList = new ArrayList<>();
+    private List<AddressBean> mList = new ArrayList<>();
     private EditText mNameEt;
     private EditText mDanWeiEt;
 
@@ -63,10 +64,7 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
         mRcView.setLayoutManager(layoutmanager);
         mLinearLayout = findViewById(R.id.id_search_linear_layout);
 
-        mList.add("111111");
-        mList.add("222222");
-        mList.add("333333");
-        mList.add("444444");
+
 
         mNameEt = findViewById(R.id.tx_et_name);
         mDanWeiEt = findViewById(R.id.et_danwei);
@@ -94,6 +92,8 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
                 closeDialog();
                 mLinearLayout.setVisibility(View.GONE);
                 refresh_layout.setVisibility(View.VISIBLE);
+                mList = response.getDetail().getContactList();
+
                 if (mAdapter == null){
                     mAdapter = new AddressListAdapter(AddressListActivity.this,mList,R.layout.cell_address_list);
                     mRcView.setAdapter(mAdapter);
