@@ -41,6 +41,8 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
 
     private AddressListAdapter mAdapter;
 
+    private int mPageNo;
+
     @Override
     protected void setTitleBar() {
         setTitle("通讯簿");
@@ -72,6 +74,9 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
 
         mNameEt = findViewById(R.id.tx_et_name);
         mDanWeiEt = findViewById(R.id.et_danwei);
+
+
+        mPageNo = 1;
     }
 
 
@@ -87,7 +92,7 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
         paramsDetail.put("psnName", psnName);
         paramsDetail.put("deptName", deptName);
         paramsDetail.put("groupName",groupName);
-        paramsDetail.put("pageNo","1");
+        paramsDetail.put("pageNo",String.valueOf(mPageNo));
 
 
         HttpUtil.requestPost(this, "contactList", paramsDetail, new HttpCallBack<ResponseBean<AddressListRespBean>>() {
@@ -96,7 +101,12 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
                 closeDialog();
                 mLinearLayout.setVisibility(View.GONE);
                 refresh_layout.setVisibility(View.VISIBLE);
-                mList = response.getDetail().getContactList();
+
+                if (mPageNo == 1){
+                    mList = mList = response.getDetail().getContactList();
+                }else {
+                    mList.addAll(mList);
+                }
 
                 if (mAdapter == null){
                     mAdapter = new AddressListAdapter(AddressListActivity.this,mList,R.layout.cell_address_list);
@@ -131,11 +141,13 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
+        mPageNo = 1;
         researchData();
     }
 
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
-
+        mPageNo++;
+        researchData();
     }
 }
