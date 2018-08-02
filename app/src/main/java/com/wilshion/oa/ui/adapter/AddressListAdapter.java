@@ -28,6 +28,11 @@ public class AddressListAdapter extends RecyclerView.Adapter {
         mLayoutId = layoutId;
     }
 
+    public void updateData(List<AddressBean> list){
+        mList = list;
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

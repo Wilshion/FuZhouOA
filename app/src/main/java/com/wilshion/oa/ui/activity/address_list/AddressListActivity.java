@@ -8,6 +8,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.wilshion.common.network.HttpCallBack;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
@@ -27,7 +30,7 @@ import java.util.Map;
  * [description : 通讯博]
  * [version : 1.0]
  */
-public class AddressListActivity extends BaseTitleBarActivity implements View.OnClickListener {
+public class AddressListActivity extends BaseTitleBarActivity implements View.OnClickListener, OnRefreshListener, OnLoadmoreListener {
 
     private SmartRefreshLayout refresh_layout;
     private RecyclerView mRcView;
@@ -55,6 +58,8 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
 
         refresh_layout = findViewById(R.id.adress_refresh_layout);
         refresh_layout.setPrimaryColors(0xff444444, 0xffffffff);
+        refresh_layout.setOnRefreshListener(this);
+        refresh_layout.setOnLoadmoreListener(this);
 
         mRcView = findViewById(R.id.adress_rc_list_view);
         //创建LinearLayoutManager 对象
@@ -63,7 +68,6 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
         //设置RecyclerView 布局
         mRcView.setLayoutManager(layoutmanager);
         mLinearLayout = findViewById(R.id.id_search_linear_layout);
-
 
 
         mNameEt = findViewById(R.id.tx_et_name);
@@ -97,6 +101,8 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
                 if (mAdapter == null){
                     mAdapter = new AddressListAdapter(AddressListActivity.this,mList,R.layout.cell_address_list);
                     mRcView.setAdapter(mAdapter);
+                }else {
+                    mAdapter.updateData(mList);
                 }
             }
             @Override
@@ -121,5 +127,15 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
 
                 break;
         }
+    }
+
+    @Override
+    public void onRefresh(RefreshLayout refreshlayout) {
+        researchData();
+    }
+
+    @Override
+    public void onLoadmore(RefreshLayout refreshlayout) {
+
     }
 }
