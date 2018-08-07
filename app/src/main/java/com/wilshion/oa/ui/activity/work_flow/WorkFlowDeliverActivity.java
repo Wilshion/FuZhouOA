@@ -211,7 +211,7 @@ public class WorkFlowDeliverActivity extends BaseTitleBarActivity implements Vie
             public void onSuccess(int statusCode, String rawJsonResponse, ResponseBean response) {
                 if (response.isSuccess()) {
                     showSucceed(response.getResultNote());
-                    finishWithDelay(2000);
+                    finishWithDelay(2000,true);
                 } else {
                     showError(response.getResultNote());
                 }

@@ -19,28 +19,34 @@ public class BaseActivity extends AppCompatActivity implements BaseUIDao {
     private BaseUIDaoImpl mBaseUIDao;
 
     public BaseUIDaoImpl getBaseUIDao() {
-        if (null == mBaseUIDao){
-            synchronized (BaseActivity.class){
-                if (null == mBaseUIDao){
+        if (null == mBaseUIDao) {
+            synchronized (BaseActivity.class) {
+                if (null == mBaseUIDao) {
                     mBaseUIDao = new BaseUIDaoImpl(this);
                 }
             }
         }
         return mBaseUIDao;
     }
-    
-    protected void goToActivity(Class<? extends Activity> clazz){
-        Intent intent = new Intent(this,clazz);
+
+    protected void goToActivity(Class<? extends Activity> clazz) {
+        Intent intent = new Intent(this, clazz);
         startActivity(intent);
     }
-    
-    protected void finishWithDelay(long delayed){
+
+    protected void finishWithDelay(long delayed) {
+        finishWithDelay(delayed, false);
+    }
+
+    protected void finishWithDelay(long delayed, final boolean setResult) {
         new android.os.Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                if (setResult)
+                    setResult(RESULT_OK);
                 finish();
             }
-        },delayed);
+        }, delayed);
     }
 
     @Override

@@ -2,15 +2,15 @@ package com.wilshion.oa.ui.activity.work_flow;
 
 import android.os.Bundle;
 import android.webkit.JavascriptInterface;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
+import com.tencent.smtt.sdk.WebSettings;
+import com.wilshion.common.base.BaseUIActivity;
 import com.wilshion.common.network.HttpCallBack;
 import com.wilshion.oa.R;
-import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
 import com.wilshion.oa.ui.bean.ResponseBean;
 import com.wilshion.oa.ui.bean.WorkFlowBean;
 import com.wilshion.oa.ui.bean.WorkFlowHandleBean;
+import com.wilshion.oa.ui.data.UserInfoUtil;
 import com.wilshion.oa.ui.utils.HttpUtil;
 import com.wilshion.oa.ui.widget.UIWebView;
 
@@ -21,31 +21,14 @@ import java.util.HashMap;
  * [description : 主办]
  * [version : 1.0]
  */
-public class WorkFlowHandleActivity extends BaseTitleBarActivity {
-    private TextView tv_name;
-    private TextView tv_flow_num;
-    private TextView tv_time;
+public class WorkFlowHandleActivity2 extends BaseUIActivity {
     private WorkFlowBean mWorkFlowBean;
-    private ProgressBar pb_load;
     private UIWebView wv_content;
 
-    @Override
-    protected void setTitleBar() {
-        setTitle("表单");
-        setRightText("保存");
-    }
-
-    @Override
-    protected void onRightClick() {
-        super.onRightClick();
-        wv_content.loadUrl("javascript:window.local_obj.showSource('<head>'+"
-                + "document.getElementsByTagName('html')[0].innerHTML+'</head>');");
-       
-    }
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_work_flow_form;
+        return R.layout.activity_webview;
     }
 
     @Override
@@ -59,34 +42,29 @@ public class WorkFlowHandleActivity extends BaseTitleBarActivity {
             return;
         }
 
-        tv_name = findViewById(R.id.tv_name);
-        tv_flow_num = findViewById(R.id.tv_flow_num);
-        tv_time = findViewById(R.id.tv_time);
-
-        pb_load = findViewById(R.id.pb_load);
         wv_content = findViewById(R.id.wv_content);
-//        wv_content.setWebViewClient(new WebViewClient(){
-//            @Override
-//            public boolean shouldOverrideUrlLoading(WebView webView, String s) {
-//                webView.loadUrl(s);
-//                return true;
-//            }
-//
-//            @Override
-//            public void onPageFinished(WebView webView, String s) {
-//                super.onPageFinished(webView, s);
-//               
-//            }
-//            
-//            
-//        });
-        wv_content.addJavascriptInterface(new InJavaScriptLocalObj(), "local_obj");
-        requestData();
+        wv_content.getSettings().setTextSize(WebSettings.TextSize.LARGER);
+        wv_content.addJavascriptInterface(new InJavaScriptLocalObj(), "js_interface");
+//        requestLogin();
+        showData();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (wv_content.canGoBack()) {
+            wv_content.goBack();
+        }else {
+            super.onBackPressed();
+        }
     }
 
     @Override
     protected void requestData() {
         super.requestData();
+
+    }
+
+    private void requestTransferData() {
         showWating("正在加载中...");
         HashMap params = new HashMap();
         params.put("flowId", mWorkFlowBean.getFLOW_ID());
@@ -114,22 +92,43 @@ public class WorkFlowHandleActivity extends BaseTitleBarActivity {
         });
     }
 
-    private void showData(WorkFlowHandleBean detail) {
-        String runName = detail.getRunName();
-        tv_name.setText(runName);
-        tv_flow_num.setText(detail.getRunId() + "");
-        tv_time.setText(detail.getBeginTime());
 
-        String form = detail.getFormMsg();
-        wv_content.loadHtml(form);
+    private void showData() {
+        int userId = UserInfoUtil.getCurUserId();
+        int flowId = mWorkFlowBean.getFLOW_ID();
+        int runId = mWorkFlowBean.getRUN_ID();
+        int prcsId = mWorkFlowBean.getPRCS_ID();
+        int flowPrcs = mWorkFlowBean.getFLOW_PRCS();
+        String opFlag = mWorkFlowBean.getOP_FLAG();
+        String feedback = mWorkFlowBean.getFEEDBACK();
+        String url = String.format("http://mwoa.fujiants.com/yh/yh/pda/workflow/act/YHPdaWorkflowAct/getHandlerData.act?P=%d&flowId=%d&runId=%d&prcsId=%d&flowPrcs=%d&opFlag=%s&feedback=%s",
+                userId, flowId, runId, prcsId, flowPrcs, opFlag, feedback);
+        wv_content.loadUrl(url);
+    }
+
+    private void showData(WorkFlowHandleBean detail) {
+        int flowId = detail.getFlowId();
+        int runId = detail.getRunId();
+        int prcsId = detail.getPrcsId();
+        int flowPrcs = detail.getFlowPrcs();
+        String opFlag = detail.getOpFlag();
+        String feedback = detail.getFeedback();
+        String url = String.format("http://mwoa.fujiants.com/yh/yh/pda/workflow/act/YHPdaWorkflowAct/getHandlerData.act?P=1&flowId=%d&runId=%d&prcsId=%d&flowPrcs=%d&opFlag=%s&feedback=%s",
+                flowId, runId, prcsId, flowPrcs, opFlag, feedback);
+        wv_content.loadHtml(url);
     }
 
     final class InJavaScriptLocalObj {
         @JavascriptInterface
-        public void showSource(String html) {
-            showLogD(html);
+        public void onBackClick() {
+
+        }
+
+        @JavascriptInterface
+        public void onSaveResult(boolean result, String msg) {
+
         }
     }
 
-  
+
 }

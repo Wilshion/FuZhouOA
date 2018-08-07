@@ -6,7 +6,7 @@ import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.address_list.AddressListActivity;
 import com.wilshion.oa.ui.activity.email.EmailListActivity;
 import com.wilshion.oa.ui.activity.msg.MsgListActivity;
-import com.wilshion.oa.ui.activity.my_file.MyFileActivity;
+import com.wilshion.oa.ui.activity.my_file.MyDocumentActivity;
 import com.wilshion.oa.ui.activity.news.NewsListActivity;
 import com.wilshion.oa.ui.activity.notification.NotificationListActivity;
 import com.wilshion.oa.ui.activity.schedule.ScheduleListActivity;
@@ -46,7 +46,7 @@ public class HomeDataSource {
         HomeItemBean newsItem = new HomeItemBean(R.drawable.ic_home_news, "新闻资讯", NewsListActivity.class);
         HomeItemBean scheduleItem = new HomeItemBean(R.drawable.ic_home_calendar, "今日日程", ScheduleListActivity.class);
         HomeItemBean logItem = new HomeItemBean(R.drawable.ic_home_diary, "工作日志", WorkDiaryListActivity.class);
-        HomeItemBean fileItem = new HomeItemBean(R.drawable.ic_home_folder, "我的公文", MyFileActivity.class);
+        HomeItemBean fileItem = new HomeItemBean(R.drawable.ic_home_folder, "我的公文", MyDocumentActivity.class);
         HomeItemBean flowItem = new HomeItemBean(R.drawable.ic_home_workflow, "工作流", WorkFlowListActivity.class);
 //        HomeItemBean staffItem = new HomeItemBean(R.drawable.ic_home_query, "人员查询", StaffSearchActivity.class);
         HomeItemBean addrItem = new HomeItemBean(R.drawable.ic_home_address, "通讯簿", AddressListActivity.class);

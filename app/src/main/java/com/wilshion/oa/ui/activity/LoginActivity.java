@@ -67,7 +67,7 @@ public class LoginActivity extends BaseUIActivity implements View.OnClickListene
         showWating("正在登录中");
 
         String name = et_name.getText().toString();
-        String pwd = et_pwd.getText().toString();
+        final String pwd = et_pwd.getText().toString();
 
         Map paramsDetail = new HashMap();
         paramsDetail.put("userName", name);
@@ -82,6 +82,7 @@ public class LoginActivity extends BaseUIActivity implements View.OnClickListene
                     LoginRespBean loginRespBean = response.getDetail();
                     if (null != loginRespBean) {
                         UserInfoUtil.saveLoginResult(response.getDetail());
+                        UserInfoUtil.saveUserPwd(pwd);
                         goToActivity(MainActivity.class);
                         finish();
                     } else {

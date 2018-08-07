@@ -12,11 +12,28 @@ public class UserInfoUtil {
     private static final String SP_NAME = "SP_CUR_USER";
     private static final String CUR_USER_ID = "user_id";
     private static final String CUR_USER_NAME = "user_name";
+    private static final String CUR_USER_PWD = "user_pwd";
     private static final String CUR_USER_SEQ_ID =  "seq_id";
 
     public static void saveLoginResult(LoginRespBean loginRespBean) {
         SPUtils.getInstance().put(CUR_USER_ID,loginRespBean.getUserId());
         SPUtils.getInstance().put(CUR_USER_NAME,loginRespBean.getUserName());
         SPUtils.getInstance().put(CUR_USER_SEQ_ID,loginRespBean.getSeqId());
+    }
+    
+    public static void saveUserPwd(String pwd){
+        SPUtils.getInstance().put(CUR_USER_PWD,pwd);
+    }
+
+    public static int getCurUserId() {
+        return  SPUtils.getInstance().getInt(CUR_USER_SEQ_ID);
+    }
+
+    public static String getCurUserName() {
+        return  SPUtils.getInstance().getString(CUR_USER_NAME);
+    }
+
+    public static String getCurUserPwd() {
+        return  SPUtils.getInstance().getString(CUR_USER_PWD);
     }
 }
