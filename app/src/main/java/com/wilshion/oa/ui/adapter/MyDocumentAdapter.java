@@ -1,5 +1,7 @@
 package com.wilshion.oa.ui.adapter;
 
+import android.view.View;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.wilshion.oa.R;
@@ -23,9 +25,10 @@ public class MyDocumentAdapter extends BaseQuickAdapter<MyDocumentRespBean.MyDoc
         helper.setText(R.id.tv_num, position + "")
                 .setText(R.id.tv_title, title)
                 .setText(R.id.tv_sub_title, subTitle)
-                .addOnClickListener(R.id.tv_form)
                 .addOnClickListener(R.id.tv_zhuban)
                 .addOnClickListener(R.id.tv_deliver)
                 .addOnClickListener(R.id.tv_sign);
+
+        helper.getView(R.id.tv_form).setVisibility(View.GONE);
     }
 }

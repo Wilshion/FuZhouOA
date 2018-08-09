@@ -1,4 +1,4 @@
-package com.wilshion.oa.ui.activity.work_flow;
+package com.wilshion.oa.ui.activity.my_file;
 
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -15,9 +15,10 @@ import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
 import com.wilshion.oa.ui.adapter.WorkFlowDeliverHandlerAdapter;
 import com.wilshion.oa.ui.bean.DeliverAssistHandlerBean;
+import com.wilshion.oa.ui.bean.MyDocumentDeliverRespBean;
+import com.wilshion.oa.ui.bean.MyDocumentDeliverRespBean.MyDocumentDeliverDataBean.NextPrcsBean;
+import com.wilshion.oa.ui.bean.MyDocumentRespBean;
 import com.wilshion.oa.ui.bean.ResponseBean;
-import com.wilshion.oa.ui.bean.WorkFlowBean;
-import com.wilshion.oa.ui.bean.WorkFlowDeliverBean;
 import com.wilshion.oa.ui.constant.Constant;
 import com.wilshion.oa.ui.utils.HttpUtil;
 
@@ -25,11 +26,11 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by Wilshion on 2018/7/26 21:13.
+ * Created by Wilshion on 2018/8/9 21:04.
  * [description : 转交]
  * [version : 1.0]
  */
-public class WorkFlowDeliverActivity extends BaseTitleBarActivity implements View.OnClickListener {
+public class MyDocumentDeliverActivity extends BaseTitleBarActivity implements View.OnClickListener {
     private TextView tv_name;
     private TextView tv_user;
     private TextView tv_step;
@@ -41,7 +42,7 @@ public class WorkFlowDeliverActivity extends BaseTitleBarActivity implements Vie
     /**
      * 列表页面传过来的数据
      */
-    private WorkFlowBean mWorkFlowBean;
+    private MyDocumentRespBean.MyDocumentBean mMyDocumentBean;
     /**
      * 选择经办人的适配器
      */
@@ -50,14 +51,14 @@ public class WorkFlowDeliverActivity extends BaseTitleBarActivity implements Vie
     /**
      * 可供选择的经办人（接口下发的）
      */
-    private List<DeliverAssistHandlerBean> mAssitHandlerBeanList;
+    private List<DeliverAssistHandlerBean> mDeliverAssistHandlerBeanList;
 
     /**
      * 已选择的主办人
      */
     private DeliverAssistHandlerBean mSelectedMainHandler;
 
-    private WorkFlowDeliverBean mWorkFlowDeliverBean;
+    private MyDocumentDeliverRespBean.MyDocumentDeliverDataBean mMyDocumentDeliverDataBean;
 
     @Override
     protected void setTitleBar() {
@@ -79,8 +80,8 @@ public class WorkFlowDeliverActivity extends BaseTitleBarActivity implements Vie
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
 
-        mWorkFlowBean = getIntent().getParcelableExtra(Constant.INTENT_PARAM_DATA);
-        if (mWorkFlowBean == null) {
+        mMyDocumentBean = getIntent().getParcelableExtra(Constant.INTENT_PARAM_DATA);
+        if (mMyDocumentBean == null) {
             showToast("数据获取失败");
             finishWithDelay(500);
             return;
@@ -103,14 +104,14 @@ public class WorkFlowDeliverActivity extends BaseTitleBarActivity implements Vie
         super.requestData();
         showWating("正在加载中...");
         HashMap params = new HashMap();
-        params.put("flowId", mWorkFlowBean.getFLOW_ID());
-        params.put("runId", mWorkFlowBean.getRUN_ID());
-        params.put("prcsId", mWorkFlowBean.getPRCS_ID());
-        params.put("flowPrcs", mWorkFlowBean.getFLOW_PRCS());
-
-        HttpUtil.requestPost(this, "turn", params, new HttpCallBack<ResponseBean<WorkFlowDeliverBean>>() {
+        params.put("flowId", mMyDocumentBean.getFlowId());
+        params.put("runId", mMyDocumentBean.getRunId());
+        params.put("prcsId", mMyDocumentBean.getPrcsId());
+        params.put("flowPrcs", mMyDocumentBean.getFlowPrcs());
+        params.put("isManage", "true");
+        HttpUtil.requestPost(this, "turnDoc", params, new HttpCallBack<ResponseBean<MyDocumentDeliverRespBean>>() {
             @Override
-            public void onSuccess(int statusCode, String rawJsonResponse, ResponseBean<WorkFlowDeliverBean> response) {
+            public void onSuccess(int statusCode, String rawJsonResponse, ResponseBean<MyDocumentDeliverRespBean> response) {
                 if (response.isSuccess()) {
                     closeDialog();
                     showData(response.getDetail());
@@ -120,7 +121,7 @@ public class WorkFlowDeliverActivity extends BaseTitleBarActivity implements Vie
             }
 
             @Override
-            public void onFailure(int statusCode, String rawJsonResponse, ResponseBean<WorkFlowDeliverBean> response) {
+            public void onFailure(int statusCode, String rawJsonResponse, ResponseBean<MyDocumentDeliverRespBean> response) {
                 showError(rawJsonResponse);
             }
         });
@@ -131,24 +132,24 @@ public class WorkFlowDeliverActivity extends BaseTitleBarActivity implements Vie
      *
      * @param detail
      */
-    private void showData(WorkFlowDeliverBean detail) {
+    private void showData(MyDocumentDeliverRespBean detail) {
         if (detail == null) {
             showToast("暂无数据");
             finishWithDelay(500);
             return;
         }
-        mWorkFlowDeliverBean = detail;
+        mMyDocumentDeliverDataBean = detail.getData();
 
-        tv_name.setText(detail.getRunName());
-        tv_user.setText(detail.getBeginUserName());
-        List<WorkFlowDeliverBean.FlowProcessesBean> flowProcessesBeans = detail.getFlowProcesses();
-        if (!EmptyUtils.isEmpty(flowProcessesBeans)) {
-            WorkFlowDeliverBean.FlowProcessesBean flowProcessesBean = flowProcessesBeans.get(0);
-            if (flowProcessesBean != null) {
-                String nextStep = flowProcessesBeans.get(0).getPRCS_NAME();
+        tv_name.setText(mMyDocumentDeliverDataBean.getFlowName());
+        tv_user.setText(mMyDocumentDeliverDataBean.getFlowName());
+        List<NextPrcsBean> nextPrcsBeanList = mMyDocumentDeliverDataBean.getNextPrcs();
+        if (!EmptyUtils.isEmpty(nextPrcsBeanList)) {
+            NextPrcsBean nextPrcsBean = nextPrcsBeanList.get(0);
+            if (nextPrcsBean != null) {
+                String nextStep = nextPrcsBean.getPrcsName();
                 tv_step.setText(nextStep);
 
-                List<DeliverAssistHandlerBean> assitHandlerBeans = flowProcessesBean.getAssitHandler();
+                List<DeliverAssistHandlerBean> assitHandlerBeans = nextPrcsBean.getAssitHandler();
                 if (!EmptyUtils.isEmpty(assitHandlerBeans)) {
                     DeliverAssistHandlerBean assitHandlerBean = assitHandlerBeans.get(0);
                     if (assitHandlerBean != null) {
@@ -156,7 +157,7 @@ public class WorkFlowDeliverActivity extends BaseTitleBarActivity implements Vie
                         tv_select_main_handler.setText(firstPersonName);
                     }
 
-                    mAssitHandlerBeanList = assitHandlerBeans;
+                    mDeliverAssistHandlerBeanList = assitHandlerBeans;
                     mSelectedMainHandler = assitHandlerBean;
                     showAssitRecyclerView();
                 }
@@ -169,7 +170,7 @@ public class WorkFlowDeliverActivity extends BaseTitleBarActivity implements Vie
         if (mAdapter == null) {
             mAdapter = new WorkFlowDeliverHandlerAdapter(R.layout.item_assit_handler);
         }
-        mAdapter.setNewData(mAssitHandlerBeanList);
+        mAdapter.setNewData(mDeliverAssistHandlerBeanList);
         rv_content.setAdapter(mAdapter);
     }
 
@@ -178,11 +179,11 @@ public class WorkFlowDeliverActivity extends BaseTitleBarActivity implements Vie
             mSelector = new OptionsPickerBuilder(this, new OnOptionsSelectListener() {
                 @Override
                 public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                    mSelectedMainHandler = mAssitHandlerBeanList.get(options1);
+                    mSelectedMainHandler = mDeliverAssistHandlerBeanList.get(options1);
                     tv_select_main_handler.setText(mSelectedMainHandler.getUserName());
                 }
             }).build();
-            mSelector.setNPicker(mAssitHandlerBeanList, null, null);
+            mSelector.setNPicker(mDeliverAssistHandlerBeanList, null, null);
         }
         return mSelector;
     }
@@ -193,22 +194,24 @@ public class WorkFlowDeliverActivity extends BaseTitleBarActivity implements Vie
 
     private void requestSave() {
         showWating("正在提交中...");
-        List<WorkFlowDeliverBean.FlowProcessesBean> flowProcessesBeans = mWorkFlowDeliverBean.getFlowProcesses();
-        WorkFlowDeliverBean.FlowProcessesBean flowProcessesBean = flowProcessesBeans.get(0);
-        String prcsIdNext = flowProcessesBean.getPRCS_ID();
+        List<NextPrcsBean> nextPrcsBeanList = mMyDocumentDeliverDataBean.getNextPrcs();
+        NextPrcsBean nextPrcsBean = nextPrcsBeanList.get(0);
+        String prcsIdNext = nextPrcsBean.getPrcsId();
         String prcsOpUser_prcsIdNext = mAdapter.getSelectedUserIds();
         HashMap params = new HashMap();
-        params.put("flowId", mWorkFlowBean.getFLOW_ID());
-        params.put("runId", mWorkFlowBean.getRUN_ID());
-        params.put("prcsId", mWorkFlowBean.getPRCS_ID());
-        params.put("flowPrcs", mWorkFlowBean.getFLOW_PRCS());
-        params.put("prcsIdNext", prcsIdNext);
+        params.put("flowId", mMyDocumentBean.getFlowId());
+        params.put("runId", mMyDocumentBean.getRunId());
+        params.put("prcsId", mMyDocumentBean.getPrcsId());
+        params.put("flowPrcs", mMyDocumentBean.getFlowPrcs());
+        params.put("prcsChoose", prcsIdNext);
+        params.put("isManage", "");
+
         //经办人id，中间用","隔开
         params.put("prcsOpUser_" + prcsIdNext, prcsOpUser_prcsIdNext);
         //主办人
         params.put("prcsUser_" + prcsIdNext, mSelectedMainHandler.getSeqId());
 
-        HttpUtil.requestPost(this, "put", params, new HttpCallBack<ResponseBean>() {
+        HttpUtil.requestPost(this, "commitDoc", params, new HttpCallBack<ResponseBean>() {
             @Override
             public void onSuccess(int statusCode, String rawJsonResponse, ResponseBean response) {
                 if (response.isSuccess()) {

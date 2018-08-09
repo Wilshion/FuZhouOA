@@ -8,7 +8,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.wilshion.common.utils.LogUtils;
 import com.wilshion.oa.R;
-import com.wilshion.oa.ui.bean.WorkFlowDeliverBean;
+import com.wilshion.oa.ui.bean.DeliverAssistHandlerBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.List;
  * [version : 1.0]
  */
 public class WorkFlowDeliverHandlerAdapter extends
-        BaseQuickAdapter<WorkFlowDeliverBean.FlowProcessesBean.AssitHandlerBean, BaseViewHolder> {
+        BaseQuickAdapter<DeliverAssistHandlerBean, BaseViewHolder> {
     private List<Boolean> mSelectedList = new ArrayList<>();
 
     public WorkFlowDeliverHandlerAdapter(int layoutResId) {
@@ -27,7 +27,7 @@ public class WorkFlowDeliverHandlerAdapter extends
     }
 
     @Override
-    public void setNewData(@Nullable List<WorkFlowDeliverBean.FlowProcessesBean.AssitHandlerBean> data) {
+    public void setNewData(@Nullable List<DeliverAssistHandlerBean> data) {
         super.setNewData(data);
         if (data == null)
             return;
@@ -39,7 +39,7 @@ public class WorkFlowDeliverHandlerAdapter extends
     }
 
     @Override
-    protected void convert(final BaseViewHolder helper, WorkFlowDeliverBean.FlowProcessesBean.AssitHandlerBean item) {
+    protected void convert(final BaseViewHolder helper, DeliverAssistHandlerBean item) {
         helper.setText(R.id.tv_name, item.getUserName());
         final int position = helper.getAdapterPosition();
         helper.itemView.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +62,7 @@ public class WorkFlowDeliverHandlerAdapter extends
         for (int i = 0; i < mSelectedList.size(); i++) {
             boolean selected = mSelectedList.get(i);
             if (selected) {
-                WorkFlowDeliverBean.FlowProcessesBean.AssitHandlerBean assitHandlerBean = getItem(i);
+                DeliverAssistHandlerBean assitHandlerBean = getItem(i);
                 LogUtils.d(assitHandlerBean.getUserName());
                 result.append(assitHandlerBean.getSeqId()).append(",");
             }
@@ -71,8 +71,8 @@ public class WorkFlowDeliverHandlerAdapter extends
         return result.toString();
     }
 
-    public List<WorkFlowDeliverBean.FlowProcessesBean.AssitHandlerBean> getSelectedData() {
-        List<WorkFlowDeliverBean.FlowProcessesBean.AssitHandlerBean> result = new ArrayList<>();
+    public List<DeliverAssistHandlerBean> getSelectedData() {
+        List<DeliverAssistHandlerBean> result = new ArrayList<>();
         for (int i = 0; i < mSelectedList.size(); i++) {
             boolean selected = mSelectedList.get(i);
             if (selected) {

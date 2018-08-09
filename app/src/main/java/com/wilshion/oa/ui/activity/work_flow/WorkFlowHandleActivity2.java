@@ -21,7 +21,7 @@ import java.util.HashMap;
  * [description : 主办]
  * [version : 1.0]
  */
-public class WorkFlowHandleActivity2 extends BaseUIActivity {
+public class WorkFlowHandleActivity2 extends BaseUIActivity implements UIWebView.OnWebViewLoadStatusListener {
     private WorkFlowBean mWorkFlowBean;
     private UIWebView wv_content;
 
@@ -44,7 +44,8 @@ public class WorkFlowHandleActivity2 extends BaseUIActivity {
 
         wv_content = findViewById(R.id.wv_content);
         wv_content.getSettings().setTextSize(WebSettings.TextSize.LARGER);
-        wv_content.addJavascriptInterface(new InJavaScriptLocalObj(), "js_interface");
+        wv_content.addJavascriptInterface(new JsHook(), "js_hook");
+        wv_content.setOnWebViewLoadStatusListener(this);
 //        requestLogin();
         showData();
     }
@@ -53,7 +54,7 @@ public class WorkFlowHandleActivity2 extends BaseUIActivity {
     public void onBackPressed() {
         if (wv_content.canGoBack()) {
             wv_content.goBack();
-        }else {
+        } else {
             super.onBackPressed();
         }
     }
@@ -118,15 +119,58 @@ public class WorkFlowHandleActivity2 extends BaseUIActivity {
         wv_content.loadHtml(url);
     }
 
-    final class InJavaScriptLocalObj {
+    @Override
+    public void onLoadStart() {
+        showWating("正在加载中...");
+    }
+
+    @Override
+    public void onLoadProgress(int progress) {
+
+    }
+
+    @Override
+    public void onLoadEnd() {
+        closeDialog();
+    }
+
+    final class JsHook {
         @JavascriptInterface
         public void onBackClick() {
-
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    showLogD("点击了返回按钮");
+                    onBackPressed();
+                }
+            });
         }
 
         @JavascriptInterface
-        public void onSaveResult(boolean result, String msg) {
+        public void onSaveClick() {
+            showLogD("点击了保存按钮");
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    showWating("正在保存中...");
+                }
+            });
+        }
 
+        @JavascriptInterface
+        public void onSaveResult(final boolean result, final String msg) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    showLogD("保存结果");
+                    closeDialog();
+                    showToast(msg);
+                    if (result) {
+                        setResult(RESULT_OK);
+                        finish();
+                    }
+                }
+            });
         }
     }
 

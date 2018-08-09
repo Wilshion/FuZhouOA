@@ -1,6 +1,7 @@
 package com.wilshion.oa.ui.widget;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.AttributeSet;
 
 import com.tencent.smtt.sdk.WebChromeClient;
@@ -16,6 +17,7 @@ import com.wilshion.common.utils.NetworkUtils;
  * [version : 1.0]
  */
 public class UIWebView extends WebView {
+    public OnWebViewLoadStatusListener mOnWebViewLoadStatusListener;
     public UIWebView(Context context) {
         this(context, null);
     }
@@ -34,6 +36,8 @@ public class UIWebView extends WebView {
             @Override
             public void onProgressChanged(WebView webView, int i) {
                 super.onProgressChanged(webView, i);
+                if (mOnWebViewLoadStatusListener!=null)
+                    mOnWebViewLoadStatusListener.onLoadProgress(i);
             }
         });
         
@@ -41,6 +45,20 @@ public class UIWebView extends WebView {
             @Override
             public boolean shouldOverrideUrlLoading(WebView webView, String s) {
                 return super.shouldOverrideUrlLoading(webView, s);
+            }
+
+            @Override
+            public void onPageStarted(WebView webView, String s, Bitmap bitmap) {
+                super.onPageStarted(webView, s, bitmap);
+                if (mOnWebViewLoadStatusListener!=null)
+                    mOnWebViewLoadStatusListener.onLoadStart();
+            }
+
+            @Override
+            public void onPageFinished(WebView webView, String s) {
+                super.onPageFinished(webView, s);
+                if (mOnWebViewLoadStatusListener!=null)
+                    mOnWebViewLoadStatusListener.onLoadEnd();
             }
         });
 
@@ -79,5 +97,15 @@ public class UIWebView extends WebView {
         html = "<!DOCTYPE html><html><meta name='viewport' content='width=device-width, initial-scale=1' /><head><style>img{width:80%; height:auto;}</style></head><body>"
                 + html + "</body></html>";
         loadDataWithBaseURL(null, html, "text/html", "utf-8", null);
+    }
+
+    public void setOnWebViewLoadStatusListener(OnWebViewLoadStatusListener onWebViewLoadStatusListener) {
+        mOnWebViewLoadStatusListener = onWebViewLoadStatusListener;
+    }
+
+    public interface OnWebViewLoadStatusListener {
+        void onLoadStart();
+        void onLoadProgress(int progress);
+        void onLoadEnd();
     }
 }

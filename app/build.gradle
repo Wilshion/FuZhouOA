@@ -44,15 +44,26 @@ android {
             signingConfig signingConfigs.release
         }
     }
+    
 
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
         }
     }
+
+   
+    /*apk重命名*/
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "FZOA-V${defaultConfig.versionName}-${getCurrentTime()}-${buildType.name}.apk"
+        }
+    }
 }
-
-
+//获取当前时间
+def getCurrentTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
 
 
 dependencies {

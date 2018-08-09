@@ -8,13 +8,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.wilshion.common.network.HttpCallBack;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.base.BaseRvActivity;
+import com.wilshion.oa.ui.adapter.MyDocumentAdapter;
 import com.wilshion.oa.ui.bean.MyDocumentRespBean;
 import com.wilshion.oa.ui.bean.MyDocumentRespBean.MyDocumentBean;
-import com.wilshion.oa.ui.activity.work_flow.WorkFlowDeliverActivity;
-import com.wilshion.oa.ui.activity.work_flow.WorkFlowFormActivity;
-import com.wilshion.oa.ui.activity.work_flow.WorkFlowHandleActivity2;
-import com.wilshion.oa.ui.activity.work_flow.WorkFlowSignActivity;
-import com.wilshion.oa.ui.adapter.MyDocumentAdapter;
 import com.wilshion.oa.ui.bean.ResponseBean;
 import com.wilshion.oa.ui.constant.Constant;
 import com.wilshion.oa.ui.utils.HttpUtil;
@@ -97,17 +93,14 @@ public class MyDocumentActivity extends BaseRvActivity<MyDocumentBean, MyDocumen
         intent.putExtra(Constant.INTENT_PARAM_DATA, myDocumentBean);
         int id = view.getId();
         switch (id) {
-            case R.id.tv_form:
-                intent.setClass(this, WorkFlowFormActivity.class);
-                break;
             case R.id.tv_zhuban:
-                intent.setClass(this, WorkFlowHandleActivity2.class);
+                intent.setClass(this, MyDocumentHandleActivity.class);
                 break;
             case R.id.tv_deliver:
-                intent.setClass(this, WorkFlowDeliverActivity.class);
+                intent.setClass(this, MyDocumentDeliverActivity.class);
                 break;
             case R.id.tv_sign:
-                intent.setClass(this, WorkFlowSignActivity.class);
+                intent.setClass(this, MyDocumentSignActivity.class);
                 break;
             default:
                 return;

@@ -143,7 +143,7 @@ public class WorkFlowDeliverBean {
         private String TOP_DEFAULT;
         private String CHILD_FLOW;
         private String AUTO_BASE_USER;
-        private List<AssitHandlerBean> assitHandler;
+        private List<DeliverAssistHandlerBean> assitHandler;
 
         public String getPRCS_ID() {
             return PRCS_ID;
@@ -241,43 +241,13 @@ public class WorkFlowDeliverBean {
             this.AUTO_BASE_USER = AUTO_BASE_USER;
         }
 
-        public List<AssitHandlerBean> getAssitHandler() {
+        public List<DeliverAssistHandlerBean> getAssitHandler() {
             return assitHandler;
         }
 
-        public void setAssitHandler(List<AssitHandlerBean> assitHandler) {
+        public void setAssitHandler(List<DeliverAssistHandlerBean> assitHandler) {
             this.assitHandler = assitHandler;
         }
 
-        public static class AssitHandlerBean {
-            /**
-             * seqId : 1296
-             * userName : 郑秀珍
-             */
-
-            private String seqId;
-            private String userName;
-
-            public String getSeqId() {
-                return seqId;
-            }
-
-            public void setSeqId(String seqId) {
-                this.seqId = seqId;
-            }
-
-            public String getUserName() {
-                return userName;
-            }
-
-            public void setUserName(String userName) {
-                this.userName = userName;
-            }
-
-            @Override
-            public String toString() {
-                return userName;
-            }
-        }
     }
 }
