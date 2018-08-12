@@ -164,7 +164,7 @@ public class WorkFlowHandleActivity2 extends BaseUIActivity implements UIWebView
                 public void run() {
                     showLogD("保存结果");
                     closeDialog();
-                    showToast(msg);
+                    showToast(msg); 
                     if (result) {
                         setResult(RESULT_OK);
                         finish();

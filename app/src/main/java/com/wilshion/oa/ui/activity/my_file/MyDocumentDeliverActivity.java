@@ -62,7 +62,7 @@ public class MyDocumentDeliverActivity extends BaseTitleBarActivity implements V
 
     @Override
     protected void setTitleBar() {
-        setTitle("工作转交");
+        setTitle("公文转交");
 //        setRightText("提交");
     }
 
@@ -195,8 +195,13 @@ public class MyDocumentDeliverActivity extends BaseTitleBarActivity implements V
     private void requestSave() {
         showWating("正在提交中...");
         List<NextPrcsBean> nextPrcsBeanList = mMyDocumentDeliverDataBean.getNextPrcs();
-        NextPrcsBean nextPrcsBean = nextPrcsBeanList.get(0);
-        String prcsIdNext = nextPrcsBean.getPrcsId();
+        String prcsIdNext = "0";
+        String topFlag = "";
+        if (!EmptyUtils.isEmpty(nextPrcsBeanList)) {
+            NextPrcsBean nextPrcsBean = nextPrcsBeanList.get(0);
+            prcsIdNext = nextPrcsBean.getPrcsId();
+            topFlag = nextPrcsBean.getTopFlag();
+        }
         String prcsOpUser_prcsIdNext = mAdapter.getSelectedUserIds();
         HashMap params = new HashMap();
         params.put("flowId", mMyDocumentBean.getFlowId());
@@ -206,6 +211,7 @@ public class MyDocumentDeliverActivity extends BaseTitleBarActivity implements V
         params.put("prcsChoose", prcsIdNext);
         params.put("isManage", "");
 
+        params.put("topFlag_" + prcsIdNext, topFlag);
         //经办人id，中间用","隔开
         params.put("prcsOpUser_" + prcsIdNext, prcsOpUser_prcsIdNext);
         //主办人
@@ -216,7 +222,7 @@ public class MyDocumentDeliverActivity extends BaseTitleBarActivity implements V
             public void onSuccess(int statusCode, String rawJsonResponse, ResponseBean response) {
                 if (response.isSuccess()) {
                     showSucceed(response.getResultNote());
-                    finishWithDelay(2000,true);
+                    finishWithDelay(2000, true);
                 } else {
                     showError(response.getResultNote());
                 }
