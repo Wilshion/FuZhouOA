@@ -222,7 +222,8 @@ public class MyDocumentDeliverActivity extends BaseTitleBarActivity implements V
             public void onSuccess(int statusCode, String rawJsonResponse, ResponseBean response) {
                 if (response.isSuccess()) {
                     showSucceed(response.getResultNote());
-                    finishWithDelay(2000, true);
+                    setResult(RESULT_OK);
+                    finishWithDelay(2000);
                 } else {
                     showError(response.getResultNote());
                 }
