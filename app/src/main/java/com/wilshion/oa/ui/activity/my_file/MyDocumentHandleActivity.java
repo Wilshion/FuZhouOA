@@ -100,9 +100,9 @@ public class MyDocumentHandleActivity extends BaseUIActivity implements UIWebVie
         int prcsId = mMyDocumentBean.getPrcsId();
         int flowPrcs = mMyDocumentBean.getFlowPrcs();
         int opFlag = mMyDocumentBean.getOpFlag();
-//        String feedback = mMyDocumentBean.getse();
-        String url = String.format("http://mwoa.fujiants.com/yh/yh/pda/workflow/act/YHPdaWorkflowAct/getHandlerData.act?P=%d&flowId=%d&runId=%d&prcsId=%d&flowPrcs=%d&opFlag=%d&feedback=%s",
-                userId, flowId, runId, prcsId, flowPrcs, opFlag, "");
+
+        String url = String.format("http://mwoa.fujiants.com/yh/yh/pda/doc/act/YHPdaDocAct/getHandlerData.act?P=%d&flowId=%d&runId=%d&prcsId=%d&flowPrcs=%d",
+                userId, flowId, runId, prcsId, flowPrcs);
         wv_content.loadUrl(url);
     }
 

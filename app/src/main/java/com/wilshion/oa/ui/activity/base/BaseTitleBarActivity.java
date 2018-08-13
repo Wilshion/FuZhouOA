@@ -57,6 +57,10 @@ public abstract class BaseTitleBarActivity extends BaseUIActivity {
     protected void onRightClick() {
 
     }
+    
+    protected View getTitleBar(){
+        return findViewById(R.id.fl_title_bar);
+    }
 
     protected View getLeft() {
         return iv_left;

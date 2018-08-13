@@ -76,6 +76,8 @@ public class WorkFlowSignActivity extends BaseTitleBarActivity implements View.O
             public void onSuccess(int statusCode, String rawJsonResponse, ResponseBean response) {
                 if (response.isSuccess()) {
                     showSucceed(response.getResultNote());
+                    setResult(RESULT_OK);
+                    finishWithDelay(1000);
                 } else {
                     showError(response.getResultNote());
                 }

@@ -11,7 +11,7 @@
         android:layout_margin="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@mipmap/ic_launcher"
+        android:drawableLeft="@drawable/ic_work_flow_sign"
         android:text="会签意见"
         android:textColor="@color/system_text_black"/>
 

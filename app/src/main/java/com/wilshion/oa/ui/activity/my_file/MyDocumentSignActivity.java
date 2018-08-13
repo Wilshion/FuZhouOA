@@ -71,11 +71,13 @@ public class MyDocumentSignActivity extends BaseTitleBarActivity implements View
         params.put("prcsId", mMyDocumentBean.getPrcsId() + "");
         params.put("flowPrcs", mMyDocumentBean.getFlowPrcs() + "");
         params.put("content", content);
-        HttpUtil.requestPost(this, "sign", params, new HttpCallBack<ResponseBean>() {
+        HttpUtil.requestPost(this, "docSignSubmit", params, new HttpCallBack<ResponseBean>() {
             @Override
             public void onSuccess(int statusCode, String rawJsonResponse, ResponseBean response) {
                 if (response.isSuccess()) {
                     showSucceed(response.getResultNote());
+                    setResult(RESULT_OK);
+                    finishWithDelay(1000);
                 } else {
                     showError(response.getResultNote());
                 }

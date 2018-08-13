@@ -3,7 +3,7 @@ package com.wilshion.oa.ui.activity.main;
 import android.app.Activity;
 
 import com.wilshion.oa.R;
-import com.wilshion.oa.ui.activity.address_list.AddressListActivity;
+import com.wilshion.oa.ui.activity.address_list.AddressListActivity2;
 import com.wilshion.oa.ui.activity.email.EmailListActivity;
 import com.wilshion.oa.ui.activity.msg.MsgListActivity;
 import com.wilshion.oa.ui.activity.my_file.MyDocumentActivity;
@@ -49,7 +49,7 @@ public class HomeDataSource {
         HomeItemBean fileItem = new HomeItemBean(R.drawable.ic_home_folder, "我的公文", MyDocumentActivity.class);
         HomeItemBean flowItem = new HomeItemBean(R.drawable.ic_home_workflow, "工作流", WorkFlowListActivity.class);
 //        HomeItemBean staffItem = new HomeItemBean(R.drawable.ic_home_query, "人员查询", StaffSearchActivity.class);
-        HomeItemBean addrItem = new HomeItemBean(R.drawable.ic_home_address, "通讯簿", AddressListActivity.class);
+        HomeItemBean addrItem = new HomeItemBean(R.drawable.ic_home_address, "通讯簿", AddressListActivity2.class);
 //        HomeItemBean codeItem = new HomeItemBean(R.drawable.ic_home_zipcode, "区号邮编", ZipCodeActivity.class);
 //        HomeItemBean weatherItem = new HomeItemBean(R.drawable.ic_home_weather, "天气预报", WeatherActivity.class);
 

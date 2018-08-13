@@ -18,6 +18,9 @@ public class ResponseBean<T> {
      */
 
     private String cmd;
+    /**
+     * 0-成功  10-登陆失效
+     */
     private int result;
     private String resultNote;
     private int totalRecordNum;
@@ -83,5 +86,11 @@ public class ResponseBean<T> {
 
     public boolean isSuccess() {
         return result == 0;
+    }
+
+    @Override
+    public String toString() {
+        String msg = String.format("result = %d  resultNote = %s ", result, resultNote);
+        return msg;
     }
 }

@@ -54,6 +54,8 @@
         <activity android:name=".ui.activity.work_flow.WorkFlowHandleActivity2"/>
         <activity android:name=".ui.activity.my_file.MyDocumentDeliverActivity"/>
         <activity android:name=".ui.activity.my_file.MyDocumentSignActivity"/>
+        <activity android:name=".ui.activity.address_list.AddressListActivity2"/>
+        <activity android:name=".ui.activity.my_file.MyDocumentHandleActivity"/>
     </application>
 
 </manifest>

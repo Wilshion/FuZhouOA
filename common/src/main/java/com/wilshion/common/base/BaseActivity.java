@@ -18,6 +18,13 @@ public class BaseActivity extends AppCompatActivity implements BaseUIDao {
     protected String TAG = getClass().getSimpleName();
     private BaseUIDaoImpl mBaseUIDao;
 
+
+    @Override
+    protected void onPause() {
+        closeDialog();
+        super.onPause();
+    }
+
     public BaseUIDaoImpl getBaseUIDao() {
         if (null == mBaseUIDao) {
             synchronized (BaseActivity.class) {

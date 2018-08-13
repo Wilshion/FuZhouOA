@@ -12,6 +12,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.wilshion.common.network.HttpCallBack;
+import com.wilshion.common.utils.EmptyUtils;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
 import com.wilshion.oa.ui.adapter.AddressListAdapter;
@@ -20,10 +21,8 @@ import com.wilshion.oa.ui.bean.AddressListRespBean;
 import com.wilshion.oa.ui.bean.ResponseBean;
 import com.wilshion.oa.ui.utils.HttpUtil;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Wilshion on 2018/7/26 09:56.
@@ -35,7 +34,6 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
     private SmartRefreshLayout refresh_layout;
     private RecyclerView mRcView;
     private LinearLayout mLinearLayout;
-    private List<AddressBean> mList = new ArrayList<>();
     private EditText mNameEt;
     private EditText mDanWeiEt;
 
@@ -59,7 +57,6 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
         findViewById(R.id.tv_search).setOnClickListener(this);
 
         refresh_layout = findViewById(R.id.adress_refresh_layout);
-        refresh_layout.setPrimaryColors(0xff444444, 0xffffffff);
         refresh_layout.setOnRefreshListener(this);
         refresh_layout.setOnLoadmoreListener(this);
 
@@ -80,7 +77,7 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
     }
 
 
-    private void researchData(){
+    private void researchData() {
 
         showWating("正在查询中");
 
@@ -91,32 +88,21 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
         HashMap<String, String> paramsDetail = new HashMap<>();
         paramsDetail.put("psnName", psnName);
         paramsDetail.put("deptName", deptName);
-        paramsDetail.put("groupName",groupName);
-        paramsDetail.put("pageNo",String.valueOf(mPageNo));
+        paramsDetail.put("groupName", groupName);
+        paramsDetail.put("pageNo", String.valueOf(mPageNo));
 
 
         HttpUtil.requestPost(this, "contactList", paramsDetail, new HttpCallBack<ResponseBean<AddressListRespBean>>() {
             @Override
             public void onSuccess(int statusCode, String rawJsonResponse, ResponseBean<AddressListRespBean> response) {
                 closeDialog();
-                mLinearLayout.setVisibility(View.GONE);
-                refresh_layout.setVisibility(View.VISIBLE);
-                refresh_layout.finishRefresh();
-                refresh_layout.finishLoadmore();
-
-                if (mPageNo == 1){
-                    mList = response.getDetail().getContactList();
-                }else {
-                    mList.addAll(mList);
-                }
-
-                if (mAdapter == null){
-                    mAdapter = new AddressListAdapter(AddressListActivity.this,mList,R.layout.cell_address_list);
-                    mRcView.setAdapter(mAdapter);
-                }else {
-                    mAdapter.updateData(mList);
+                if (response.isSuccess()) {
+                    showData(response.getDetail().getContactList());
+                } else {
+                    showError("未搜索到");
                 }
             }
+
             @Override
             public void onFailure(int statusCode, String rawJsonResponse, ResponseBean<AddressListRespBean> response) {
                 refresh_layout.finishRefresh();
@@ -127,16 +113,42 @@ public class AddressListActivity extends BaseTitleBarActivity implements View.On
 
     }
 
+    private void showData(List<AddressBean> addressBeanList) {
+        boolean hasData = !EmptyUtils.isEmpty(addressBeanList);
+
+        refresh_layout.finishRefresh();
+        refresh_layout.finishLoadmore();
+        mLinearLayout.setVisibility(View.GONE);
+        refresh_layout.setVisibility(View.VISIBLE);
+
+
+        if (mPageNo == 1) {
+            if (!hasData)
+                showToast("暂无数据");
+        } else {
+            if (!hasData) {
+                showToast("没有更多数据");
+            } 
+        }
+
+        if (mAdapter == null) {
+            mAdapter = new AddressListAdapter(R.layout.cell_address_list);
+            mAdapter.setNewData(addressBeanList);
+            mRcView.setAdapter(mAdapter);
+        } else {
+            mAdapter.addData(addressBeanList);
+        }
+    }
+
 
     @Override
     public void onClick(View view) {
         int viewId = view.getId();
-        switch (viewId){
-            case R.id.tv_search:
-            {
+        switch (viewId) {
+            case R.id.tv_search: {
                 researchData();
             }
-                break;
+            break;
             default:
 
                 break;
