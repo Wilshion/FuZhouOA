@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_work_flow_sign"
         android:text="会签意见"
+        android:drawablePadding="3dp"
         android:textColor="@color/system_text_black"/>
 
     <EditText

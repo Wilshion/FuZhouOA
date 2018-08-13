@@ -6,18 +6,18 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestHandle;
-import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.SyncHttpClient;
 import com.wilshion.common.utils.LogUtils;
 import com.wilshion.common.utils.NetworkUtils;
 
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.text.MessageFormat;
 import java.util.Map;
 
 import cz.msebera.android.httpclient.entity.StringEntity;
+
+import static com.loopj.android.http.RequestParams.APPLICATION_JSON;
 
 /**
  * Created by Wilshion on 16/8/22.
@@ -145,16 +145,11 @@ public class HttpHelper {
     /**
      * post请求，带参数
      */
-    public RequestHandle post(Context context,String url, JSONObject params,
+    public RequestHandle post(Context context, String url, JSONObject params,
                               HttpCallBack httpCallBack) {
 //        LogUtils.e(TAG, getAsyncHttpClient().getUrlWithQueryString(true, url, params));
-        StringEntity se = null;
-        try {
-            se = new StringEntity(params.toString());
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        RequestHandle requestHandle = client.post(context,url,se,RequestParams.APPLICATION_JSON,  httpCallBack);
+        StringEntity se = new StringEntity(params.toString(), "utf-8");
+        RequestHandle requestHandle = client.post(context, url, se, APPLICATION_JSON, httpCallBack);
         return requestHandle;
     }
 

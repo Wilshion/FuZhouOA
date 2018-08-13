@@ -1,5 +1,6 @@
 package com.wilshion.oa.ui.activity.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +13,6 @@ import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
 import com.wilshion.oa.ui.activity.main.HomeDataSource.HomeItemBean;
 import com.wilshion.oa.ui.adapter.MainAdapter;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends BaseTitleBarActivity implements BaseQuickAdapter.OnItemClickListener {
@@ -38,6 +38,17 @@ public class MainActivity extends BaseTitleBarActivity implements BaseQuickAdapt
         mAdapter.setOnItemClickListener(this);
         
     }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        Intent setIntent = new Intent(Intent.ACTION_MAIN);
+        setIntent.addCategory(Intent.CATEGORY_HOME);
+        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(setIntent);
+    }
+
+   
 
     @Override
     protected void setTitleBar() {
