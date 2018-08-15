@@ -26,8 +26,6 @@ import java.util.HashMap;
  * [version : 1.0]
  */
 public class NewScheduleActivity extends BaseTitleBarActivity implements View.OnClickListener {
-    private final int SELECTOR_SHOW_TYPE_TYPE = 1;
-    private final int SELECTOR_SHOW_TYPE_LEVEL = 2;
     private TextView tv_select_type;
     private TextView tv_select_level;
     private EditText et_start_time;
@@ -36,6 +34,11 @@ public class NewScheduleActivity extends BaseTitleBarActivity implements View.On
     private OptionsPickerView mTypeSelector;
     private ArrayList<String> mTypeArr;
     private ArrayList<String> mLevelArr;
+
+    /**
+     * 当前展示的是 选择类型的选择框吗
+     */
+    private boolean isShowType;
     /**
      * 选择的事务类型，1，工作事务，2 是个人事务
      */
@@ -76,10 +79,12 @@ public class NewScheduleActivity extends BaseTitleBarActivity implements View.On
         int id = view.getId();
         switch (id) {
             case R.id.tv_select_type:
-                showSelectView(SELECTOR_SHOW_TYPE_TYPE);
+                isShowType = true;
+                showSelectView();
                 break;
             case R.id.tv_select_level:
-                showSelectView(SELECTOR_SHOW_TYPE_LEVEL);
+                isShowType = false;
+                showSelectView();
                 break;
             case R.id.tv_send:
                 if (checkParams())
@@ -173,16 +178,13 @@ public class NewScheduleActivity extends BaseTitleBarActivity implements View.On
 
     /**
      * 弹出 选择器
-     *
-     * @param i 1:选择类型  2：级别
      */
-    private void showSelectView(int i) {
-        final boolean isForType = i == SELECTOR_SHOW_TYPE_TYPE;
+    private void showSelectView() {
         if (mTypeSelector == null) {
             mTypeSelector = new OptionsPickerBuilder(this, new OnOptionsSelectListener() {
                 @Override
                 public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                    if (isForType) {
+                    if (isShowType) {
                         mSelectedType = options1 + 1;
                         tv_select_type.setText(getTypeArr().get(options1));
                     } else {
@@ -193,8 +195,8 @@ public class NewScheduleActivity extends BaseTitleBarActivity implements View.On
             }).build();
         }
 
-        mTypeSelector.setNPicker(isForType ? getTypeArr() : getLevelArr(), null, null);
-        mTypeSelector.show(isForType ? tv_select_type : tv_select_level);
+        mTypeSelector.setNPicker(isShowType ? getTypeArr() : getLevelArr(), null, null);
+        mTypeSelector.show(isShowType ? tv_select_type : tv_select_level);
     }
 
     public ArrayList<String> getTypeArr() {
