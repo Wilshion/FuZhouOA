@@ -3,8 +3,8 @@ package com.wilshion.oa.ui.activity.splash;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.wilshion.common.base.BaseUIActivity;
 import com.wilshion.oa.R;
+import com.wilshion.oa.ui.activity.BaseUMengActivity;
 import com.wilshion.oa.ui.activity.LoginActivity;
 
 /**
@@ -12,7 +12,7 @@ import com.wilshion.oa.ui.activity.LoginActivity;
  * [description : ]
  * [version : 1.0]
  */
-public class SplashActivity extends BaseUIActivity {
+public class SplashActivity extends BaseUMengActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_splash;

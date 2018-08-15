@@ -8,9 +8,9 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.wilshion.common.base.BaseUIActivity;
 import com.wilshion.common.network.HttpCallBack;
 import com.wilshion.oa.R;
+import com.wilshion.oa.ui.activity.BaseUMengActivity;
 import com.wilshion.oa.ui.bean.EmailBean;
 import com.wilshion.oa.ui.bean.ResponseBean;
 import com.wilshion.oa.ui.constant.Constant;
@@ -23,7 +23,7 @@ import java.util.HashMap;
  * [description : 邮件详情]
  * [version : 1.0]
  */
-public class EmailDetailActivity extends BaseUIActivity implements View.OnClickListener {
+public class EmailDetailActivity extends BaseUMengActivity implements View.OnClickListener {
     private TextView tv_author_time;
     private TextView tv_content;
 

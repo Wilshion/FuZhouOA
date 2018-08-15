@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.wilshion.common.base.BaseUIActivity;
 import com.wilshion.common.network.HttpCallBack;
 import com.wilshion.common.utils.StringUtils;
 import com.wilshion.common.widgets.UIEditText;
@@ -25,7 +24,7 @@ import java.util.Map;
  * [description : 登陆]
  * [version : 1.0]
  */
-public class LoginActivity extends BaseUIActivity implements View.OnClickListener {
+public class LoginActivity extends BaseUMengActivity implements View.OnClickListener {
     private UIEditText et_name;
     private UIEditText et_pwd;
     private TextView btn_login;

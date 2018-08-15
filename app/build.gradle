@@ -80,4 +80,8 @@ dependencies {
     implementation 'com.android.support:cardview-v7:27.0.2'
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
     implementation files('libs/ksoap2-android-assembly-3.5.0-jar-with-dependencies.jar')
+    // umeng push
+    compile 'com.umeng.sdk:common:1.5.3'
+    compile 'com.umeng.sdk:utdid:1.1.5.3'
+    compile 'com.umeng.sdk:push:4.2.0'
 }

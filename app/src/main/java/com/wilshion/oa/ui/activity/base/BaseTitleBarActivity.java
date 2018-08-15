@@ -6,15 +6,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.wilshion.common.base.BaseUIActivity;
 import com.wilshion.oa.R;
+import com.wilshion.oa.ui.activity.BaseUMengActivity;
 
 /**
  * Created by Wilshion on 2018/7/25 21:29.
  * [description : ]
  * [version : 1.0]
  */
-public abstract class BaseTitleBarActivity extends BaseUIActivity {
+public abstract class BaseTitleBarActivity extends BaseUMengActivity {
     private TextView tv_title;
     private TextView tv_right;
     private RelativeLayout rl_right;

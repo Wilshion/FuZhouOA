@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.webkit.JavascriptInterface;
 
 import com.tencent.smtt.sdk.WebSettings;
-import com.wilshion.common.base.BaseUIActivity;
 import com.wilshion.common.network.HttpCallBack;
 import com.wilshion.common.utils.LogUtils;
 import com.wilshion.oa.R;
+import com.wilshion.oa.ui.activity.BaseUMengActivity;
 import com.wilshion.oa.ui.bean.ResponseBean;
 import com.wilshion.oa.ui.bean.WorkFlowBean;
 import com.wilshion.oa.ui.bean.WorkFlowHandleBean;
@@ -23,7 +23,7 @@ import java.util.HashMap;
  * [description : 主办]
  * [version : 1.0]
  */
-public class WorkFlowHandleActivity2 extends BaseUIActivity implements UIWebView.OnWebViewLoadStatusListener {
+public class WorkFlowHandleActivity2 extends BaseUMengActivity implements UIWebView.OnWebViewLoadStatusListener {
     private WorkFlowBean mWorkFlowBean;
     private UIWebView wv_content;
 
