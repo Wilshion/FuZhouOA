@@ -9,6 +9,7 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.luck.picture.lib.decoration.RecycleViewDivider;
 import com.wilshion.common.network.HttpCallBack;
+import com.wilshion.common.utils.ResouceUtil;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.base.BaseRvActivity;
 import com.wilshion.oa.ui.adapter.EmailListAdapter;
@@ -40,7 +41,7 @@ public class EmailListActivity extends BaseRvActivity<EmailBean, EmailListAdapte
 
     @Override
     public RecyclerView.ItemDecoration getRecyclerViewItemDecoration() {
-        return new RecycleViewDivider(this, LinearLayoutManager.HORIZONTAL, 10, R.color.system_view_gray);
+        return new RecycleViewDivider(this, LinearLayoutManager.HORIZONTAL, 10, ResouceUtil.getColor(R.color.system_view_gray));
     }
 
     @Override

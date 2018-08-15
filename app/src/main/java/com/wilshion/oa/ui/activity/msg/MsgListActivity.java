@@ -30,8 +30,8 @@ import java.util.List;
 public class MsgListActivity extends BaseRvActivity<MsgBean, MsgListAdapter> implements BaseQuickAdapter.OnItemClickListener {
     @Override
     protected void setTitleBar() {
-        setTitle("短信");
-        setRightText("写短信");
+        setTitle("微讯");
+        setRightText("写微讯");
     }
 
     @Override

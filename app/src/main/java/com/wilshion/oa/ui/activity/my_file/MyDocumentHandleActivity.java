@@ -6,10 +6,12 @@ import android.webkit.JavascriptInterface;
 import com.tencent.smtt.sdk.WebSettings;
 import com.wilshion.common.base.BaseUIActivity;
 import com.wilshion.common.network.HttpCallBack;
+import com.wilshion.common.utils.LogUtils;
 import com.wilshion.oa.R;
+import com.wilshion.oa.ui.bean.MyDocumentHandleBean;
 import com.wilshion.oa.ui.bean.MyDocumentRespBean.MyDocumentBean;
 import com.wilshion.oa.ui.bean.ResponseBean;
-import com.wilshion.oa.ui.bean.WorkFlowHandleBean;
+import com.wilshion.oa.ui.constant.ConstantUrl;
 import com.wilshion.oa.ui.data.UserInfoUtil;
 import com.wilshion.oa.ui.utils.HttpUtil;
 import com.wilshion.oa.ui.widget.UIWebView;
@@ -46,8 +48,7 @@ public class MyDocumentHandleActivity extends BaseUIActivity implements UIWebVie
         wv_content.getSettings().setTextSize(WebSettings.TextSize.LARGER);
         wv_content.addJavascriptInterface(new JsHook(), "js_hook");
         wv_content.setOnWebViewLoadStatusListener(this);
-//        requestLogin();
-        showData();
+        requestData();
     }
 
     @Override
@@ -62,21 +63,22 @@ public class MyDocumentHandleActivity extends BaseUIActivity implements UIWebVie
     @Override
     protected void requestData() {
         super.requestData();
-
+        requestTransferData();
     }
 
     private void requestTransferData() {
         showWating("正在加载中...");
         HashMap params = new HashMap();
+        int userId = UserInfoUtil.getCurUserId();
         params.put("flowId", mMyDocumentBean.getFlowId());
         params.put("runId", mMyDocumentBean.getRunId());
         params.put("prcsId", mMyDocumentBean.getPrcsId());
         params.put("flowPrcs", mMyDocumentBean.getFlowPrcs());
-        params.put("isManage", "true");
+        params.put("userId", userId);
 
-        HttpUtil.requestPost(this, "turnDoc", params, new HttpCallBack<ResponseBean<WorkFlowHandleBean>>() {
+        HttpUtil.requestPost(this, "getDocHandlerData", params, new HttpCallBack<ResponseBean<MyDocumentHandleBean>>() {
             @Override
-            public void onSuccess(int statusCode, String rawJsonResponse, ResponseBean<WorkFlowHandleBean> response) {
+            public void onSuccess(int statusCode, String rawJsonResponse, ResponseBean<MyDocumentHandleBean> response) {
                 if (response.isSuccess()) {
                     closeDialog();
                     showData(response.getDetail());
@@ -86,7 +88,7 @@ public class MyDocumentHandleActivity extends BaseUIActivity implements UIWebVie
             }
 
             @Override
-            public void onFailure(int statusCode, String rawJsonResponse, ResponseBean<WorkFlowHandleBean> response) {
+            public void onFailure(int statusCode, String rawJsonResponse, ResponseBean<MyDocumentHandleBean> response) {
                 showError(rawJsonResponse);
             }
         });
@@ -103,19 +105,19 @@ public class MyDocumentHandleActivity extends BaseUIActivity implements UIWebVie
 
         String url = String.format("http://mwoa.fujiants.com/yh/yh/pda/doc/act/YHPdaDocAct/getHandlerData.act?P=%d&flowId=%d&runId=%d&prcsId=%d&flowPrcs=%d",
                 userId, flowId, runId, prcsId, flowPrcs);
+        LogUtils.d(url);
         wv_content.loadUrl(url);
     }
 
-    private void showData(WorkFlowHandleBean detail) {
-        int flowId = detail.getFlowId();
-        int runId = detail.getRunId();
-        int prcsId = detail.getPrcsId();
-        int flowPrcs = detail.getFlowPrcs();
-        String opFlag = detail.getOpFlag();
-        String feedback = detail.getFeedback();
-        String url = String.format("http://mwoa.fujiants.com/yh/yh/pda/workflow/act/YHPdaWorkflowAct/getHandlerData.act?P=1&flowId=%d&runId=%d&prcsId=%d&flowPrcs=%d&opFlag=%s&feedback=%s",
-                flowId, runId, prcsId, flowPrcs, opFlag, feedback);
-        wv_content.loadHtml(url);
+    private void showData(MyDocumentHandleBean detail) {
+//        String  flowId = detail.getFlowId();
+//        String runId = detail.getRunId();
+//        String prcsId = detail.getPrcsId();
+//        String flowPrcs = detail.getFlowPrcs();
+//        String opFlag = detail.getUrl();
+        String url = ConstantUrl.getUrlPrefix() + detail.getUrl();
+        LogUtils.e(url);
+        wv_content.loadUrl(url);
     }
 
     @Override

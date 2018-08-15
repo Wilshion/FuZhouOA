@@ -10,6 +10,7 @@ import com.wilshion.common.utils.StringUtils;
 import com.wilshion.common.widgets.UIEditText;
 import com.wilshion.oa.BuildConfig;
 import com.wilshion.oa.R;
+import com.wilshion.oa.ui.activity.ip_reset.IpSettingActivity;
 import com.wilshion.oa.ui.activity.main.MainActivity;
 import com.wilshion.oa.ui.bean.LoginRespBean;
 import com.wilshion.oa.ui.bean.ResponseBean;
@@ -43,6 +44,8 @@ public class LoginActivity extends BaseUIActivity implements View.OnClickListene
         btn_login = findViewById(R.id.btn_login);
 
         btn_login.setOnClickListener(this);
+        findViewById(R.id.tv_ip_setting).setOnClickListener(this);
+        
         if (BuildConfig.DEBUG) {
             et_name.setText("admin");
             et_pwd.setText("");
@@ -59,6 +62,9 @@ public class LoginActivity extends BaseUIActivity implements View.OnClickListene
                 if (checkParams()) {
                     requestLogin();
                 }
+                break;
+            case R.id.tv_ip_setting:
+                goToActivity(IpSettingActivity.class);
                 break;
         }
     }

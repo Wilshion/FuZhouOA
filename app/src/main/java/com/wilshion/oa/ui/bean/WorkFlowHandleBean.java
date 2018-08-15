@@ -17,6 +17,7 @@ public class WorkFlowHandleBean {
      * flowPrcs : 1
      * opFlag : 1
      * feedback : 0
+     * url : http://127.0.0.1:8080/yh/yh/pda/workflow/act/YHPdaWorkflowAct/getHandlerData.act?P=1&flowId=282&runId=272&prcsId=1&flowPrcs=1&opFlag=1&feedback=1
      * runName : 教职工请假调休(2018-07-31 09:42:35)
      * attachmentId : 1807_422ae990917e66beb819abbd600c58bf,
      * attachmentName : ldstyj.png*
@@ -32,6 +33,7 @@ public class WorkFlowHandleBean {
     private int flowPrcs;
     private String opFlag;
     private String feedback;
+    private String url;
     private String runName;
     private String attachmentId;
     private String attachmentName;
@@ -107,6 +109,14 @@ public class WorkFlowHandleBean {
 
     public void setFeedback(String feedback) {
         this.feedback = feedback;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getRunName() {

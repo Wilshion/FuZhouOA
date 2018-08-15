@@ -7,25 +7,24 @@
 
     <include layout="@layout/part_title_bar"/>
 
-    <com.flyco.roundview.RoundLinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
         android:orientation="vertical"
-        app:rv_backgroundColor="@color/gray_dark"
-        app:rv_cornerRadius="5dp">
+        android:background="@color/system_view_gray"
+        android:padding="15dp">
 
         <com.flyco.roundview.RoundLinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:orientation="vertical"
             app:rv_backgroundColor="@color/white"
             app:rv_cornerRadius="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:padding="5dp">
@@ -46,7 +45,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:padding="5dp">
@@ -67,7 +66,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
@@ -92,7 +91,7 @@
         <com.flyco.roundview.RoundLinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:orientation="vertical"
             android:padding="10dp"
             app:rv_backgroundColor="@color/white"
@@ -120,8 +119,8 @@
             android:id="@+id/tv_send"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_marginTop="25dp"
             android:gravity="center"
             android:paddingBottom="5dp"
@@ -132,5 +131,5 @@
             app:rv_backgroundColor="@color/blue_normal"
             app:rv_backgroundPressColor="@color/blue_press"
             app:rv_cornerRadius="5dp"/>
-    </com.flyco.roundview.RoundLinearLayout>
+    </LinearLayout>
 </LinearLayout>

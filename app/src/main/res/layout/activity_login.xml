@@ -79,6 +79,7 @@
         app:rv_cornerRadius="5dp"/>
 
     <TextView
+        android:id="@+id/tv_ip_setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"

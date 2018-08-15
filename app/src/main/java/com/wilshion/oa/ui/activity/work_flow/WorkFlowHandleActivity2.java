@@ -6,10 +6,12 @@ import android.webkit.JavascriptInterface;
 import com.tencent.smtt.sdk.WebSettings;
 import com.wilshion.common.base.BaseUIActivity;
 import com.wilshion.common.network.HttpCallBack;
+import com.wilshion.common.utils.LogUtils;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.bean.ResponseBean;
 import com.wilshion.oa.ui.bean.WorkFlowBean;
 import com.wilshion.oa.ui.bean.WorkFlowHandleBean;
+import com.wilshion.oa.ui.constant.ConstantUrl;
 import com.wilshion.oa.ui.data.UserInfoUtil;
 import com.wilshion.oa.ui.utils.HttpUtil;
 import com.wilshion.oa.ui.widget.UIWebView;
@@ -46,8 +48,7 @@ public class WorkFlowHandleActivity2 extends BaseUIActivity implements UIWebView
         wv_content.getSettings().setTextSize(WebSettings.TextSize.LARGER);
         wv_content.addJavascriptInterface(new JsHook(), "js_hook");
         wv_content.setOnWebViewLoadStatusListener(this);
-//        requestLogin();
-        showData();
+        requestData();
     }
 
     @Override
@@ -62,11 +63,12 @@ public class WorkFlowHandleActivity2 extends BaseUIActivity implements UIWebView
     @Override
     protected void requestData() {
         super.requestData();
-
+        requestTransferData();
     }
 
     private void requestTransferData() {
         showWating("正在加载中...");
+        int userId = UserInfoUtil.getCurUserId();
         HashMap params = new HashMap();
         params.put("flowId", mWorkFlowBean.getFLOW_ID());
         params.put("runId", mWorkFlowBean.getRUN_ID());
@@ -74,12 +76,12 @@ public class WorkFlowHandleActivity2 extends BaseUIActivity implements UIWebView
         params.put("flowPrcs", mWorkFlowBean.getFLOW_PRCS());
         params.put("opFlag", mWorkFlowBean.getOP_FLAG());
         params.put("feedback", mWorkFlowBean.getFEEDBACK());
-
+        params.put("userId", userId);
+        
         HttpUtil.requestPost(this, "getHandlerData", params, new HttpCallBack<ResponseBean<WorkFlowHandleBean>>() {
             @Override
             public void onSuccess(int statusCode, String rawJsonResponse, ResponseBean<WorkFlowHandleBean> response) {
                 if (response.isSuccess()) {
-                    closeDialog();
                     showData(response.getDetail());
                 } else {
                     showError(response.getResultNote());
@@ -108,15 +110,17 @@ public class WorkFlowHandleActivity2 extends BaseUIActivity implements UIWebView
     }
 
     private void showData(WorkFlowHandleBean detail) {
-        int flowId = detail.getFlowId();
-        int runId = detail.getRunId();
-        int prcsId = detail.getPrcsId();
-        int flowPrcs = detail.getFlowPrcs();
-        String opFlag = detail.getOpFlag();
-        String feedback = detail.getFeedback();
-        String url = String.format("http://mwoa.fujiants.com/yh/yh/pda/workflow/act/YHPdaWorkflowAct/getHandlerData.act?P=1&flowId=%d&runId=%d&prcsId=%d&flowPrcs=%d&opFlag=%s&feedback=%s",
-                flowId, runId, prcsId, flowPrcs, opFlag, feedback);
-        wv_content.loadHtml(url);
+//        int flowId = detail.getFlowId();
+//        int runId = detail.getRunId();
+//        int prcsId = detail.getPrcsId();
+//        int flowPrcs = detail.getFlowPrcs();
+//        String opFlag = detail.getOpFlag();
+//        String feedback = detail.getFeedback();
+//        String url = String.format("http://mwoa.fujiants.com/yh/yh/pda/workflow/act/YHPdaWorkflowAct/getHandlerData.act?P=1&flowId=%d&runId=%d&prcsId=%d&flowPrcs=%d&opFlag=%s&feedback=%s",
+//                flowId, runId, prcsId, flowPrcs, opFlag, feedback);
+        String url = ConstantUrl.getUrlPrefix() + detail.getUrl();
+        LogUtils.e(url);
+        wv_content.loadUrl(url);
     }
 
     @Override
@@ -164,7 +168,7 @@ public class WorkFlowHandleActivity2 extends BaseUIActivity implements UIWebView
                 public void run() {
                     showLogD("保存结果");
                     closeDialog();
-                    showToast(msg); 
+                    showToast(msg);
                     if (result) {
                         setResult(RESULT_OK);
                         finish();

@@ -63,7 +63,7 @@ public class HomeDataSource {
         result.add(fileItem);
         result.add(flowItem);
 //        result.add(staffItem);
-        result.add(addrItem);
+//        result.add(addrItem);
 //        result.add(codeItem);
 //        result.add(weatherItem);
         return result;

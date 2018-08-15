@@ -7,14 +7,13 @@
 
     <include layout="@layout/part_title_bar"/>
 
-    <com.flyco.roundview.RoundLinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingBottom="30dp"
-        app:rv_backgroundColor="@color/gray"
-        app:rv_cornerRadius="5dp">
+        android:background="@color/system_view_gray"
+        android:padding="15dp">
 
         <com.flyco.roundview.RoundLinearLayout
             android:layout_width="match_parent"
@@ -26,6 +25,8 @@
             app:rv_cornerRadius="5dp">
 
             <TextView
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -39,7 +40,7 @@
                 android:id="@+id/tv_receiver"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center_vertical"/>
         </com.flyco.roundview.RoundLinearLayout>
 
         <com.flyco.roundview.RoundLinearLayout
@@ -85,6 +86,6 @@
             app:rv_backgroundColor="@color/blue_normal"
             app:rv_backgroundPressColor="@color/blue_press"
             app:rv_cornerRadius="5dp"/>
-    </com.flyco.roundview.RoundLinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
