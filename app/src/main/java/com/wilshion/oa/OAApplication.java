@@ -29,6 +29,8 @@ import com.umeng.message.UmengNotificationClickHandler;
 import com.umeng.message.entity.UMessage;
 import com.wilshion.common.utils.LogUtils;
 import com.wilshion.common.utils.Utils;
+import com.wilshion.oa.ui.constant.ConstantKey;
+import com.wilshion.oa.ui.data.UserInfoUtil;
 
 /**
  * Created by Wilshion on 2018/7/25 14:54.
@@ -51,14 +53,14 @@ public class OAApplication extends Application {
 
     private void initUMeng() {
         //初始化组件化基础库, 统计SDK/推送SDK/分享SDK都必须调用此初始化接口
-        UMConfigure.init(this, "59892f08310c9307b60023d0", "Umeng", UMConfigure.DEVICE_TYPE_PHONE,
-                "669c30a9584623e70e8cd01b0381dcb4");
+        UMConfigure.init(this, ConstantKey.UMENG_APP_KEY, "Umeng", UMConfigure.DEVICE_TYPE_PHONE,
+                ConstantKey.UMENG_MESSAGE_SECRET);
         //PushSDK初始化(如使用推送SDK，必须调用此方法)
         initUpush();
     }
 
     private void initUpush() {
-        PushAgent mPushAgent = PushAgent.getInstance(this);
+        final PushAgent mPushAgent = PushAgent.getInstance(this);
         mHandler = new Handler(getMainLooper());
 
         //sdk开启通知声音
@@ -169,8 +171,17 @@ public class OAApplication extends Application {
         //注册推送服务 每次调用register都会回调该接口
         mPushAgent.register(new IUmengRegisterCallback() {
             @Override
-            public void onSuccess(String deviceToken) {
-                LogUtils.d("device token: " + deviceToken);
+            public void onSuccess(String deviceToken) {LogUtils.d("device token: " + deviceToken);
+                if (UserInfoUtil.hasLogin()){
+                    String alias = UserInfoUtil.getCurUserId() + "";
+                    mPushAgent.setAlias(alias, "user_id", new UTrack.ICallBack() {
+                        @Override
+                        public void onMessage(boolean b, String s) {
+                            LogUtils.e(b + "  " + s);
+                        }
+                    });
+                }
+               
                 sendBroadcast(new Intent(UPDATE_STATUS_ACTION));
             }
 

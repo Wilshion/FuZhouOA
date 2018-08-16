@@ -59,6 +59,10 @@ android {
             outputFileName = "FZOA-V${defaultConfig.versionName}-${getCurrentTime()}-${buildType.name}.apk"
         }
     }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_7
+    }
 }
 //获取当前时间
 def getCurrentTime() {
@@ -84,4 +88,6 @@ dependencies {
     compile 'com.umeng.sdk:common:1.5.3'
     compile 'com.umeng.sdk:utdid:1.1.5.3'
     compile 'com.umeng.sdk:push:4.2.0'
+    //permissions
+//    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
 }

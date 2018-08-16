@@ -1,5 +1,6 @@
 package com.wilshion.oa.ui.activity.main;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -7,13 +8,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.luck.picture.lib.permissions.RxPermissions;
+import com.umeng.message.PushAgent;
+import com.umeng.message.UTrack;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.LoginActivity;
 import com.wilshion.oa.ui.activity.base.BaseTitleBarActivity;
 import com.wilshion.oa.ui.activity.main.HomeDataSource.HomeItemBean;
 import com.wilshion.oa.ui.adapter.MainAdapter;
+import com.wilshion.oa.ui.data.UserInfoUtil;
 
 import java.util.List;
+
+import io.reactivex.functions.Consumer;
+
 
 public class MainActivity extends BaseTitleBarActivity implements BaseQuickAdapter.OnItemClickListener {
     private RecyclerView rv_content;
@@ -36,7 +44,8 @@ public class MainActivity extends BaseTitleBarActivity implements BaseQuickAdapt
         mAdapter = new MainAdapter(R.layout.item_main_ac, mData);
         rv_content.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(this);
-        
+       
+        requestPermissions();
     }
 
     @Override
@@ -48,7 +57,6 @@ public class MainActivity extends BaseTitleBarActivity implements BaseQuickAdapt
         startActivity(setIntent);
     }
 
-   
 
     @Override
     protected void setTitleBar() {
@@ -60,16 +68,44 @@ public class MainActivity extends BaseTitleBarActivity implements BaseQuickAdapt
     @Override
     protected void onRightClick() {
         super.onRightClick();
+        UserInfoUtil.clear();
         goToActivity(LoginActivity.class);
         finish();
     }
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-       HomeItemBean homeItemBean = mData.get(position);
-       goToActivity(homeItemBean.targetClazz);
+        HomeItemBean homeItemBean = mData.get(position);
+        goToActivity(homeItemBean.targetClazz);
     }
 
-   
 
+    private void requestPermissions() {
+        RxPermissions rxPermissions = new RxPermissions(this);
+        rxPermissions
+                .request(Manifest.permission.CAMERA,
+                        Manifest.permission.READ_PHONE_STATE)
+                .subscribe(new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean granted) throws Exception {
+                        if (granted) {
+                            // All requested permissions are granted
+                            showLogD("同意权限");
+                        } else {
+                            // At least one permission is denied
+                            showLogD("拒绝权限");
+                        }
+                    }
+                });
+    }
+
+    private void setUMengAlias() {
+        String alias = UserInfoUtil.getCurUserId() + "";
+        PushAgent.getInstance(this).setAlias(alias, "user_id", new UTrack.ICallBack() {
+            @Override
+            public void onMessage(boolean b, String s) {
+                showLogD(b + "  " + s);
+            }
+        });
+    }
 }
