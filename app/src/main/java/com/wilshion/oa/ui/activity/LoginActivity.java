@@ -5,9 +5,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.wilshion.common.network.HttpCallBack;
+import com.wilshion.common.utils.EmptyUtils;
 import com.wilshion.common.utils.StringUtils;
 import com.wilshion.common.widgets.UIEditText;
-import com.wilshion.oa.BuildConfig;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.ip_reset.IpSettingActivity;
 import com.wilshion.oa.ui.activity.main.MainActivity;
@@ -44,12 +44,19 @@ public class LoginActivity extends BaseUMengActivity implements View.OnClickList
 
         btn_login.setOnClickListener(this);
         findViewById(R.id.tv_ip_setting).setOnClickListener(this);
-        
-        if (BuildConfig.DEBUG) {
-            et_name.setText("admin");
-            et_pwd.setText("");
+
+//        if (BuildConfig.DEBUG) {
+//            et_name.setText("admin");
+//            et_pwd.setText("");
+//        }
+
+        String userName = UserInfoUtil.getCurUserName();
+        String pwd = UserInfoUtil.getCurUserPwd();
+        if (!EmptyUtils.isEmpty(userName)) {
+            et_name.setText(userName);
+            et_pwd.setText(pwd);
+            requestLogin();
         }
-        UserInfoUtil.clear();
     }
 
     @Override
@@ -57,8 +64,6 @@ public class LoginActivity extends BaseUMengActivity implements View.OnClickList
         int id = view.getId();
         switch (id) {
             case R.id.btn_login:
-//              QueryAddressTask task = new QueryAddressTask();
-//              task.execute();
                 if (checkParams()) {
                     requestLogin();
                 }
@@ -71,10 +76,8 @@ public class LoginActivity extends BaseUMengActivity implements View.OnClickList
 
     private void requestLogin() {
         showWating("正在登录中");
-
         String name = et_name.getText().toString();
         final String pwd = et_pwd.getText().toString();
-
         Map paramsDetail = new HashMap();
         paramsDetail.put("userName", name);
         paramsDetail.put("password", pwd);
@@ -121,5 +124,4 @@ public class LoginActivity extends BaseUMengActivity implements View.OnClickList
     }
 
 
-   
 }
