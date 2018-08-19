@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.umeng.message.PushAgent;
-import com.umeng.message.UTrack;
 import com.wilshion.common.network.HttpCallBack;
 import com.wilshion.common.utils.StringUtils;
 import com.wilshion.common.widgets.UIEditText;
@@ -51,7 +49,7 @@ public class LoginActivity extends BaseUMengActivity implements View.OnClickList
             et_name.setText("admin");
             et_pwd.setText("");
         }
-        deleteUMengAlias();
+        UserInfoUtil.clear();
     }
 
     @Override
@@ -123,13 +121,5 @@ public class LoginActivity extends BaseUMengActivity implements View.OnClickList
     }
 
 
-    private void deleteUMengAlias() {
-        String alias = UserInfoUtil.getCurUserId() + "";
-        PushAgent.getInstance(this).deleteAlias(alias, "user_id", new UTrack.ICallBack() {
-            @Override
-            public void onMessage(boolean b, String s) {
-                showLogD(b + "  " + s);
-            }
-        });
-    }
+   
 }
