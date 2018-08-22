@@ -88,6 +88,7 @@ dependencies {
     compile 'com.umeng.sdk:common:1.5.3'
     compile 'com.umeng.sdk:utdid:1.1.5.3'
     compile 'com.umeng.sdk:push:4.2.0'
+    compile 'com.umeng.sdk:analytics:7.5.0'
     //permissions
 //    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
 }

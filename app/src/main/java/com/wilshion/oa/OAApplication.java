@@ -14,6 +14,7 @@ import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.tencent.smtt.sdk.QbSdk;
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 import com.wilshion.common.utils.LogUtils;
 import com.wilshion.common.utils.Utils;
@@ -45,6 +46,8 @@ public class OAApplication extends Application {
                 ConstantKey.UMENG_MESSAGE_SECRET);
         //PushSDK初始化(如使用推送SDK，必须调用此方法)
         UMengPushUtil.getInstance().regist();
+
+        MobclickAgent.setScenarioType(this, MobclickAgent.EScenarioType.E_UM_NORMAL);
     }
 
     /**

@@ -3,6 +3,7 @@ package com.wilshion.oa.ui.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.message.PushAgent;
 import com.wilshion.common.base.BaseUIActivity;
 
@@ -16,5 +17,17 @@ public abstract class BaseUMengActivity extends BaseUIActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         PushAgent.getInstance(this).onAppStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this); // 基础指标统计，不能遗漏
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this); // 基础指标统计，不能遗漏
     }
 }
