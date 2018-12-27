@@ -53,7 +53,6 @@ public class HomeDataSource {
 //        HomeItemBean codeItem = new HomeItemBean(R.drawable.ic_home_zipcode, "区号邮编", ZipCodeActivity.class);
 //        HomeItemBean weatherItem = new HomeItemBean(R.drawable.ic_home_weather, "天气预报", WeatherActivity.class);
 
-
         result.add(msgItem);
         result.add(emailItem);
         result.add(notiItem);

@@ -8,6 +8,7 @@ import com.wilshion.common.network.HttpCallBack;
 import com.wilshion.common.utils.EmptyUtils;
 import com.wilshion.common.utils.StringUtils;
 import com.wilshion.common.widgets.UIEditText;
+import com.wilshion.oa.BuildConfig;
 import com.wilshion.oa.R;
 import com.wilshion.oa.ui.activity.ip_reset.IpSettingActivity;
 import com.wilshion.oa.ui.activity.main.MainActivity;
@@ -45,10 +46,10 @@ public class LoginActivity extends BaseUMengActivity implements View.OnClickList
         btn_login.setOnClickListener(this);
         findViewById(R.id.tv_ip_setting).setOnClickListener(this);
 
-//        if (BuildConfig.DEBUG) {
-//            et_name.setText("admin");
-//            et_pwd.setText("");
-//        }
+        if (BuildConfig.DEBUG) {
+            et_name.setText("admin");
+            et_pwd.setText("");
+        }
 
         String userName = UserInfoUtil.getCurUserName();
         String pwd = UserInfoUtil.getCurUserPwd();
